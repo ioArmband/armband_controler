@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.io.ConnectionsManager;
 import org.tse.pri.ioarmband.armband.io.bluetooth.BluetoothConnectionService;
 import org.tse.pri.ioarmband.armband.io.internal.InternalConnectionService;
+import org.tse.pri.ioarmband.armband.io.lan.LANConnectionService;
 
 
 public class Main 
@@ -15,8 +16,10 @@ public class Main
         ConnectionsManager connectionsManager = ConnectionsManager.getInstance();
         connectionsManager.registerService(InternalConnectionService.class,true);
         connectionsManager.registerService(BluetoothConnectionService.class,true);
+        connectionsManager.registerService(LANConnectionService.class,true);
         //connectionsManager.registerService(RemotedConnectionService.class,true);
         
         connectionsManager.stopService(BluetoothConnectionService.class);
+        connectionsManager.stopService(LANConnectionService.class);
     }
 }
