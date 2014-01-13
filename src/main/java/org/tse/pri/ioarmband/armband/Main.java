@@ -10,6 +10,7 @@ import org.tse.pri.ioarmband.armband.io.lan.LANConnectionService;
 public class Main 
 {
 	
+	@SuppressWarnings("unused")
 	private static final Logger logger = Logger.getLogger(Main.class);
     public static void main( String[] args )
     {

@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.io.IConnectionService;
 import org.tse.pri.ioarmband.armband.io.IServiceStateChangeListener;
 import org.tse.pri.ioarmband.armband.io.ServiceState;
+import org.tse.pri.ioarmband.armband.tools.PropertiesManager;
 
 public class RemotedConnectionService implements IConnectionService, Runnable{
 
@@ -33,8 +34,8 @@ public class RemotedConnectionService implements IConnectionService, Runnable{
 	private void init(){
 		//TODO : Dynamic service informations
 		
-		hostname = "127.0.0.1";//"ioarmband.jmpoth.fr";
-		port  = 80;
+		hostname = PropertiesManager.getString("connection_service.remote.dest_host");
+		port  = PropertiesManager.getInt("connection_service.remote.dest_address");
 
 		logger.info("Initialization of Remoted ConnectionService : <" + this.toString() + ">");
 	}
@@ -84,6 +85,8 @@ public class RemotedConnectionService implements IConnectionService, Runnable{
 	}
 	
 	private void setState(ServiceState state){
+		if(state == this.state)
+			return;
 		this.state = state;
 		dispatcheStateChangeEnvent();
 	}

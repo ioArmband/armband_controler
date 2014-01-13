@@ -21,11 +21,13 @@ import java.util.Set;
 
 
 
+
 import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.io.ClientsManager;
 import org.tse.pri.ioarmband.armband.io.IConnectionService;
 import org.tse.pri.ioarmband.armband.io.IServiceStateChangeListener;
 import org.tse.pri.ioarmband.armband.io.ServiceState;
+import org.tse.pri.ioarmband.armband.tools.PropertiesManager;
 import org.tse.pri.ioarmband.io.connection.StreamedConnection;
 
 public class LANConnectionService implements IConnectionService, Runnable {
@@ -33,8 +35,8 @@ public class LANConnectionService implements IConnectionService, Runnable {
 
 	private static final Logger logger = Logger.getLogger(LANConnectionService.class);
 	
-	private String bindAddr = "0.0.0.0";
-	private int port = 80;
+	private String bindAddr;
+	private int port;
 	
 	boolean running;
 	ServiceState state;
@@ -50,11 +52,11 @@ public class LANConnectionService implements IConnectionService, Runnable {
 		if(state != ServiceState.UNINITIALIZED)
 			return;
 
-		logger.info("Initialisation du service LAN : <" + this.toString() + ">");
+		logger.info("Initialisation du service LAN");
 		
 		//TODO : Dynamic service informations
-		bindAddr = "0.0.0.0";
-		port = 32017;
+		bindAddr = PropertiesManager.getString("connection_service.lan.hostname");
+		port = PropertiesManager.getInt("connection_service.lan.port");
 		setState(ServiceState.STOPPED);
 	}
 	
@@ -75,8 +77,6 @@ public class LANConnectionService implements IConnectionService, Runnable {
 			
 		} catch (SocketException e) {
 			logger.warn("Fin prématurée de la connection LAN");
-			setState(ServiceState.FAILED);
-			
 		} catch (IOException e) {
 			logger.error("L'execution du service LAN a échoué",e);
 			setState(ServiceState.FAILED);
@@ -135,8 +135,10 @@ public class LANConnectionService implements IConnectionService, Runnable {
 	}
 	
 	private void setState(ServiceState state){
+		if(state == this.state)
+			return;
 		this.state = state;
-		logger.debug("The LAN service passed from state" + state.name() + "to state " + state.name());
+		logger.debug("The LAN service passed from state " + state.name() + " to state " + state.name());
 		dispatcheStateChangeEnvent();
 	}
 	

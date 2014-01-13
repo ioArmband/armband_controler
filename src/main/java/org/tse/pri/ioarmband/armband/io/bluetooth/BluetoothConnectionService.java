@@ -19,6 +19,7 @@ import org.tse.pri.ioarmband.armband.io.ClientsManager;
 import org.tse.pri.ioarmband.armband.io.IConnectionService;
 import org.tse.pri.ioarmband.armband.io.IServiceStateChangeListener;
 import org.tse.pri.ioarmband.armband.io.ServiceState;
+import org.tse.pri.ioarmband.armband.tools.PropertiesManager;
 import org.tse.pri.ioarmband.io.connection.StreamedConnection;
 
 public class BluetoothConnectionService implements IConnectionService, Runnable{
@@ -46,8 +47,8 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 		logger.info("Initialisation du service Bluetooth : <" + this.toString() + ">");
 		
 		//TODO : Dynamic service informations
-		serviceName = "ioArmband";
-		serviceUUID = "4c2054e4f8d33f530f79aa3b5712c799";
+		serviceName = PropertiesManager.getString("connection_service.bluetooth.name");
+		serviceUUID = PropertiesManager.getString("connection_service.bluetooth.uuid");
 		
 		UUID SERVICEUUID_UUID = new UUID(serviceUUID, false);
 		connectionURL = "btspp://localhost:"+SERVICEUUID_UUID.toString()+";name="+serviceName;	
@@ -129,8 +130,10 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 	}
 	
 	private void setState(ServiceState state){
+		if(state == this.state)
+			return;
 		this.state = state;
-		logger.debug("The Bluetooth service passed from state" + state.name() + "to state " + state.name());
+		logger.debug("The Bluetooth service passed from state " + state.name() + " to state " + state.name());
 		dispatcheStateChangeEnvent();
 	}
 	

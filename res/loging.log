@@ -945,3 +945,550 @@ java.io.InterruptedIOException: Notifier has been closed; Failed to listen socke
 2014-01-13 00:50:03 DEBUG bluetooth:126 - closing ConnectionNotifier 988
 2014-01-13 00:50:03 DEBUG bluetooth:? - socket[988] close
 2014-01-13 00:50:03 DEBUG bluetooth:? - unregisterService
+2014-01-13 01:21:16 INFO  BluetoothConnectionService:46 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:21:16 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:21:16 INFO  BluetoothConnectionService:97 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:21:16 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 01:21:16 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 01:21:16 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 01:21:16 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 01:21:16 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 01:21:16 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 01:21:16 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 01:21:16 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 01:21:16 DEBUG bluetooth:? - socket
+2014-01-13 01:21:16 DEBUG bluetooth:? - socket[912] opened
+2014-01-13 01:21:16 DEBUG bluetooth:? - socket[912] bind
+2014-01-13 01:21:16 DEBUG bluetooth:? - socket[912] getsockaddress
+2014-01-13 01:21:16 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 01:21:16 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 01:21:16 DEBUG bluetooth:? - socket[912] close
+2014-01-13 01:21:16 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 01:21:17 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 01:21:17 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 01:21:17 INFO  BluetoothConnectionService:114 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:21:17 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 01:21:17 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 01:21:17 DEBUG bluetooth:? - socket
+2014-01-13 01:21:17 DEBUG bluetooth:? - socket[972] opened
+2014-01-13 01:21:17 DEBUG bluetooth:? - socket[972] bind
+2014-01-13 01:21:17 DEBUG bluetooth:? - socket[972] listen
+2014-01-13 01:21:17 DEBUG bluetooth:? - socket[972] getsockchannel
+2014-01-13 01:21:17 DEBUG bluetooth:740 - service channel  6
+2014-01-13 01:21:17 DEBUG bluetooth:? - registerService
+2014-01-13 01:21:17 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 01:21:17 INFO  BluetoothConnectionService:65 - Client bluetooth en attente de connexion
+2014-01-13 01:21:17 DEBUG bluetooth:126 - closing ConnectionNotifier 972
+2014-01-13 01:21:17 DEBUG bluetooth:? - socket[972] close
+2014-01-13 01:21:17 DEBUG bluetooth:? - unregisterService
+2014-01-13 01:33:50 INFO  BluetoothConnectionService:46 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:33:51 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:33:51 INFO  BluetoothConnectionService:97 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:33:51 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 01:33:51 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 01:33:51 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 01:33:51 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 01:33:51 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 01:33:51 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 01:33:51 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 01:33:51 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket[908] opened
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket[908] bind
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket[908] getsockaddress
+2014-01-13 01:33:51 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 01:33:51 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket[908] close
+2014-01-13 01:33:51 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 01:33:51 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 01:33:51 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 01:33:51 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 01:33:51 INFO  LANConnectionService:51 - Initialisation du service Bluetooth : <LANConnectionService [bindAddr=0.0.0.0, port=80, running=false, state=UNINITIALIZED]>
+2014-01-13 01:33:51 DEBUG LANConnectionService:134 - The LAN service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:33:51 INFO  LANConnectionService:96 - Démarage du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=false, state=STOPPED]>
+2014-01-13 01:33:51 DEBUG LANConnectionService:134 - The LAN service passed from stateSTARTINGto state STARTING
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket[980] opened
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket[980] bind
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket[980] listen
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket[980] getsockchannel
+2014-01-13 01:33:51 DEBUG bluetooth:740 - service channel  6
+2014-01-13 01:33:51 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 01:33:51 DEBUG LANConnectionService:134 - The LAN service passed from stateSTARTEDto state STARTED
+2014-01-13 01:33:51 INFO  BluetoothConnectionService:114 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:33:51 INFO  LANConnectionService:64 - Server LAN en attente de connexion
+2014-01-13 01:33:51 DEBUG bluetooth:? - registerService
+2014-01-13 01:33:51 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 01:33:51 INFO  BluetoothConnectionService:65 - Client bluetooth en attente de connexion
+2014-01-13 01:33:51 DEBUG bluetooth:126 - closing ConnectionNotifier 980
+2014-01-13 01:33:51 DEBUG bluetooth:? - socket[980] close
+2014-01-13 01:33:51 DEBUG bluetooth:? - unregisterService
+2014-01-13 01:34:23 INFO  BluetoothConnectionService:46 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:34:23 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:34:23 INFO  BluetoothConnectionService:97 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:34:23 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 01:34:23 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 01:34:23 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 01:34:23 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 01:34:23 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 01:34:23 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 01:34:23 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 01:34:23 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket[1188] opened
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket[1188] bind
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket[1188] getsockaddress
+2014-01-13 01:34:23 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 01:34:23 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket[1188] close
+2014-01-13 01:34:23 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 01:34:23 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 01:34:23 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 01:34:23 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 01:34:23 INFO  LANConnectionService:51 - Initialisation du service Bluetooth : <LANConnectionService [bindAddr=0.0.0.0, port=80, running=false, state=UNINITIALIZED]>
+2014-01-13 01:34:23 DEBUG LANConnectionService:134 - The LAN service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:34:23 INFO  LANConnectionService:96 - Démarage du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=false, state=STOPPED]>
+2014-01-13 01:34:23 DEBUG LANConnectionService:134 - The LAN service passed from stateSTARTINGto state STARTING
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket[1228] opened
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket[1228] bind
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket[1228] listen
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket[1228] getsockchannel
+2014-01-13 01:34:23 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 01:34:23 DEBUG LANConnectionService:134 - The LAN service passed from stateSTARTEDto state STARTED
+2014-01-13 01:34:23 DEBUG bluetooth:740 - service channel  6
+2014-01-13 01:34:23 INFO  LANConnectionService:64 - Server LAN en attente de connexion
+2014-01-13 01:34:23 INFO  BluetoothConnectionService:114 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:34:23 DEBUG LANConnectionService:134 - The LAN service passed from stateSTOPINGto state STOPING
+2014-01-13 01:34:23 INFO  LANConnectionService:115 - Stopping LAN service <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=true, state=STOPING]>
+2014-01-13 01:34:23 ERROR LANConnectionService:75 - L'execution du service LAN a échoué
+java.net.SocketException: socket closed
+	at java.net.DualStackPlainSocketImpl.accept0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketAccept(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.accept(Unknown Source)
+	at java.net.PlainSocketImpl.accept(Unknown Source)
+	at java.net.ServerSocket.implAccept(Unknown Source)
+	at java.net.ServerSocket.accept(Unknown Source)
+	at org.tse.pri.ioarmband.armband.io.lan.LANConnectionService.run(LANConnectionService.java:66)
+	at java.lang.Thread.run(Unknown Source)
+2014-01-13 01:34:23 DEBUG bluetooth:? - registerService
+2014-01-13 01:34:23 DEBUG LANConnectionService:134 - The LAN service passed from stateFAILEDto state FAILED
+2014-01-13 01:34:23 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 01:34:23 INFO  BluetoothConnectionService:65 - Client bluetooth en attente de connexion
+2014-01-13 01:34:23 DEBUG bluetooth:126 - closing ConnectionNotifier 1228
+2014-01-13 01:34:23 DEBUG bluetooth:? - socket[1228] close
+2014-01-13 01:34:23 DEBUG bluetooth:? - unregisterService
+2014-01-13 01:35:20 INFO  BluetoothConnectionService:46 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:35:20 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:35:20 INFO  BluetoothConnectionService:97 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:35:20 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 01:35:20 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 01:35:20 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 01:35:20 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 01:35:20 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 01:35:20 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 01:35:20 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 01:35:20 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket[912] opened
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket[912] bind
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket[912] getsockaddress
+2014-01-13 01:35:20 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 01:35:20 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket[912] close
+2014-01-13 01:35:20 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 01:35:20 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 01:35:20 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 01:35:20 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 01:35:20 INFO  LANConnectionService:51 - Initialisation du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=80, running=false, state=UNINITIALIZED]>
+2014-01-13 01:35:20 DEBUG LANConnectionService:134 - The LAN service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:35:20 INFO  LANConnectionService:96 - Démarage du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=false, state=STOPPED]>
+2014-01-13 01:35:20 DEBUG LANConnectionService:134 - The LAN service passed from stateSTARTINGto state STARTING
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket[988] opened
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket[988] bind
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket[988] listen
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket[988] getsockchannel
+2014-01-13 01:35:20 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 01:35:20 DEBUG LANConnectionService:134 - The LAN service passed from stateSTARTEDto state STARTED
+2014-01-13 01:35:20 DEBUG bluetooth:740 - service channel  6
+2014-01-13 01:35:20 INFO  LANConnectionService:64 - Server LAN en attente de connexion
+2014-01-13 01:35:20 INFO  BluetoothConnectionService:114 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:35:20 DEBUG LANConnectionService:134 - The LAN service passed from stateSTOPINGto state STOPING
+2014-01-13 01:35:20 INFO  LANConnectionService:115 - Stopping LAN service <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=true, state=STOPING]>
+2014-01-13 01:35:20 ERROR LANConnectionService:75 - L'execution du service LAN a échoué
+java.net.SocketException: socket closed
+	at java.net.DualStackPlainSocketImpl.accept0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketAccept(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.accept(Unknown Source)
+	at java.net.PlainSocketImpl.accept(Unknown Source)
+	at java.net.ServerSocket.implAccept(Unknown Source)
+	at java.net.ServerSocket.accept(Unknown Source)
+	at org.tse.pri.ioarmband.armband.io.lan.LANConnectionService.run(LANConnectionService.java:66)
+	at java.lang.Thread.run(Unknown Source)
+2014-01-13 01:35:20 DEBUG LANConnectionService:134 - The LAN service passed from stateFAILEDto state FAILED
+2014-01-13 01:35:20 DEBUG bluetooth:? - registerService
+2014-01-13 01:35:20 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 01:35:20 INFO  BluetoothConnectionService:65 - Client bluetooth en attente de connexion
+2014-01-13 01:35:20 DEBUG bluetooth:126 - closing ConnectionNotifier 988
+2014-01-13 01:35:20 DEBUG bluetooth:? - socket[988] close
+2014-01-13 01:35:20 DEBUG bluetooth:? - unregisterService
+2014-01-13 01:37:34 INFO  BluetoothConnectionService:46 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:37:34 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:37:34 INFO  BluetoothConnectionService:97 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:37:34 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 01:37:34 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 01:37:34 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 01:37:34 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 01:37:34 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 01:37:34 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 01:37:34 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 01:37:34 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket[908] opened
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket[908] bind
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket[908] getsockaddress
+2014-01-13 01:37:34 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 01:37:34 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket[908] close
+2014-01-13 01:37:34 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 01:37:34 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 01:37:34 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 01:37:34 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 01:37:34 INFO  LANConnectionService:53 - Initialisation du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=80, running=false, state=UNINITIALIZED]>
+2014-01-13 01:37:34 DEBUG LANConnectionService:139 - The LAN service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:37:34 INFO  LANConnectionService:101 - Démarage du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=false, state=STOPPED]>
+2014-01-13 01:37:34 DEBUG LANConnectionService:139 - The LAN service passed from stateSTARTINGto state STARTING
+2014-01-13 01:37:34 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 01:37:34 DEBUG LANConnectionService:139 - The LAN service passed from stateSTARTEDto state STARTED
+2014-01-13 01:37:34 INFO  BluetoothConnectionService:114 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:37:34 INFO  LANConnectionService:66 - Server LAN en attente de connexion
+2014-01-13 01:37:34 DEBUG LANConnectionService:139 - The LAN service passed from stateSTOPINGto state STOPING
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket
+2014-01-13 01:37:34 INFO  LANConnectionService:120 - Stopping LAN service <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=true, state=STOPING]>
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket[1000] opened
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket[1000] bind
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket[1000] listen
+2014-01-13 01:37:34 ERROR LANConnectionService:77 - Fin prématurée de la connection LAN
+java.net.SocketException: socket closed
+	at java.net.DualStackPlainSocketImpl.accept0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketAccept(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.accept(Unknown Source)
+	at java.net.PlainSocketImpl.accept(Unknown Source)
+	at java.net.ServerSocket.implAccept(Unknown Source)
+	at java.net.ServerSocket.accept(Unknown Source)
+	at org.tse.pri.ioarmband.armband.io.lan.LANConnectionService.run(LANConnectionService.java:68)
+	at java.lang.Thread.run(Unknown Source)
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket[1000] getsockchannel
+2014-01-13 01:37:34 DEBUG LANConnectionService:139 - The LAN service passed from stateFAILEDto state FAILED
+2014-01-13 01:37:34 DEBUG bluetooth:740 - service channel  6
+2014-01-13 01:37:34 DEBUG bluetooth:? - registerService
+2014-01-13 01:37:34 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 01:37:34 INFO  BluetoothConnectionService:65 - Client bluetooth en attente de connexion
+2014-01-13 01:37:34 DEBUG bluetooth:126 - closing ConnectionNotifier 1000
+2014-01-13 01:37:34 DEBUG bluetooth:? - socket[1000] close
+2014-01-13 01:37:34 DEBUG bluetooth:? - unregisterService
+2014-01-13 01:37:47 INFO  BluetoothConnectionService:46 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:37:47 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:37:47 INFO  BluetoothConnectionService:97 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:37:47 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 01:37:47 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 01:37:47 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 01:37:47 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 01:37:47 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 01:37:47 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 01:37:47 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 01:37:47 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket[904] opened
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket[904] bind
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket[904] getsockaddress
+2014-01-13 01:37:47 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 01:37:47 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket[904] close
+2014-01-13 01:37:47 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 01:37:47 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 01:37:47 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 01:37:47 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 01:37:47 INFO  LANConnectionService:53 - Initialisation du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=80, running=false, state=UNINITIALIZED]>
+2014-01-13 01:37:47 DEBUG LANConnectionService:139 - The LAN service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:37:47 INFO  LANConnectionService:101 - Démarage du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=false, state=STOPPED]>
+2014-01-13 01:37:47 DEBUG LANConnectionService:139 - The LAN service passed from stateSTARTINGto state STARTING
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket[976] opened
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket[976] bind
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket[976] listen
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket[976] getsockchannel
+2014-01-13 01:37:47 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 01:37:47 DEBUG LANConnectionService:139 - The LAN service passed from stateSTARTEDto state STARTED
+2014-01-13 01:37:47 INFO  LANConnectionService:66 - Server LAN en attente de connexion
+2014-01-13 01:37:47 INFO  BluetoothConnectionService:114 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:37:47 DEBUG bluetooth:740 - service channel  6
+2014-01-13 01:37:47 DEBUG LANConnectionService:139 - The LAN service passed from stateSTOPINGto state STOPING
+2014-01-13 01:37:47 INFO  LANConnectionService:120 - Stopping LAN service <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=true, state=STOPING]>
+2014-01-13 01:37:47 WARN  LANConnectionService:77 - Fin prématurée de la connection LAN
+2014-01-13 01:37:47 DEBUG LANConnectionService:139 - The LAN service passed from stateFAILEDto state FAILED
+2014-01-13 01:37:47 DEBUG bluetooth:? - registerService
+2014-01-13 01:37:47 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 01:37:47 INFO  BluetoothConnectionService:65 - Client bluetooth en attente de connexion
+2014-01-13 01:37:47 DEBUG bluetooth:126 - closing ConnectionNotifier 976
+2014-01-13 01:37:47 DEBUG bluetooth:? - socket[976] close
+2014-01-13 01:37:47 DEBUG bluetooth:? - unregisterService
+2014-01-13 01:51:45 INFO  BluetoothConnectionService:46 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:51:45 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:51:45 INFO  BluetoothConnectionService:97 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:51:45 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 01:51:45 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 01:51:45 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 01:51:45 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 01:51:45 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 01:51:45 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 01:51:45 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 01:51:45 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket[900] opened
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket[900] bind
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket[900] getsockaddress
+2014-01-13 01:51:45 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 01:51:45 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket[900] close
+2014-01-13 01:51:45 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 01:51:45 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 01:51:45 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 01:51:45 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 01:51:45 INFO  LANConnectionService:53 - Initialisation du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=80, running=false, state=UNINITIALIZED]>
+2014-01-13 01:51:45 DEBUG LANConnectionService:139 - The LAN service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:51:45 INFO  LANConnectionService:101 - Démarage du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=false, state=STOPPED]>
+2014-01-13 01:51:45 DEBUG LANConnectionService:139 - The LAN service passed from stateSTARTINGto state STARTING
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket[972] opened
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket[972] bind
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket[972] listen
+2014-01-13 01:51:45 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 01:51:45 DEBUG LANConnectionService:139 - The LAN service passed from stateSTARTEDto state STARTED
+2014-01-13 01:51:45 INFO  BluetoothConnectionService:114 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket[972] getsockchannel
+2014-01-13 01:51:45 INFO  LANConnectionService:66 - Server LAN en attente de connexion
+2014-01-13 01:51:45 DEBUG bluetooth:740 - service channel  6
+2014-01-13 01:51:45 DEBUG LANConnectionService:139 - The LAN service passed from stateSTOPINGto state STOPING
+2014-01-13 01:51:45 INFO  LANConnectionService:120 - Stopping LAN service <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=true, state=STOPING]>
+2014-01-13 01:51:45 WARN  LANConnectionService:77 - Fin prématurée de la connection LAN
+2014-01-13 01:51:45 DEBUG LANConnectionService:139 - The LAN service passed from stateFAILEDto state FAILED
+2014-01-13 01:51:45 DEBUG bluetooth:? - registerService
+2014-01-13 01:51:45 DEBUG BluetoothConnectionService:133 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 01:51:45 INFO  BluetoothConnectionService:65 - Client bluetooth en attente de connexion
+2014-01-13 01:51:45 DEBUG bluetooth:126 - closing ConnectionNotifier 972
+2014-01-13 01:51:45 DEBUG bluetooth:? - socket[972] close
+2014-01-13 01:51:45 DEBUG bluetooth:? - unregisterService
+2014-01-13 01:55:18 INFO  BluetoothConnectionService:47 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:55:29 INFO  BluetoothConnectionService:47 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:57:16 INFO  BluetoothConnectionService:47 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:57:16 ERROR PropertiesManager:20 - Cannot find config file [config.properties]
+java.io.FileNotFoundException: config.properties (Le fichier spécifié est introuvable)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at java.io.FileReader.<init>(Unknown Source)
+	at org.tse.pri.ioarmband.armband.tools.PropertiesManager.init(PropertiesManager.java:18)
+	at org.tse.pri.ioarmband.armband.tools.PropertiesManager.get(PropertiesManager.java:28)
+	at org.tse.pri.ioarmband.armband.tools.PropertiesManager.getString(PropertiesManager.java:33)
+	at org.tse.pri.ioarmband.armband.io.bluetooth.BluetoothConnectionService.init(BluetoothConnectionService.java:50)
+	at org.tse.pri.ioarmband.armband.io.bluetooth.BluetoothConnectionService.<init>(BluetoothConnectionService.java:40)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at java.lang.Class.newInstance(Unknown Source)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.registerService(ConnectionsManager.java:38)
+	at org.tse.pri.ioarmband.armband.Main.main(Main.java:19)
+2014-01-13 01:57:40 INFO  BluetoothConnectionService:47 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:57:40 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:57:40 INFO  BluetoothConnectionService:98 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:57:40 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 01:57:40 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 01:57:40 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 01:57:40 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 01:57:40 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 01:57:40 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 01:57:40 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 01:57:40 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket[908] opened
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket[908] bind
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket[908] getsockaddress
+2014-01-13 01:57:40 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 01:57:40 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket[908] close
+2014-01-13 01:57:40 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 01:57:40 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 01:57:40 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 01:57:40 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 01:57:40 INFO  LANConnectionService:55 - Initialisation du service LAN : <LANConnectionService [bindAddr=null, port=0, running=false, state=UNINITIALIZED]>
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket[988] opened
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket[988] bind
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket[988] listen
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket[988] getsockchannel
+2014-01-13 01:57:40 DEBUG bluetooth:740 - service channel  6
+2014-01-13 01:57:40 DEBUG bluetooth:? - registerService
+2014-01-13 01:57:40 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 01:57:40 INFO  BluetoothConnectionService:66 - Client bluetooth en attente de connexion
+2014-01-13 01:57:40 DEBUG bluetooth:? - socket[988] accept
+2014-01-13 01:59:12 INFO  BluetoothConnectionService:47 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 01:59:12 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 01:59:12 INFO  BluetoothConnectionService:98 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 01:59:12 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 01:59:12 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 01:59:12 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 01:59:12 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_1
+2014-01-13 01:59:12 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_1\intelbth_x64.dll
+2014-01-13 01:59:12 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 01:59:12 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 01:59:12 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket[912] opened
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket[912] bind
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket[912] getsockaddress
+2014-01-13 01:59:12 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 01:59:12 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket[912] close
+2014-01-13 01:59:12 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 01:59:12 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 01:59:12 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 01:59:12 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 01:59:12 INFO  LANConnectionService:55 - Initialisation du service LAN : <LANConnectionService [bindAddr=null, port=0, running=false, state=UNINITIALIZED]>
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket[976] opened
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket[976] bind
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket[976] listen
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket[976] getsockchannel
+2014-01-13 01:59:12 DEBUG bluetooth:740 - service channel  7
+2014-01-13 01:59:12 DEBUG bluetooth:? - registerService
+2014-01-13 01:59:12 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 01:59:12 INFO  BluetoothConnectionService:66 - Client bluetooth en attente de connexion
+2014-01-13 01:59:12 DEBUG bluetooth:? - socket[976] accept
+2014-01-13 02:01:16 INFO  BluetoothConnectionService:47 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 02:01:16 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 02:01:16 INFO  BluetoothConnectionService:98 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 02:01:16 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 02:01:16 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 02:01:16 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 02:01:16 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_2
+2014-01-13 02:01:16 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_2\intelbth_x64.dll
+2014-01-13 02:01:16 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 02:01:16 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 02:01:16 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket[920] opened
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket[920] bind
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket[920] getsockaddress
+2014-01-13 02:01:16 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 02:01:16 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket[920] close
+2014-01-13 02:01:16 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 02:01:16 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 02:01:16 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 02:01:16 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 02:01:16 INFO  LANConnectionService:55 - Initialisation du service LAN : <LANConnectionService [bindAddr=null, port=0, running=false, state=UNINITIALIZED]>
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket[988] opened
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket[988] bind
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket[988] listen
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket[988] getsockchannel
+2014-01-13 02:01:16 DEBUG bluetooth:740 - service channel  8
+2014-01-13 02:01:16 DEBUG bluetooth:? - registerService
+2014-01-13 02:01:16 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 02:01:16 INFO  BluetoothConnectionService:66 - Client bluetooth en attente de connexion
+2014-01-13 02:01:16 DEBUG bluetooth:? - socket[988] accept
+2014-01-13 02:04:07 INFO  BluetoothConnectionService:47 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 02:04:07 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 02:04:07 INFO  BluetoothConnectionService:98 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 02:04:07 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 02:04:07 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 02:04:07 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 02:04:07 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 02:04:07 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 02:04:07 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 02:04:07 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 02:04:07 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 02:04:07 DEBUG bluetooth:? - socket
+2014-01-13 02:04:07 DEBUG bluetooth:? - socket[912] opened
+2014-01-13 02:04:07 DEBUG bluetooth:? - socket[912] bind
+2014-01-13 02:04:07 DEBUG bluetooth:? - socket[912] getsockaddress
+2014-01-13 02:04:08 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 02:04:08 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 02:04:08 DEBUG bluetooth:? - socket[912] close
+2014-01-13 02:04:08 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 02:04:08 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 02:04:08 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 02:04:08 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 02:04:08 INFO  LANConnectionService:55 - Initialisation du service LAN : <LANConnectionService [bindAddr=null, port=0, running=false, state=UNINITIALIZED]>
+2014-01-13 02:04:08 DEBUG LANConnectionService:141 - The LAN service passed from stateSTOPPEDto state STOPPED
+2014-01-13 02:04:08 INFO  LANConnectionService:103 - Démarage du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=false, state=STOPPED]>
+2014-01-13 02:04:08 DEBUG LANConnectionService:141 - The LAN service passed from stateSTARTINGto state STARTING
+2014-01-13 02:04:08 DEBUG bluetooth:? - socket
+2014-01-13 02:04:08 DEBUG bluetooth:? - socket[988] opened
+2014-01-13 02:04:08 DEBUG bluetooth:? - socket[988] bind
+2014-01-13 02:04:08 DEBUG bluetooth:? - socket[988] listen
+2014-01-13 02:04:08 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 02:04:08 DEBUG LANConnectionService:141 - The LAN service passed from stateSTARTEDto state STARTED
+2014-01-13 02:04:08 DEBUG bluetooth:? - socket[988] getsockchannel
+2014-01-13 02:04:08 INFO  BluetoothConnectionService:115 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 02:04:08 DEBUG bluetooth:740 - service channel  6
+2014-01-13 02:04:08 INFO  LANConnectionService:68 - Server LAN en attente de connexion
+2014-01-13 02:04:08 DEBUG LANConnectionService:141 - The LAN service passed from stateSTOPINGto state STOPING
+2014-01-13 02:04:08 INFO  LANConnectionService:122 - Stopping LAN service <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=true, state=STOPING]>
+2014-01-13 02:04:08 WARN  LANConnectionService:79 - Fin prématurée de la connection LAN
+2014-01-13 02:04:08 DEBUG LANConnectionService:141 - The LAN service passed from stateFAILEDto state FAILED
+2014-01-13 02:04:08 DEBUG bluetooth:? - registerService
+2014-01-13 02:04:08 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 02:04:08 INFO  BluetoothConnectionService:66 - Client bluetooth en attente de connexion
+2014-01-13 02:04:08 DEBUG bluetooth:126 - closing ConnectionNotifier 988
+2014-01-13 02:04:08 DEBUG bluetooth:? - socket[988] close
+2014-01-13 02:04:08 DEBUG bluetooth:? - unregisterService
+2014-01-13 02:05:54 INFO  BluetoothConnectionService:47 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 02:05:54 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 02:05:54 INFO  BluetoothConnectionService:98 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 02:05:54 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 02:05:54 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 02:05:54 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 02:05:54 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 02:05:54 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 02:05:54 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 02:05:54 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 02:05:54 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket[904] opened
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket[904] bind
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket[904] getsockaddress
+2014-01-13 02:05:54 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 02:05:54 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket[904] close
+2014-01-13 02:05:54 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 02:05:54 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 02:05:54 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 02:05:54 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 02:05:54 INFO  LANConnectionService:55 - Initialisation du service LAN
+2014-01-13 02:05:54 DEBUG LANConnectionService:141 - The LAN service passed from stateSTOPPEDto state STOPPED
+2014-01-13 02:05:54 INFO  LANConnectionService:103 - Démarage du service LAN : <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=false, state=STOPPED]>
+2014-01-13 02:05:54 DEBUG LANConnectionService:141 - The LAN service passed from stateSTARTINGto state STARTING
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket[976] opened
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket[976] bind
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket[976] listen
+2014-01-13 02:05:54 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 02:05:54 DEBUG LANConnectionService:141 - The LAN service passed from stateSTARTEDto state STARTED
+2014-01-13 02:05:54 INFO  LANConnectionService:68 - Server LAN en attente de connexion
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket[976] getsockchannel
+2014-01-13 02:05:54 INFO  BluetoothConnectionService:115 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 02:05:54 DEBUG bluetooth:740 - service channel  6
+2014-01-13 02:05:54 DEBUG LANConnectionService:141 - The LAN service passed from stateSTOPINGto state STOPING
+2014-01-13 02:05:54 INFO  LANConnectionService:122 - Stopping LAN service <LANConnectionService [bindAddr=0.0.0.0, port=32017, running=true, state=STOPING]>
+2014-01-13 02:05:54 WARN  LANConnectionService:79 - Fin prématurée de la connection LAN
+2014-01-13 02:05:54 DEBUG LANConnectionService:141 - The LAN service passed from stateFAILEDto state FAILED
+2014-01-13 02:05:54 DEBUG bluetooth:? - registerService
+2014-01-13 02:05:54 DEBUG BluetoothConnectionService:134 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 02:05:54 INFO  BluetoothConnectionService:66 - Client bluetooth en attente de connexion
+2014-01-13 02:05:54 DEBUG bluetooth:126 - closing ConnectionNotifier 976
+2014-01-13 02:05:54 DEBUG bluetooth:? - socket[976] close
+2014-01-13 02:05:54 DEBUG bluetooth:? - unregisterService
