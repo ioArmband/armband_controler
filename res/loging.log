@@ -673,3 +673,275 @@ java.io.InterruptedIOException: Notifier has been closed; Failed to listen socke
 2014-01-12 03:22:46 DEBUG bluetooth:126 - closing ConnectionNotifier 976
 2014-01-12 03:22:46 DEBUG bluetooth:? - socket[976] close
 2014-01-12 03:22:46 DEBUG bluetooth:? - unregisterService
+2014-01-13 00:47:21 INFO  BluetoothConnectionService:43 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 00:47:21 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 00:47:21 INFO  BluetoothConnectionService:92 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 00:47:21 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 00:47:21 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 00:47:21 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 00:47:21 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 00:47:22 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 00:47:22 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 00:47:22 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 00:47:22 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket[916] opened
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket[916] bind
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket[916] getsockaddress
+2014-01-13 00:47:22 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 00:47:22 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket[916] close
+2014-01-13 00:47:22 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 00:47:22 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 00:47:22 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 00:47:22 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 00:47:22 INFO  RemotedConnectionService:39 - Initialization of Remoted ConnectionService : <org.tse.pri.ioarmband.armband.io.remote.RemotedConnectionService@3acf7bf3>
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket[980] opened
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket[980] bind
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket[980] listen
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket[980] getsockchannel
+2014-01-13 00:47:22 DEBUG bluetooth:740 - service channel  6
+2014-01-13 00:47:22 DEBUG bluetooth:? - registerService
+2014-01-13 00:47:22 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 00:47:22 INFO  BluetoothConnectionService:62 - Client bluetooth en attente de connexion
+2014-01-13 00:47:22 DEBUG bluetooth:? - socket[980] accept
+2014-01-13 00:47:23 ERROR RemotedConnectionService:72 - Remoted Connection failed to start
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.tse.pri.ioarmband.armband.io.remote.RemotedConnectionService.start(RemotedConnectionService.java:65)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.startService(ConnectionsManager.java:60)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.registerService(ConnectionsManager.java:42)
+	at org.tse.pri.ioarmband.armband.Main.main(Main.java:22)
+2014-01-13 00:47:23 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 00:47:23 INFO  BluetoothConnectionService:109 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 00:47:23 DEBUG bluetooth:126 - closing ConnectionNotifier 980
+2014-01-13 00:47:23 DEBUG bluetooth:? - socket[980] close
+2014-01-13 00:47:23 DEBUG bluetooth:? - will throw exception java/io/IOException(Failed to listen socket)
+2014-01-13 00:47:23 DEBUG bluetooth:? - unregisterService
+2014-01-13 00:47:23 ERROR BluetoothConnectionService:71 - L'execution du service Bluetooth a échoué
+java.io.InterruptedIOException: Notifier has been closed; Failed to listen socket
+	at com.intel.bluetooth.BluetoothRFCommConnectionNotifier.acceptAndOpen(BluetoothRFCommConnectionNotifier.java:81)
+	at org.tse.pri.ioarmband.armband.io.bluetooth.BluetoothConnectionService.run(BluetoothConnectionService.java:64)
+	at java.lang.Thread.run(Unknown Source)
+2014-01-13 00:47:23 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateFAILEDto state FAILED
+2014-01-13 00:47:28 INFO  BluetoothConnectionService:43 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 00:47:28 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 00:47:28 INFO  BluetoothConnectionService:92 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 00:47:28 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 00:47:28 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 00:47:28 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 00:47:29 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 00:47:29 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 00:47:29 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 00:47:29 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 00:47:29 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 00:47:29 DEBUG bluetooth:? - socket
+2014-01-13 00:47:29 DEBUG bluetooth:? - socket[904] opened
+2014-01-13 00:47:29 DEBUG bluetooth:? - socket[904] bind
+2014-01-13 00:47:29 DEBUG bluetooth:? - socket[904] getsockaddress
+2014-01-13 00:47:29 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 00:47:29 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 00:47:29 DEBUG bluetooth:? - socket[904] close
+2014-01-13 00:47:29 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 00:47:30 DEBUG bluetooth:? - will throw exception javax/bluetooth/BluetoothStateException(Change Bluetooth Discovery mode error)
+2014-01-13 00:47:30 ERROR BluetoothConnectionService:102 - Le démarage du service Bluetooth a échoué, est ce que le module internet est connécté et activé?
+javax.bluetooth.BluetoothStateException: Change Bluetooth Discovery mode error
+	at com.intel.bluetooth.BluetoothStackMicrosoft.setDiscoverable(Native Method)
+	at com.intel.bluetooth.BluetoothStackMicrosoft.setLocalDeviceDiscoverable(BluetoothStackMicrosoft.java:233)
+	at javax.bluetooth.LocalDevice.setDiscoverable(LocalDevice.java:206)
+	at org.tse.pri.ioarmband.armband.io.bluetooth.BluetoothConnectionService.start(BluetoothConnectionService.java:97)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.startService(ConnectionsManager.java:60)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.registerService(ConnectionsManager.java:42)
+	at org.tse.pri.ioarmband.armband.Main.main(Main.java:21)
+2014-01-13 00:47:30 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateFAILEDto state FAILED
+2014-01-13 00:47:30 INFO  RemotedConnectionService:39 - Initialization of Remoted ConnectionService : <org.tse.pri.ioarmband.armband.io.remote.RemotedConnectionService@18da88c2>
+2014-01-13 00:47:31 ERROR RemotedConnectionService:72 - Remoted Connection failed to start
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.tse.pri.ioarmband.armband.io.remote.RemotedConnectionService.start(RemotedConnectionService.java:65)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.startService(ConnectionsManager.java:60)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.registerService(ConnectionsManager.java:42)
+	at org.tse.pri.ioarmband.armband.Main.main(Main.java:22)
+2014-01-13 00:47:31 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 00:47:31 INFO  BluetoothConnectionService:109 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 00:47:44 INFO  BluetoothConnectionService:43 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 00:47:44 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 00:47:44 INFO  BluetoothConnectionService:92 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 00:47:44 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 00:47:44 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 00:47:44 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 00:47:44 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 00:47:44 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 00:47:44 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 00:47:44 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 00:47:44 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket[904] opened
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket[904] bind
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket[904] getsockaddress
+2014-01-13 00:47:44 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 00:47:44 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket[904] close
+2014-01-13 00:47:44 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 00:47:44 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 00:47:44 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 00:47:44 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 00:47:44 INFO  RemotedConnectionService:39 - Initialization of Remoted ConnectionService : <org.tse.pri.ioarmband.armband.io.remote.RemotedConnectionService@bd2acaf>
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket[980] opened
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket[980] bind
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket[980] listen
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket[980] getsockchannel
+2014-01-13 00:47:44 DEBUG bluetooth:740 - service channel  6
+2014-01-13 00:47:44 DEBUG bluetooth:? - registerService
+2014-01-13 00:47:44 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 00:47:44 INFO  BluetoothConnectionService:62 - Client bluetooth en attente de connexion
+2014-01-13 00:47:44 DEBUG bluetooth:? - socket[980] accept
+2014-01-13 00:47:45 ERROR RemotedConnectionService:72 - Remoted Connection failed to start
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.tse.pri.ioarmband.armband.io.remote.RemotedConnectionService.start(RemotedConnectionService.java:65)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.startService(ConnectionsManager.java:60)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.registerService(ConnectionsManager.java:42)
+	at org.tse.pri.ioarmband.armband.Main.main(Main.java:22)
+2014-01-13 00:47:45 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 00:47:45 INFO  BluetoothConnectionService:109 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 00:47:45 DEBUG bluetooth:126 - closing ConnectionNotifier 980
+2014-01-13 00:47:45 DEBUG bluetooth:? - socket[980] close
+2014-01-13 00:47:45 DEBUG bluetooth:? - unregisterService
+2014-01-13 00:47:45 DEBUG bluetooth:? - will throw exception java/io/IOException(Failed to listen socket)
+2014-01-13 00:47:45 ERROR BluetoothConnectionService:71 - L'execution du service Bluetooth a échoué
+java.io.InterruptedIOException: Notifier has been closed; Failed to listen socket
+	at com.intel.bluetooth.BluetoothRFCommConnectionNotifier.acceptAndOpen(BluetoothRFCommConnectionNotifier.java:81)
+	at org.tse.pri.ioarmband.armband.io.bluetooth.BluetoothConnectionService.run(BluetoothConnectionService.java:64)
+	at java.lang.Thread.run(Unknown Source)
+2014-01-13 00:47:45 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateFAILEDto state FAILED
+2014-01-13 00:49:05 INFO  BluetoothConnectionService:43 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 00:49:05 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 00:49:05 INFO  BluetoothConnectionService:92 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 00:49:05 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 00:49:05 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 00:49:05 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 00:49:05 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 00:49:05 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 00:49:05 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 00:49:05 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 00:49:05 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 00:49:05 DEBUG bluetooth:? - socket
+2014-01-13 00:49:05 DEBUG bluetooth:? - socket[920] opened
+2014-01-13 00:49:05 DEBUG bluetooth:? - socket[920] bind
+2014-01-13 00:49:05 DEBUG bluetooth:? - socket[920] getsockaddress
+2014-01-13 00:49:05 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 00:49:05 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 00:49:05 DEBUG bluetooth:? - socket[920] close
+2014-01-13 00:49:05 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 00:49:06 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 00:49:06 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 00:49:06 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 00:49:06 INFO  RemotedConnectionService:39 - Initialization of Remoted ConnectionService : <org.tse.pri.ioarmband.armband.io.remote.RemotedConnectionService@34471b39>
+2014-01-13 00:49:06 DEBUG bluetooth:? - socket
+2014-01-13 00:49:06 DEBUG bluetooth:? - socket[992] opened
+2014-01-13 00:49:06 DEBUG bluetooth:? - socket[992] bind
+2014-01-13 00:49:06 DEBUG bluetooth:? - socket[992] listen
+2014-01-13 00:49:06 DEBUG bluetooth:? - socket[992] getsockchannel
+2014-01-13 00:49:06 DEBUG bluetooth:740 - service channel  6
+2014-01-13 00:49:06 DEBUG bluetooth:? - registerService
+2014-01-13 00:49:06 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 00:49:06 INFO  BluetoothConnectionService:62 - Client bluetooth en attente de connexion
+2014-01-13 00:49:06 DEBUG bluetooth:? - socket[992] accept
+2014-01-13 00:49:07 ERROR RemotedConnectionService:72 - Remoted Connection failed to start
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.tse.pri.ioarmband.armband.io.remote.RemotedConnectionService.start(RemotedConnectionService.java:65)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.startService(ConnectionsManager.java:60)
+	at org.tse.pri.ioarmband.armband.io.ConnectionsManager.registerService(ConnectionsManager.java:42)
+	at org.tse.pri.ioarmband.armband.Main.main(Main.java:22)
+2014-01-13 00:49:07 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 00:49:07 INFO  BluetoothConnectionService:109 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 00:49:07 DEBUG bluetooth:126 - closing ConnectionNotifier 992
+2014-01-13 00:49:07 DEBUG bluetooth:? - socket[992] close
+2014-01-13 00:49:07 DEBUG bluetooth:? - will throw exception java/io/IOException(Failed to listen socket)
+2014-01-13 00:49:07 DEBUG bluetooth:? - unregisterService
+2014-01-13 00:49:07 ERROR BluetoothConnectionService:71 - L'execution du service Bluetooth a échoué
+java.io.InterruptedIOException: Notifier has been closed; Failed to listen socket
+	at com.intel.bluetooth.BluetoothRFCommConnectionNotifier.acceptAndOpen(BluetoothRFCommConnectionNotifier.java:81)
+	at org.tse.pri.ioarmband.armband.io.bluetooth.BluetoothConnectionService.run(BluetoothConnectionService.java:64)
+	at java.lang.Thread.run(Unknown Source)
+2014-01-13 00:49:07 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateFAILEDto state FAILED
+2014-01-13 00:50:03 INFO  BluetoothConnectionService:43 - Initialisation du service Bluetooth : <BluetoothConnectionService [serviceName=null, serviceUUID=null, connectionURL=null]>
+2014-01-13 00:50:03 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTOPPEDto state STOPPED
+2014-01-13 00:50:03 INFO  BluetoothConnectionService:92 - Démarage du service Bluetooth : <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 00:50:03 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTARTINGto state STARTING
+2014-01-13 00:50:03 DEBUG bluetooth:121 - Java 1.4+ detected: 1.7.0_45; Java HotSpot(TM) 64-Bit Server VM; Oracle Corporation
+2014-01-13 00:50:03 DEBUG bluetooth:358 - Use stack ClassLoader
+2014-01-13 00:50:03 DEBUG bluetooth:501 - set dll dir E:\AppData\Local\Temp\bluecove_Jean-Michel_0
+2014-01-13 00:50:03 DEBUG bluetooth:401 - Library loaded from E:\AppData\Local\Temp\bluecove_Jean-Michel_0\intelbth_x64.dll
+2014-01-13 00:50:03 DEBUG bluetooth:? - nativeDebugCallback ON
+2014-01-13 00:50:03 DEBUG bluetooth:496 - BluetoothStack detected 1
+2014-01-13 00:50:03 DEBUG bluetooth:122 - initializationStatus 1
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket[924] opened
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket[924] bind
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket[924] getsockaddress
+2014-01-13 00:50:03 DEBUG bluetooth:? - receive buffer 65536
+2014-01-13 00:50:03 DEBUG bluetooth:? - send buffer 65536
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket[924] close
+2014-01-13 00:50:03 DEBUG bluetooth:232 - setDiscoverable(true)
+2014-01-13 00:50:03 DEBUG bluetooth:274 - Discoverable = GIAC
+2014-01-13 00:50:03 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTOPINGto state STOPING
+2014-01-13 00:50:03 INFO  BluetoothConnectionService:109 - Stopping Bluetooth service <BluetoothConnectionService [serviceName=ioArmband, serviceUUID=4c2054e4f8d33f530f79aa3b5712c799, connectionURL=btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband]>
+2014-01-13 00:50:03 DEBUG bluetooth:82 - open using BlueCove javax.microedition.io.Connector
+2014-01-13 00:50:03 DEBUG bluetooth:161 - connecting btspp://localhost:4c2054e4f8d33f530f79aa3b5712c799;name=ioArmband
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket[988] opened
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket[988] bind
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket[988] listen
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket[988] getsockchannel
+2014-01-13 00:50:03 DEBUG bluetooth:740 - service channel  6
+2014-01-13 00:50:03 DEBUG bluetooth:? - registerService
+2014-01-13 00:50:03 DEBUG BluetoothConnectionService:128 - The Bluetooth service passed from stateSTARTEDto state STARTED
+2014-01-13 00:50:03 INFO  BluetoothConnectionService:62 - Client bluetooth en attente de connexion
+2014-01-13 00:50:03 DEBUG bluetooth:126 - closing ConnectionNotifier 988
+2014-01-13 00:50:03 DEBUG bluetooth:? - socket[988] close
+2014-01-13 00:50:03 DEBUG bluetooth:? - unregisterService
