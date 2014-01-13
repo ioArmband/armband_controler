@@ -69,6 +69,12 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 		service.stop();
 	}
 	
+	public void stopAllServices(){
+		for(Class<?> key : services.keySet()){
+			IConnectionService service = services.get(key);
+			service.stop();
+		}
+	}
 
 	Set<IServiceStateChangeListener> serviceStateChangeListeners = new HashSet<IServiceStateChangeListener>();
 	public void addStateChangeListener(IServiceStateChangeListener listener) {

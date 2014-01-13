@@ -9,18 +9,21 @@ import org.tse.pri.ioarmband.armband.io.lan.LANConnectionService;
 
 public class Main 
 {
-	
-	@SuppressWarnings("unused")
 	private static final Logger logger = Logger.getLogger(Main.class);
     public static void main( String[] args )
     {
+    	logger.info("Launching armband controler");
+
+    	logger.info("Setting on connections");
         ConnectionsManager connectionsManager = ConnectionsManager.getInstance();
         connectionsManager.registerService(InternalConnectionService.class,true);
         connectionsManager.registerService(BluetoothConnectionService.class,true);
         connectionsManager.registerService(LANConnectionService.class,true);
         //connectionsManager.registerService(RemotedConnectionService.class,true);
         
-        connectionsManager.stopService(BluetoothConnectionService.class);
-        connectionsManager.stopService(LANConnectionService.class);
+
+    	logger.info("Closing connections");
+        connectionsManager.stopAllServices();
+    	logger.info("Closing armband controler");
     }
 }
