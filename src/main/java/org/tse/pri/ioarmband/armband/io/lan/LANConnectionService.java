@@ -54,7 +54,6 @@ public class LANConnectionService implements IConnectionService, Runnable {
 
 		logger.info("Initialisation du service LAN");
 		
-		//TODO : Dynamic service informations
 		bindAddr = PropertiesManager.getString("connection_service.lan.hostname");
 		port = PropertiesManager.getInt("connection_service.lan.port");
 		setState(ServiceState.STOPPED);

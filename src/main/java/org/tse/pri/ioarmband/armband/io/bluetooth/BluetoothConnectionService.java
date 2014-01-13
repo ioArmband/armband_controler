@@ -46,7 +46,6 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 
 		logger.info("Initialisation du service Bluetooth : <" + this.toString() + ">");
 		
-		//TODO : Dynamic service informations
 		serviceName = PropertiesManager.getString("connection_service.bluetooth.name");
 		serviceUUID = PropertiesManager.getString("connection_service.bluetooth.uuid");
 		
