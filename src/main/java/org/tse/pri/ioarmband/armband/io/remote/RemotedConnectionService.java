@@ -1,8 +1,6 @@
 package org.tse.pri.ioarmband.armband.io.remote;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -44,13 +42,14 @@ public class RemotedConnectionService implements IConnectionService, Runnable{
 	
 	public void run() {
 		PrintWriter out;
+		// TODO : Remote server connection protocol
 		try {
 			out = new PrintWriter(socket.getOutputStream(), true);
+			// TODO : Remote client adding
 			out.println("coucou");
 			setState(ServiceState.STOPPED);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Error while connected to the remote server", e);
 		}
 	}
 	

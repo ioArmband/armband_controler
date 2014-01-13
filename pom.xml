@@ -35,7 +35,12 @@
 	  <scope>system</scope>
       <systemPath>${project.basedir}/lib/bluecove-2.1.1-SNAPSHOT.jar</systemPath>
 	</dependency>
-            
+    
+    <dependency>
+	  <groupId>org.tse.pri.ioarmband</groupId>
+	  <artifactId>io</artifactId>
+	  <version>0.0.2-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
 </project>

@@ -1,26 +1,25 @@
 package org.tse.pri.ioarmband.armband.io;
 
-import javax.microedition.io.StreamConnection;
-
 import org.tse.pri.ioarmband.armband.apps.IApp;
+import org.tse.pri.ioarmband.io.connection.IConnection;
 
 public class Client {
-	private StreamConnection connection;
+	private IConnection connection;
 	private IConnectionService parentConnectionService; 
 	private IApp currentApp;
 	
 	
-	public Client(IConnectionService parentConnectionService, StreamConnection connection) {
+	public Client(IConnectionService parentConnectionService, IConnection connection) {
 		super();
 		this.connection = connection;
 		this.parentConnectionService = parentConnectionService;
 	}
 	
 	public void close(){
-		
+		connection.close();
 	}
 	
-	public StreamConnection getConnection() {
+	public IConnection getConnection() {
 		return connection;
 	}
 

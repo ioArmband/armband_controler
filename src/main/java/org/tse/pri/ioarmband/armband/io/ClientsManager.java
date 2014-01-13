@@ -3,7 +3,7 @@ package org.tse.pri.ioarmband.armband.io;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.microedition.io.StreamConnection;
+import org.tse.pri.ioarmband.io.connection.IConnection;
 
 public class ClientsManager {
 	private Client mainClient;
@@ -27,7 +27,7 @@ public class ClientsManager {
 		this.mainClient = newClient; 
 	}
 	
-	public Client addClient(IConnectionService service, StreamConnection connection){
+	public Client addClient(IConnectionService service, IConnection connection){
 		Client client = new Client(service, connection);
 		if( mainClient == null ){
 			mainClient = client;

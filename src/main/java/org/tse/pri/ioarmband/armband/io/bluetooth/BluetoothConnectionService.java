@@ -1,9 +1,9 @@
 package org.tse.pri.ioarmband.armband.io.bluetooth;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.HashSet;
-import java.util.Properties;
 import java.util.Set;
 
 import javax.bluetooth.BluetoothStateException;
@@ -19,6 +19,7 @@ import org.tse.pri.ioarmband.armband.io.ClientsManager;
 import org.tse.pri.ioarmband.armband.io.IConnectionService;
 import org.tse.pri.ioarmband.armband.io.IServiceStateChangeListener;
 import org.tse.pri.ioarmband.armband.io.ServiceState;
+import org.tse.pri.ioarmband.io.connection.StreamedConnection;
 
 public class BluetoothConnectionService implements IConnectionService, Runnable{
 
@@ -61,17 +62,19 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 			scn = (StreamConnectionNotifier) Connector.open(connectionURL);
 			
 			setState(ServiceState.STARTED);
+			logger.info("Client bluetooth en attente de connexion");
 			while(running){
 				StreamConnection connection = scn.acceptAndOpen();
 				logger.info("Client bluetooth connecté");
-				clientsManager.addClient(this, connection);
+				InputStream in = connection.openInputStream();
+				OutputStream out = connection.openOutputStream();
+				clientsManager.addClient(this, new StreamedConnection(in,out));
 			}
 			
 			
 		} catch (IOException e) {
 			logger.error("L'execution du service Bluetooth a échoué",e);
 			setState(ServiceState.FAILED);
-			e.printStackTrace();
 			
 		} finally {
 			try {
@@ -82,7 +85,6 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 			} catch (IOException e) {
 				logger.error("La fermeture du service Bluetooth a échoué",e);
 				setState(ServiceState.FAILED);
-				e.printStackTrace();
 			}
 		}
 	}
