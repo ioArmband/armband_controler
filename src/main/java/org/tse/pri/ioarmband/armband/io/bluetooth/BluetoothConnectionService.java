@@ -41,6 +41,7 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 	}
 	
 	private void init(){
+		
 		if(state != ServiceState.UNINITIALIZED)
 			return;
 
@@ -49,7 +50,7 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 		serviceName = PropertiesManager.getString("connection_service.bluetooth.name");
 		serviceUUID = PropertiesManager.getString("connection_service.bluetooth.uuid");
 		
-		UUID SERVICEUUID_UUID = new UUID(serviceUUID, false);
+		UUID SERVICEUUID_UUID = new UUID(serviceUUID, true);
 		connectionURL = "btspp://localhost:"+SERVICEUUID_UUID.toString()+";name="+serviceName;	
 
 		
