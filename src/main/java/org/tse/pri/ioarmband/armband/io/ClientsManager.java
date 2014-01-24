@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.tse.pri.ioarmband.io.connection.IConnection;
 
-public class ClientsManager {
+public class ClientsManager implements IClientConnectionCloseListener{
 	private Client mainClient;
 	private List<Client> clients;
 	
@@ -29,6 +29,7 @@ public class ClientsManager {
 	
 	public Client addClient(IConnectionService service, IConnection connection){
 		Client client = new Client(service, connection);
+		client.addConnectionCloseListener(this);
 		if( mainClient == null ){
 			mainClient = client;
 		}
@@ -37,6 +38,7 @@ public class ClientsManager {
 	}
 	
 	public void removeClient(Client client){
+		client.removeConnectionCloseListener(this);
 		client.close();
 		clients.remove(client);
 	}
@@ -48,5 +50,10 @@ public class ClientsManager {
 			}
 		}
 
+	}
+
+	@Override
+	public void onClientClose(Client client) {
+		removeClient(client);
 	}
 }

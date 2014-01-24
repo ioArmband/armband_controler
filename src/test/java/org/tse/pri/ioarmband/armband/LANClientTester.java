@@ -7,15 +7,12 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import org.apache.log4j.Logger;
-import org.tse.pri.ioarmband.armband.io.Client;
 import org.tse.pri.ioarmband.armband.tools.PropertiesManager;
 import org.tse.pri.ioarmband.io.connection.IConnection;
 import org.tse.pri.ioarmband.io.connection.IConnectionListener;
 import org.tse.pri.ioarmband.io.connection.StreamedConnection;
-import org.tse.pri.ioarmband.io.message.ChangeViewMessage;
 import org.tse.pri.ioarmband.io.message.Command;
 import org.tse.pri.ioarmband.io.message.GestureMessage;
-import org.tse.pri.ioarmband.io.message.Message;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
 public class LANClientTester implements IConnectionListener{
@@ -32,6 +29,7 @@ public class LANClientTester implements IConnectionListener{
 		GestureMessage msg = new GestureMessage();
 		msg.setType(GestureType.TOUCH);
 		msg.setSourceName("LANClientTester");
+		client.sendMessage(new Command(msg));
 		client.sendMessage(new Command(msg));
 	}
 

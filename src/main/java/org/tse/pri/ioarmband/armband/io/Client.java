@@ -1,21 +1,27 @@
 package org.tse.pri.ioarmband.armband.io;
 
-import org.tse.pri.ioarmband.armband.apps.IApp;
-import org.tse.pri.ioarmband.io.connection.IConnection;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Client {
+import org.tse.pri.ioarmband.armband.apps.App;
+import org.tse.pri.ioarmband.io.connection.IConnection;
+import org.tse.pri.ioarmband.io.connection.IConnectionListener;
+import org.tse.pri.ioarmband.io.message.Command;
+
+public class Client implements IConnectionListener{
 	private IConnection connection;
 	private IConnectionService parentConnectionService; 
-	private IApp currentApp;
 	
 	
 	public Client(IConnectionService parentConnectionService, IConnection connection) {
 		super();
 		this.connection = connection;
 		this.parentConnectionService = parentConnectionService;
+		this.connection.addConnectionListener(this);
 	}
 	
 	public void close(){
+		connection.removeConnectionListener(this);
 		connection.close();
 	}
 	
@@ -26,13 +32,29 @@ public class Client {
 	public IConnectionService getParentConnectionService() {
 		return parentConnectionService;
 	}
-	
-	public IApp getCurrentApp() {
-		return currentApp;
+
+	@Override
+	public void onCommandReiceved(Command command) {
+		// TODO Replace by command Analysis
+		System.out.println(command);
+		connection.sendCommand(command); 
 	}
-	public void setCurrentApp(IApp currentApp) {
-		this.currentApp = currentApp;
+
+	@Override
+	public void onConnectionClose() {
+		dispatchConnectionClose();
 	}
 	
-	
+	Set<IClientConnectionCloseListener> clientConnectionCloseListeners = new HashSet<IClientConnectionCloseListener>();
+	public void addConnectionCloseListener(IClientConnectionCloseListener listener) {
+		clientConnectionCloseListeners.add(listener);
+	}
+	public void removeConnectionCloseListener(IClientConnectionCloseListener listener) {
+		clientConnectionCloseListeners.remove(listener);
+	}
+	private void dispatchConnectionClose(){
+		for (IClientConnectionCloseListener listener : clientConnectionCloseListeners) {
+			listener.onClientClose(this);
+		}
+	}
 } 
