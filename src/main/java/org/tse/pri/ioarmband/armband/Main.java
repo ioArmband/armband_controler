@@ -22,8 +22,8 @@ public class Main
         //connectionsManager.registerService(RemotedConnectionService.class,true);
         
 
-    	logger.info("Closing connections");
-        connectionsManager.stopAllServices();
-    	logger.info("Closing armband controler");
+    	//logger.info("Closing connections");
+        //connectionsManager.stopAllServices();
+    	//logger.info("Closing armband controler");
     }
 }
