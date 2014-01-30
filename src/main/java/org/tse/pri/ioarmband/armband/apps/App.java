@@ -1,33 +1,6 @@
 package org.tse.pri.ioarmband.armband.apps;
 
-public abstract class App implements IApp {
-
-	
-	protected boolean initialized;
-	
-	public void build(){
-		
-	}
-	
-	private void init(){
-		if(initialized)
-			return;
-		
-		initialized = true;
-	}
-	
-	public void clear(){
-		
-	}
-	
-	public void addAppEventsListener(){
-		
-	}
-	public void removeAppEventListener(){
-		
-	}
-	
-	protected void dispatchSceneReady(){
-		
-	}
+public interface App {
+	public void addAppEventsListener(AppListener listener);
+	public void removeAppEventListener(AppListener listener);
 }
