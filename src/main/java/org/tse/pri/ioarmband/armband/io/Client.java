@@ -3,12 +3,14 @@ package org.tse.pri.ioarmband.armband.io;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.apps.App;
 import org.tse.pri.ioarmband.io.connection.IConnection;
 import org.tse.pri.ioarmband.io.connection.IConnectionListener;
 import org.tse.pri.ioarmband.io.message.Command;
 
 public class Client implements IConnectionListener{
+	
 	private IConnection connection;
 	private IConnectionService parentConnectionService; 
 	
@@ -33,11 +35,15 @@ public class Client implements IConnectionListener{
 		return parentConnectionService;
 	}
 
+	public void sendCommand( Command command){
+		connection.sendCommand(command); 
+		
+	}
 	@Override
 	public void onCommandReiceved(Command command) {
 		// TODO Replace by command Analysis
 		System.out.println(command);
-		connection.sendCommand(command); 
+		sendCommand(command);
 	}
 
 	@Override

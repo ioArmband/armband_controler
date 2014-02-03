@@ -26,7 +26,9 @@ public class ClientsManager implements IClientConnectionCloseListener{
 	public void switchClient(Client newClient){
 		this.mainClient = newClient; 
 	}
-	
+	public List<Client> getClients(){
+		return clients;
+	}
 	public Client addClient(IConnectionService service, IConnection connection){
 		Client client = new Client(service, connection);
 		client.addConnectionCloseListener(this);

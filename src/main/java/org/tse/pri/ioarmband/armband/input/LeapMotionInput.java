@@ -159,6 +159,7 @@ public class LeapMotionInput extends Listener implements Input{
     }
     
     public void updateGestures(long diff){
+    	gestures.clear();
     	boolean gestureUpdate = false;
 
     	

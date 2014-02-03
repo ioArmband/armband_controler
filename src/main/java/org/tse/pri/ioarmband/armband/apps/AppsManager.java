@@ -36,6 +36,7 @@ public class AppsManager implements AppListener, InputListener{
 	
 	public void setCurrentApp(App app){
 		currentApp = app;
+		displayEngine.setApp(app);
 	}
 	
 	public void removeApp(App app){

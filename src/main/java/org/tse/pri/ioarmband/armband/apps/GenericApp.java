@@ -3,10 +3,18 @@ package org.tse.pri.ioarmband.armband.apps;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.tse.pri.ioarmband.io.component.GenericContainer;
+
 public abstract class GenericApp implements App {
 
-	
+	protected GenericContainer view;
 	protected boolean initialized;
+	
+	
+	public GenericContainer getView()
+	{
+		return view;
+	}
 	
 	public void build(){
 		init();

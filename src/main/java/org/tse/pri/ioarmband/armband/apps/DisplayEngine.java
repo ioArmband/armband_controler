@@ -9,4 +9,5 @@ public interface DisplayEngine {
 	public void start();
 	public void setPointers(Collection<Pointer> pointers);
 	public void setGestures(Collection<Gesture> gestures);
+	public void setApp(App app);
 }
