@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.tse.pri.ioarmband.armband.input.Gesture;
+import org.tse.pri.ioarmband.armband.input.InputsManager;
 import org.tse.pri.ioarmband.armband.input.Pointer;
 import org.tse.pri.ioarmband.armband.io.Client;
 import org.tse.pri.ioarmband.armband.io.ClientsManager;
@@ -107,9 +108,15 @@ public class SwingDisplayEngine implements DisplayEngine{
 	
 	public void setKeyboard(){
 		JPanel pannel = appPanel;
+
+		String[][] lettres = {{" ","1","2","3"},
+							{" ","4","5","6"},
+							{"0","7","8","9"}};
+		/*
 		String[][] lettres = {{"a","z","e","r","t","y","u","i","o","p"},
 							{"q","s","d","f","g","h","j","k","l","m"},
 							{"w","x","c","v","b","n"," "," "," "," "}};
+							*/
 		KeyboardListener l = new KeyboardListener();
 		GridLayout experimentLayout = new GridLayout(lettres.length, lettres[0].length);
 		pannel.setLayout(experimentLayout);
@@ -142,7 +149,7 @@ class KeyboardListener implements MouseListener {
 		 message.setSourceName(e.getComponent().getName());
 		 message.setType(GestureType.TOUCH);
 		 Command command = new Command(message);
-			System.out.println(e+"----"+clients.toString());
+			//System.out.println(e+"----"+clients.toString());
 		 for (Client client : clients) {
 			client.sendCommand(command);
 		}
@@ -178,6 +185,14 @@ class CirlclesComponents extends JComponent{
 	}
 	public void setGestures(Collection<Gesture> gestures){
 		this.gestures = gestures; 
+
+		for(Gesture gesture : gestures){
+			Pointer p = gesture.getPointer();
+			if(gesture.getType() == GestureType.TOUCH){
+				simulateClick(p);
+			}
+		}
+		
 		repaint();
 	}
 	protected void paintComponent(java.awt.Graphics g) {
@@ -208,9 +223,7 @@ class CirlclesComponents extends JComponent{
 		}
 		for(Gesture gesture : gestures){
 			Pointer p = gesture.getPointer();
-			if(gesture.getType() == GestureType.TOUCH){
-				simulateClick(p);
-			}
+			
 			int pos_x = (int) (center_x + p.getX() * center_x);
 			int pos_y = (int) (center_y + p.getY() * center_y);
 			Float size = p.getDist();
@@ -228,7 +241,8 @@ class CirlclesComponents extends JComponent{
 		}
 	};
 	private void simulateClick(Pointer p){
-
+		if(p.getX()>1 || p.getX() <-1 || p.getY() > 1 || p.getY() < -1)
+			return;
 		Robot robot;
 		try {
 			robot = new Robot();
@@ -238,6 +252,8 @@ class CirlclesComponents extends JComponent{
 			int pos_y = (int) (center_y + p.getY() * center_y);
 			robot.mouseMove(pos_x, pos_y);
 			robot.mousePress(InputEvent.BUTTON1_MASK);
+			robot.mouseRelease(InputEvent.BUTTON1_MASK);
+			
 		} catch (AWTException e) {
 			e.printStackTrace();
 		}

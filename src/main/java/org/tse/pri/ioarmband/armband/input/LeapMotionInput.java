@@ -29,12 +29,13 @@ public class LeapMotionInput extends Listener implements Input{
 	Controller controller;
 	boolean pointerUpdate;
 	long timeLast;
-	Integer POINTER_TIMEOUT = 1000;
+	Integer POINTER_TIMEOUT = 200000;
 	final float RAPORT_X = 0.025f;
 	final float RAPORT_Y = 0.05f;
 	final float PRETOUCH_THRESHOLD = 300;
-	final float TOUCH_TIMEOUT = 120;
-	final float TOUCH_DISAPEAR_TIMEOUT = 80;
+	final float TOUCH_THRESHOLD = 100;
+	final float TOUCH_TIMEOUT = 90000;
+	final float TOUCH_DISAPEAR_TIMEOUT = 60000;
 	
 	public Matrix leap2proj = new Matrix(
 			new Vector(0,1,0),
@@ -95,8 +96,7 @@ public class LeapMotionInput extends Listener implements Input{
 
     public void onFrame(Controller controller) {
     	Frame frame = controller.frame();
-        System.out.println("Frame" + frame.id());
-        
+        //System.out.println("Frame" + frame.id());
         for( Finger finger : frame.fingers()){
         	pointerUpdate = true;
         	Pointer p = buildPointer(finger);
@@ -114,20 +114,20 @@ public class LeapMotionInput extends Listener implements Input{
             pointerUpdate = false;
         }
 
-        for(Pointer p : pointers.values()){
-        	logger.info(p);
-        }
         updatePointers(diff);
         
         timeLast = frame.timestamp();
     }
     
     public Pointer buildPointer(Finger f){
+    	for(Pointer p : pointers.values()){
+    		p.setVisibleNow(false);
+    	}
     	Pointer p = pointers.get(f.id());
     	if(p == null){
     		p = new Pointer();
     	}
-    	
+    	p.setVisibleNow(true);
     	p.setId(f.id());
     	
     	Vector pos = projectOnScreen(leapToProjectorCoords(f.tipPosition()));
@@ -146,6 +146,7 @@ public class LeapMotionInput extends Listener implements Input{
     
     public void updatePointers(long diff){
     	java.util.Vector<Pointer> toRemove = new java.util.Vector<Pointer>();
+    	
     	for(Pointer p : pointers.values()){
     		p.setLastUpdate(p.getLastUpdate()+diff);
     		if( p.getLastUpdate() > POINTER_TIMEOUT ){
@@ -164,27 +165,38 @@ public class LeapMotionInput extends Listener implements Input{
 
     	
     	java.util.Vector<Integer> toRemove = new java.util.Vector<Integer>();
-		System.out.println(touchCandidates);
-		System.out.println(touchCandidates.size());
+		//System.out.println(touchCandidates);
+		//System.out.println(touchCandidates.size());
     	for(Integer id : touchCandidates.keySet()){
     		Pointer p = pointers.get(id);
-    		Float last = touchCandidates.get(id);
-    		if(p.getDz() < -PRETOUCH_THRESHOLD || p.getLastUpdate() > TOUCH_DISAPEAR_TIMEOUT){
-    			gestures.add(new Gesture(GestureType.TOUCH, p));
-    			gestureUpdate = true;
+    		if(p == null){
     			toRemove.add(id);
+    		}else{
+	    		Float last = touchCandidates.get(id);
+	    		//System.out.println(p.getLastUpdate());
+	    		if((p.getDz() < -TOUCH_THRESHOLD) ){
+	    			System.out.println("recul");
+	    			gestures.add(new Gesture(GestureType.TOUCH, new Pointer(p)));
+	    			gestureUpdate = true;
+	    			toRemove.add(id);
+	    		}else if((p.getLastUpdate() > TOUCH_DISAPEAR_TIMEOUT)){
+	    			System.out.println("disapear");
+	    			gestures.add(new Gesture(GestureType.TOUCH, new Pointer(p)));
+	    			gestureUpdate = true;
+	    			toRemove.add(id);
     		}else if(last > TOUCH_TIMEOUT){
-    			toRemove.add(id);
+	    			toRemove.add(id);
+	    		}
+	    		touchCandidates.put(id, last + diff);
     		}
-    		touchCandidates.put(id, last + diff);
     	}
     	for(Integer p: toRemove){
     		touchCandidates.remove(p);
     	}
     	
-    	
+    	//logger.info(touchCandidates);
     	for(Pointer p : pointers.values()){
-    		if(p.getDz() > PRETOUCH_THRESHOLD){
+    		if(p.isVisibleNow() && p.getDz() > PRETOUCH_THRESHOLD){
         		touchCandidates.put(p.getId(), 0.0f);
     		}
     	}
@@ -193,6 +205,7 @@ public class LeapMotionInput extends Listener implements Input{
 
     	
     	if(gestureUpdate){
+    		System.out.println(gestures);
     		dispatchGestureEvent();
     	}
     	

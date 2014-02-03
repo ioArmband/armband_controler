@@ -11,6 +11,7 @@ public class Pointer {
 	private Float dy;
 	private Float dz;
 	private Float lastUpdate;
+	private boolean isVisibleNow;
 	
 	public Pointer(){
 		this(0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
@@ -29,6 +30,20 @@ public class Pointer {
 		this.dy = dy;
 		this.dz = dz;
 		this.lastUpdate = lastUpdate;
+		isVisibleNow = true;
+	}
+	public Pointer(Pointer p) {
+		super();
+		this.id = p.id;
+		this.x = p.x;
+		this.y = p.y;
+		this.dist = p.dist;
+		this.size = p.size;
+		this.dx = p.dx;
+		this.dy = p.dy;
+		this.dz = p.dz;
+		this.lastUpdate = p.lastUpdate;
+		isVisibleNow = p.isVisibleNow;
 	}
 	public Integer getId() {
 		return id;
@@ -89,6 +104,12 @@ public class Pointer {
 		return "Pointer [id=" + id + ", x=" + x + ", y=" + y + ", dist=" + dist
 				+ ", size=" + size + ", dx=" + dx + ", dy=" + dy + ", dz=" + dz
 				+ ", lastUpdate=" + lastUpdate + "]";
+	}
+	public boolean isVisibleNow() {
+		return isVisibleNow;
+	}
+	public void setVisibleNow(boolean isVisibleNow) {
+		this.isVisibleNow = isVisibleNow;
 	}
 	
 	
