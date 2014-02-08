@@ -16,11 +16,13 @@ public class InternalConnection implements IConnection {
 	@Override
 	public void close() {
 		dispatchConnectionClose();
+		dispatchInternalConnectionClose();
 	}
 
 	@Override
 	public void sendCommand(Command command) {
-		logger.warn("Unimplemented method sendCommand(Command) used");
+		logger.info("Command sended: "+ command);
+		dispatchInternalCommandReceived(command);
 	}
 
 	
@@ -47,6 +49,24 @@ public class InternalConnection implements IConnection {
 	private void dispatchCommandReceived(Command command){
 		for (IConnectionListener listener : connectionListeners) {
 			listener.onCommandReiceved(command);
+		}
+	}
+
+	Set<InternalConnectionListener> internalConnectionListeners = new HashSet<InternalConnectionListener>();
+	public void addConnectionListener(InternalConnectionListener listener) {
+		internalConnectionListeners.add(listener);
+	}
+	public void removeConnectionListener(InternalConnectionListener listener) {
+		internalConnectionListeners.remove(listener);
+	}
+	private void dispatchInternalConnectionClose(){
+		for (InternalConnectionListener listener : internalConnectionListeners) {
+			listener.onInternalConnectionClose();
+		}
+	}
+	private void dispatchInternalCommandReceived(Command command){
+		for (InternalConnectionListener listener : internalConnectionListeners) {
+			listener.onInternalCommandReiceved(command);
 		}
 	}
 
