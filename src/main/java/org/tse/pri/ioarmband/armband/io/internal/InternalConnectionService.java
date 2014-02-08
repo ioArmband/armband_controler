@@ -3,9 +3,13 @@ package org.tse.pri.ioarmband.armband.io.internal;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.tse.pri.ioarmband.armband.io.Client;
+import org.tse.pri.ioarmband.armband.io.ClientsManager;
+import org.tse.pri.ioarmband.armband.io.ConnectionsManager;
 import org.tse.pri.ioarmband.armband.io.IConnectionService;
 import org.tse.pri.ioarmband.armband.io.IServiceStateChangeListener;
 import org.tse.pri.ioarmband.armband.io.ServiceState;
+import org.tse.pri.ioarmband.io.connection.IConnection;
 
 public class InternalConnectionService implements IConnectionService {
 
@@ -30,6 +34,22 @@ public class InternalConnectionService implements IConnectionService {
 	private void setState(ServiceState state){
 		this.state = state;
 		dispatcheStateChangeEnvent();
+	}
+	
+	public InternalConnection createClient(){
+		InternalConnection connection = new InternalConnection();
+		ClientsManager clientsManager = ClientsManager.getInstance();
+		clientsManager.addClient(this, connection);
+		return connection;
+	}
+	
+	public void removeConnection(InternalConnection connection){
+		connection.simulateConnectionClose();
+	}
+	
+	public void removeClient(Client client){
+		ClientsManager clientsManager = ClientsManager.getInstance();
+		clientsManager.removeClient(client);
 	}
 	
 	Set<IServiceStateChangeListener> serviceStateChangeListeners = new HashSet<IServiceStateChangeListener>();
