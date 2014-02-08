@@ -11,8 +11,11 @@ import org.tse.pri.ioarmband.armband.tools.PropertiesManager;
 import org.tse.pri.ioarmband.io.connection.IConnection;
 import org.tse.pri.ioarmband.io.connection.IConnectionListener;
 import org.tse.pri.ioarmband.io.connection.StreamedConnection;
+import org.tse.pri.ioarmband.io.message.AppMessage;
+import org.tse.pri.ioarmband.io.message.AppMessage.AppStd;
 import org.tse.pri.ioarmband.io.message.Command;
 import org.tse.pri.ioarmband.io.message.GestureMessage;
+import org.tse.pri.ioarmband.io.message.ImageViewerApp;
 import org.tse.pri.ioarmband.io.message.KeyboardAppMessage;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
@@ -28,8 +31,9 @@ public class LANClientTester implements IConnectionListener{
 		LANClientTester client = new LANClientTester(host, port); 
 		client.runSocket();
 		GestureMessage msg = new GestureMessage();
-		KeyboardAppMessage kmsg = new KeyboardAppMessage();
+		AppMessage kmsg = new AppMessage(AppStd.KEYBOARD_NUM);
 		msg.setType(GestureType.TOUCH);
+		
 		msg.setSourceName("LANClientTester");
 		client.sendMessage(new Command(msg));
 		client.sendMessage(new Command(kmsg));

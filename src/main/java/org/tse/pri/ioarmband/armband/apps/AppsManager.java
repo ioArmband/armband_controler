@@ -90,6 +90,7 @@ public class AppsManager implements AppListener, InputListener{
 			setCurrentApp(currentApp);
 		}
 	}
+	
 	public void removeClient(Client client){
 		App app = clientsApp.get(client);
 		removeApp(app);
@@ -116,6 +117,5 @@ public class AppsManager implements AppListener, InputListener{
 		displayEngine.setGestures(in.getGestures());
 	}
 
-	//TODO: Implementation d'une véritable logique de tri des apps.
 
 }

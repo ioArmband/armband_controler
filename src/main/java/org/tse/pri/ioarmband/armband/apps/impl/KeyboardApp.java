@@ -1,5 +1,6 @@
-package org.tse.pri.ioarmband.armband.apps;
+package org.tse.pri.ioarmband.armband.apps.impl;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -13,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
+import org.tse.pri.ioarmband.armband.apps.GenericSwingApp;
 import org.tse.pri.ioarmband.armband.io.Client;
 import org.tse.pri.ioarmband.armband.io.ClientsManager;
 import org.tse.pri.ioarmband.io.message.Command;
@@ -58,9 +60,11 @@ public class KeyboardApp extends GenericSwingApp implements MouseListener {
 		
 		GridLayout gridLayout = new GridLayout(lettres.length, lettres[0].length);
 		panel.setLayout(gridLayout);
+		panel.setBackground(Color.BLACK);
+		
 		for(int j = 0; j < lettres.length; j++){
 			for(int i = 0; i < lettres[j].length; i++){
-				JButton button = new JButton(lettres[j][i]);
+				JButton button = new BlackButton(lettres[j][i]);
 				Font font = new Font(button.getFont().getName(), button.getFont().getStyle(), 100);
 				button.setFont(font);
 				button.setName(lettres[j][i]);

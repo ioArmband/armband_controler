@@ -108,10 +108,11 @@ public class SwingDisplayEngine implements DisplayEngine, GestureListener{
 		}
 		else{
 			JPanel panel = new JPanel();
+			panel.setBackground(Color.BLACK);
 			panel.setLayout(new GridLayout(1,1));
 			JLabel label = new JLabel("ioArmband", JLabel.CENTER);
 			Font font = new Font(label.getFont().getName(), label.getFont().getStyle(), 100);
-			label.setForeground(Color.BLACK);
+			label.setForeground(Color.WHITE);
 			label.setFont(font);
 			panel.add(label);
 			panel.setPreferredSize(appPanel.getSize());
@@ -148,7 +149,7 @@ class CirlclesComponents extends JComponent{
 			}
 		}
 		
-		repaint();
+		updateUI();
 	}
 	protected void paintComponent(java.awt.Graphics g) {
 		super.paintComponent(g);
@@ -174,8 +175,10 @@ class CirlclesComponents extends JComponent{
 			
 				g2d.setColor(new Color(0xff0000));
 				circle = new Ellipse2D.Double(pos_x-size/2, pos_y-size/2, size,size);
+				
 				g2d.draw(circle);
 		}
+		
 		for(Gesture gesture : gestures){
 			Pointer p = gesture.getPointer();
 			

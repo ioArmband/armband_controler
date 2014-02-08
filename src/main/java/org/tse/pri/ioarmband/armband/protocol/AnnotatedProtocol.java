@@ -2,6 +2,7 @@ package org.tse.pri.ioarmband.armband.protocol;
 
 import static org.tse.pri.ioarmband.io.message.AppMessage.AppStd.*;
 
+import java.awt.Image;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,8 +15,9 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.apps.App;
 import org.tse.pri.ioarmband.armband.apps.AppsManager;
-import org.tse.pri.ioarmband.armband.apps.KeyboardApp;
-import org.tse.pri.ioarmband.armband.apps.SlideSwiperApp;
+import org.tse.pri.ioarmband.armband.apps.impl.ImageApp;
+import org.tse.pri.ioarmband.armband.apps.impl.KeyboardApp;
+import org.tse.pri.ioarmband.armband.apps.impl.SlideSwiperApp;
 import org.tse.pri.ioarmband.armband.io.Client;
 
 public class AnnotatedProtocol implements Protocol {
@@ -49,21 +51,27 @@ public class AnnotatedProtocol implements Protocol {
 	}
 	
 	
-	
+	@CommandExecutor("image_viewer_app")
+	public void onOpenImageApp(Client client, @CommandParam(value="image", type=Image.class) Image image){
+		AppsManager appsManager = AppsManager.getInstance();
+		
+		App app = new ImageApp(client, image);
+		
+		appsManager.addApp(app, true);
+	}	
 	@CommandExecutor("close_app")
 	public void onCloseApp(Client client){
 		AppsManager appsManager = AppsManager.getInstance();
 		appsManager.removeClient(client);
 	}
 	
-
 		
 	
 	
 	
 	
 	
-	public void exec(Client client, String commandName, Map<String, String> inputParams){
+	public void exec(Client client, String commandName, Map<String, Object> inputParams){
 
 		logger.info("exec() : entered with parameters client: [" + client + "], commandName [" + commandName +
 				"], inputParams[" + inputParams + "]");
@@ -90,8 +98,12 @@ public class AnnotatedProtocol implements Protocol {
 							if( annotation.annotationType().equals( CommandParam.class ) ){
 								CommandParam commandAnnotation = (CommandParam) annotation;
 								Class<?> paramType = commandAnnotation.type();
-								String paramString = inputParams.get(commandAnnotation.value());
-								paramValue = paramType.cast(paramString);
+								try{
+									Object paramObject = inputParams.get(commandAnnotation.value());
+									paramValue = paramType.cast(paramObject);
+								}catch(NullPointerException e){
+									
+								}
 								if(paramValue == null){
 									logger.info("Param " + commandAnnotation.value() + " not found in command " + method.getName());
 								}

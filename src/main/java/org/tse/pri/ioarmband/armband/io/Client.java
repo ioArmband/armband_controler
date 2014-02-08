@@ -19,10 +19,11 @@ public class Client implements IConnectionListener{
 	
 	private IConnection connection;
 	private IConnectionService parentConnectionService; 
-	
+	private boolean loopbackCommand; 
 	
 	public Client(IConnectionService parentConnectionService, IConnection connection) {
 		super();
+		loopbackCommand = false;
 		this.connection = connection;
 		this.parentConnectionService = parentConnectionService;
 		this.connection.addConnectionListener(this);
@@ -53,7 +54,8 @@ public class Client implements IConnectionListener{
 		
 		// TODO Stop loop-back command
 		logger.info(command);
-		sendCommand(command);
+		if(loopbackCommand)
+			sendCommand(command);
 	}
 
 	@Override
@@ -72,5 +74,9 @@ public class Client implements IConnectionListener{
 		for (IClientConnectionCloseListener listener : clientConnectionCloseListeners) {
 			listener.onClientClose(this);
 		}
+	}
+	
+	public void setLoopbackCommand(boolean loopbackCommand) {
+		this.loopbackCommand = loopbackCommand;
 	}
 } 
