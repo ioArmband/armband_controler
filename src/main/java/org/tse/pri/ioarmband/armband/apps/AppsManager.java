@@ -1,63 +1,109 @@
 package org.tse.pri.ioarmband.armband.apps;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.NoSuchElementException;
 
-import org.tse.pri.ioarmband.armband.input.Input;
+import org.apache.log4j.Logger;
+import org.tse.pri.ioarmband.armband.input.Gesture;
 import org.tse.pri.ioarmband.armband.input.InputListener;
 import org.tse.pri.ioarmband.armband.input.InputsManager;
 import org.tse.pri.ioarmband.armband.input.Pointer;
-
-import org.tse.pri.ioarmband.armband.input.Gesture;
+import org.tse.pri.ioarmband.armband.io.Client;
 
 public class AppsManager implements AppListener, InputListener{
+
+	private static final Logger logger = Logger.getLogger(AppsManager.class);
 	
 	DisplayEngine displayEngine;
-	
+
 	App currentApp;
 	LinkedList<App> apps;
+	Map<Client, App> clientsApp;
+	private static AppsManager __instance;
+
 	public AppsManager() {
 		init();
 	}
+
+	public static AppsManager getInstance() {
+		if (__instance == null) {
+			__instance = new AppsManager();
+		}
+		return __instance;
+	}
+
 	public void init(){
 		displayEngine = SwingDisplayEngine.getInstance();
 		displayEngine.start();
 		InputsManager inputs = InputsManager.getInstance();
 		inputs.addInputListener(this);
-		
+
 		apps = new LinkedList<App>(); 
+		clientsApp = new HashMap<Client, App>();
 		currentApp = null;
 	}
-	
+
 	public void addApp(App app){
-		apps.add(app);
-		app.addAppEventsListener(this);
+		this.addApp(app, true);
 	}
-	
-	public void setCurrentApp(App app){
+	public void addApp(App app, boolean setCurrent){
+		Client client = app.getClient();
+		App clientApp = clientsApp.get(client);
+
+		if(clientApp != null){
+			apps.remove(clientApp);
+		}
+
+		apps.add(app);
+		clientsApp.put(client, app);
+
+		app.addAppEventsListener(this);
+		if(setCurrent)
+			setCurrentApp(app);
+	}
+
+
+	private void setCurrentApp(App app){
 		currentApp = app;
 		displayEngine.setApp(app);
 	}
-	
+
 	public void removeApp(App app){
+		if(app == null)
+			return;
+		apps.remove(app);
+		if(app.equals(clientsApp.get(app.getClient()))){
+			clientsApp.remove(app.getClient());
+		}
+
 		if(currentApp == app){
-			currentApp = apps.getLast();
-			showApp(currentApp);
+			try{
+				currentApp = apps.getLast();
+			}
+			catch(NoSuchElementException e){
+				currentApp = null;
+				logger.info("Back to the menu");
+			}
+			setCurrentApp(currentApp);
 		}
 	}
-	
-	private void showApp(App app){
-		
+	public void removeClient(Client client){
+		App app = clientsApp.get(client);
+		removeApp(app);
 	}
-	
+
+
 	@Override
 	public void onApplicationClose(App app) {
 		removeApp(app);
 	}
-	
+
 	@Override
 	public void onApplicationSceneReady(App app) {
-		
+
 	}
 	@Override
 	public void onPointersChange(Collection<Pointer> pointers) {
@@ -69,7 +115,7 @@ public class AppsManager implements AppListener, InputListener{
 		InputsManager in = InputsManager.getInstance();
 		displayEngine.setGestures(in.getGestures());
 	}
-	
+
 	//TODO: Implementation d'une véritable logique de tri des apps.
 
 }

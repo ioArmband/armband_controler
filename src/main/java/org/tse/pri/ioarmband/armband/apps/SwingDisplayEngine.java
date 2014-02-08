@@ -2,10 +2,12 @@ package org.tse.pri.ioarmband.armband.apps;
 
 import java.awt.AWTException;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
@@ -21,7 +23,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
 
+import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.input.Gesture;
 import org.tse.pri.ioarmband.armband.input.InputsManager;
 import org.tse.pri.ioarmband.armband.input.Pointer;
@@ -32,12 +36,13 @@ import org.tse.pri.ioarmband.io.message.GestureMessage;
 import org.tse.pri.ioarmband.io.message.Message;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
-public class SwingDisplayEngine implements DisplayEngine{
-
+public class SwingDisplayEngine implements DisplayEngine, GestureListener{
+	private static final Logger logger = Logger.getLogger(SwingDisplayEngine.class);
+	
 	JFrame mainFrame;
 	JPanel appPanel;
-	
 	CirlclesComponents circleFrame;
+	App currenApp = null;
 	private SwingDisplayEngine() {
 
 	}
@@ -48,14 +53,15 @@ public class SwingDisplayEngine implements DisplayEngine{
 	}
 
 	private void init() {
-		appPanel = new JPanel();
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice[] gds = ge.getScreenDevices();
 		GraphicsDevice gd = gds[gds.length-1];
 		mainFrame = new JFrame("ioArmband");
+		appPanel = (JPanel) mainFrame.getContentPane();
 		mainFrame.getContentPane().setBackground(Color.BLACK);
 		mainFrame.setUndecorated(true);
 		mainFrame.setVisible(true);
+		appPanel.setLayout(new GridLayout(1,1));
 		
 		circleFrame = new CirlclesComponents();
 		Vector<Pointer> cs = new Vector<Pointer>();
@@ -64,23 +70,13 @@ public class SwingDisplayEngine implements DisplayEngine{
 		c.setY(0f);
 		c.setSize(100.0f);
 		cs.add(c);
-		circleFrame.setPointers(cs);
-		mainFrame.add(appPanel);
 		mainFrame.setGlassPane(circleFrame);
-		appPanel.setVisible(true);
-		circleFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		gd.setFullScreenWindow(mainFrame);
-
 		mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-		JLabel label = new JLabel("ioArmband");
-		Font font = new Font(label.getFont().getName(), label.getFont().getStyle(), 100);
-		label.setForeground(Color.WHITE);
-		label.setFont(font);
-		mainFrame.getContentPane().add(label);
-		setKeyboard();
+		circleFrame.setVisible(true);
+		circleFrame.setPointers(cs);
+		setApp(null);
 	}
 	private static SwingDisplayEngine __instance;
 	public static SwingDisplayEngine getInstance() {
@@ -102,78 +98,37 @@ public class SwingDisplayEngine implements DisplayEngine{
 
 	@Override
 	public void setApp(App app) {
-		// TODO Auto-generated method stub
-		setKeyboard();
+		logger.info("dispaly app: " + app);
+		appPanel.removeAll();
+		if(currenApp != null){
+			currenApp.hide();
+		}
+		if(app != null){
+			app.build(appPanel);
+		}
+		else{
+			JPanel panel = new JPanel();
+			panel.setLayout(new GridLayout(1,1));
+			JLabel label = new JLabel("ioArmband", JLabel.CENTER);
+			Font font = new Font(label.getFont().getName(), label.getFont().getStyle(), 100);
+			label.setForeground(Color.BLACK);
+			label.setFont(font);
+			panel.add(label);
+			panel.setPreferredSize(appPanel.getSize());
+			panel.setVisible(true);
+			appPanel.add(panel);
+		}
+		currenApp = app;
+		appPanel.updateUI();
 	}
 	
-	public void setKeyboard(){
-		JPanel pannel = appPanel;
-
-		String[][] lettres = {{" ","1","2","3"},
-							{" ","4","5","6"},
-							{"0","7","8","9"}};
-		/*
-		String[][] lettres = {{"a","z","e","r","t","y","u","i","o","p"},
-							{"q","s","d","f","g","h","j","k","l","m"},
-							{"w","x","c","v","b","n"," "," "," "," "}};
-							*/
-		KeyboardListener l = new KeyboardListener();
-		GridLayout experimentLayout = new GridLayout(lettres.length, lettres[0].length);
-		pannel.setLayout(experimentLayout);
-		for(int j = 0; j < lettres.length; j++){
-			for(int i = 0; i < lettres[j].length; i++){
-				JButton button = new JButton(lettres[j][i]);
-				Font font = new Font(button.getFont().getName(), button.getFont().getStyle(), 100);
-				button.setFont(font);
-				button.setName(lettres[j][i]);
-				pannel.add(button);
-				button.addMouseListener(l);
-			}
-		}
+	@Override
+	public void onGesture(App app, GestureType gestureType, String source) {
 	}
 
 }
 
-class KeyboardListener implements MouseListener {
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		 List<Client> clients  = ClientsManager.getInstance().getClients();
-		 GestureMessage message = new GestureMessage();
-		 message.setSourceName(e.getComponent().getName());
-		 message.setType(GestureType.TOUCH);
-		 Command command = new Command(message);
-			//System.out.println(e+"----"+clients.toString());
-		 for (Client client : clients) {
-			client.sendCommand(command);
-		}
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-}
 class CirlclesComponents extends JComponent{
 	private static final long serialVersionUID = -5151649518767032140L;
 	Collection<Pointer> pointers = new Vector<Pointer>();

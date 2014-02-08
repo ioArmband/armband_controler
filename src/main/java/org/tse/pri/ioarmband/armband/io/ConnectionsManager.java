@@ -10,10 +10,10 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 	private static final Logger logger = Logger.getLogger(ConnectionsManager.class);
 	private static ConnectionsManager __instance;
 	
-	private HashMap<Class<?>, IConnectionService> services;
+	private HashMap<Class<? extends IConnectionService>, IConnectionService> services;
 
 	private ConnectionsManager() {
-		services = new HashMap<Class<?>, IConnectionService>();
+		services = new HashMap<Class<? extends IConnectionService>, IConnectionService>();
 	}
 
 	public static ConnectionsManager getInstance() {
@@ -23,11 +23,11 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 		return __instance;
 	}
 	
-	public void registerService(Class<?> serviceClass){
+	public void registerService(Class<? extends IConnectionService> serviceClass){
 		registerService(serviceClass, false);
 	}	
 	
-	public void registerService(Class<?> serviceClass, boolean enable){
+	public void registerService(Class<? extends IConnectionService> serviceClass, boolean enable){
 
 		if(services.get(serviceClass) != null){
 			logger.warn("ConnectionsManager.register(): Duplication de l'enregistrement de la classe "+ serviceClass.getCanonicalName() +". La classe n'a pas été ré-enregistré.");
@@ -51,7 +51,7 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 		
 	}
 
-	public void startService(Class<?> serviceClass){
+	public void startService(Class<? extends IConnectionService> serviceClass){
 		IConnectionService service = services.get(serviceClass);
 		if(service == null){
 			logger.error("ConnectionsManager.ennable(): classe "+ serviceClass.getCanonicalName() +" non enregistrée");
@@ -60,7 +60,7 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 		service.start();
 	}
 	
-	public void stopService(Class<?> serviceClass){
+	public void stopService(Class<? extends IConnectionService> serviceClass){
 		IConnectionService service = services.get(serviceClass);
 		if(service == null){
 			logger.error("ConnectionsManager.ennable(): classe "+ serviceClass.getCanonicalName() +" non enregistrée");
@@ -75,7 +75,11 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 			service.stop();
 		}
 	}
-
+	
+	public <T extends IConnectionService> T getConnectionService(Class<T> serviceClass){
+		return (T) services.get(serviceClass);
+	}
+	
 	Set<IServiceStateChangeListener> serviceStateChangeListeners = new HashSet<IServiceStateChangeListener>();
 	public void addStateChangeListener(IServiceStateChangeListener listener) {
 		serviceStateChangeListeners.add(listener);

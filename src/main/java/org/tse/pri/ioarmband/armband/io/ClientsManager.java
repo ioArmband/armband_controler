@@ -3,6 +3,7 @@ package org.tse.pri.ioarmband.armband.io;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.tse.pri.ioarmband.armband.apps.AppsManager;
 import org.tse.pri.ioarmband.io.connection.IConnection;
 
 public class ClientsManager implements IClientConnectionCloseListener{
@@ -43,6 +44,7 @@ public class ClientsManager implements IClientConnectionCloseListener{
 		client.removeConnectionCloseListener(this);
 		client.close();
 		clients.remove(client);
+		AppsManager.getInstance().removeClient(client);
 	}
 	
 	public void removeClients(IConnectionService connection){

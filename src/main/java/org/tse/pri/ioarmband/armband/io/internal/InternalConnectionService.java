@@ -36,11 +36,10 @@ public class InternalConnectionService implements IConnectionService {
 		dispatcheStateChangeEnvent();
 	}
 	
-	public InternalConnection createClient(){
+	public Client createClient(){
 		InternalConnection connection = new InternalConnection();
 		ClientsManager clientsManager = ClientsManager.getInstance();
-		clientsManager.addClient(this, connection);
-		return connection;
+		return clientsManager.addClient(this, connection);
 	}
 	
 	public void removeConnection(InternalConnection connection){

@@ -13,6 +13,7 @@ import org.tse.pri.ioarmband.io.connection.IConnectionListener;
 import org.tse.pri.ioarmband.io.connection.StreamedConnection;
 import org.tse.pri.ioarmband.io.message.Command;
 import org.tse.pri.ioarmband.io.message.GestureMessage;
+import org.tse.pri.ioarmband.io.message.KeyboardAppMessage;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
 public class LANClientTester implements IConnectionListener{
@@ -27,10 +28,11 @@ public class LANClientTester implements IConnectionListener{
 		LANClientTester client = new LANClientTester(host, port); 
 		client.runSocket();
 		GestureMessage msg = new GestureMessage();
+		KeyboardAppMessage kmsg = new KeyboardAppMessage();
 		msg.setType(GestureType.TOUCH);
 		msg.setSourceName("LANClientTester");
 		client.sendMessage(new Command(msg));
-		client.sendMessage(new Command(msg));
+		client.sendMessage(new Command(kmsg));
 	}
 
 
