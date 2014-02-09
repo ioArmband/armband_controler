@@ -1,6 +1,7 @@
 package org.tse.pri.ioarmband.armband.apps;
 
 import java.awt.AWTException;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -10,6 +11,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Robot;
+import java.awt.Stroke;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -131,14 +133,18 @@ public class SwingDisplayEngine implements DisplayEngine, GestureListener{
 
 
 class CirlclesComponents extends JComponent{
+	
+	
+	private static final Logger logger = Logger.getLogger(CirlclesComponents.class);
 	private static final long serialVersionUID = -5151649518767032140L;
 	Collection<Pointer> pointers = new Vector<Pointer>();
 	Collection<Gesture> gestures = new Vector<Gesture>();
-
+	int i;
 	public void setPointers(Collection<Pointer> pointers){
 		this.pointers = pointers; 
 		repaint();
 	}
+	
 	public void setGestures(Collection<Gesture> gestures){
 		this.gestures = gestures; 
 
@@ -149,15 +155,17 @@ class CirlclesComponents extends JComponent{
 			}
 		}
 		
-		updateUI();
+		repaint();
 	}
+	
+	
 	protected void paintComponent(java.awt.Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D)g;
 		int center_x = getWidth()/2;
 		int center_y = getHeight()/2;
 		//System.out.println(center_x+ "   " +center_y);
-
+		
 		JLabel aa = new JLabel();
 		g2d.setFont(new Font(aa.getFont().getName(),aa.getFont().getStyle(), 40));
 		g2d.setColor(new Color(0xff0000));
@@ -173,10 +181,11 @@ class CirlclesComponents extends JComponent{
 			Ellipse2D.Double circle;
 			Double DZ_RATE = 1.0;
 			
-				g2d.setColor(new Color(0xff0000));
-				circle = new Ellipse2D.Double(pos_x-size/2, pos_y-size/2, size,size);
-				
-				g2d.draw(circle);
+			g2d.setColor(new Color(0xff0000));
+			g2d.setStroke(new BasicStroke(10));
+			circle = new Ellipse2D.Double(pos_x-size/2, pos_y-size/2, size,size);
+			
+			g2d.draw(circle);
 		}
 		
 		for(Gesture gesture : gestures){
@@ -184,8 +193,7 @@ class CirlclesComponents extends JComponent{
 			
 			int pos_x = (int) (center_x + p.getX() * center_x);
 			int pos_y = (int) (center_y + p.getY() * center_y);
-			Float size = p.getDist();
-			//System.out.println(center_x+ "   " +center_y);
+			Float size = p.getSize();
 
 			g2d.setColor(new Color(0xff0000));
 			String chars = p.getId().toString();

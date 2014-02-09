@@ -128,7 +128,7 @@ public class AnnotatedProtocol implements Protocol {
 					logger.fatal("Cannot acces to called Method " + method);
 					e.printStackTrace();
 				}
-				logger.error("exec() : Done");
+				logger.info("exec() : Done");
 				return;
 			}
 		}

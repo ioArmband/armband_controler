@@ -42,10 +42,14 @@ public class Client implements IConnectionListener{
 		return parentConnectionService;
 	}
 
-	public void sendCommand( Command command){
+	public void sendCommand( Command command ){
 		connection.sendCommand(command); 
-		
 	}
+	
+	public void sendCommand( Message message ){
+		this.sendCommand(new Command(message)); 
+	}
+	
 	@Override
 	public void onCommandReiceved(Command command) {
 		Protocol protocol = ProtocolManager.getProtocol();

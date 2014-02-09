@@ -65,6 +65,10 @@ public class LeapMotionInput extends Listener implements Input{
 	public Vector leapToProjectorCoords(Vector in){
 		return leap2proj.transformPoint(in);
 	}
+	
+	public Vector leapToProjectorCoordsDirection(Vector in){
+		return leap2proj.transformDirection(in);
+	}
 
 	public Vector projectOnScreen(Vector pos){
 		Vector p = new Vector();
@@ -76,11 +80,11 @@ public class LeapMotionInput extends Listener implements Input{
 
 
 	public void onInit(Controller controller) {
-		logger.info("Initialized");
+		logger.debug("Initialized");
 	}
 
 	public void onConnect(Controller controller) {
-		logger.info("Connected");
+		logger.debug("Connected");
 		controller.enableGesture(com.leapmotion.leap.Gesture.Type.TYPE_SWIPE);
 		//controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
        controller.enableGesture(com.leapmotion.leap.Gesture.Type.TYPE_SCREEN_TAP);
@@ -89,30 +93,30 @@ public class LeapMotionInput extends Listener implements Input{
 	}
 
 	public void onDisconnect(Controller controller) {
-		logger.info("Disconnected");
+		logger.debug("Disconnected");
 	}
 
 	public void onExit(Controller controller) {
-		logger.info("Exited");
+		logger.debug("Exited");
 	}
 
 	public void onFrame(Controller controller) {
 		Frame frame = controller.frame();
-		//logger.info("Frame" + frame.id());
+		//logger.debug("Frame" + frame.id());
 		gestures.clear();
 		for(com.leapmotion.leap.Gesture g : frame.gestures()){
-			logger.info(g.type() +" - " + g.state());
+			logger.debug(g.type() +" - " + g.state());
 
             Pointer pointer;
             Vector pos;
             
 			switch(g.type()){
 				case TYPE_SWIPE:
-		            if(!g.state().equals(com.leapmotion.leap.Gesture.State.STATE_START)){
+		            if(!g.state().equals(com.leapmotion.leap.Gesture.State.STATE_STOP)){
 		            	continue;
 		            }
 					SwipeGesture swipe = new SwipeGesture(g);
-		            logger.info("Swipe id: " + swipe.id()
+		            logger.debug("Swipe id: " + swipe.id()
 		                       + ", " + swipe.state()
 		                       + ", position: " + swipe.position()
 		                       + ", direction: " + swipe.direction()
@@ -122,11 +126,15 @@ public class LeapMotionInput extends Listener implements Input{
 		            pointer.setX(pos.getX());
 		            pointer.setY(pos.getY());
 		            pointer.setSize(pos.getZ());
+		            Vector dir = (leapToProjectorCoordsDirection(swipe.direction()));
+		            pointer.setDx(dir.getX());
+		            pointer.setDy(dir.getY());
+		            pointer.setDz(dir.getZ());
 		            gestures.add(new Gesture(GestureType.SWIPE, pointer));
 		            break;
 				case TYPE_SCREEN_TAP:
 		            ScreenTapGesture screenTap = new ScreenTapGesture(g);
-		            logger.info("Screen Tap id: " + screenTap.id()
+		            logger.debug("Screen Tap id: " + screenTap.id()
 		                       + ", " + screenTap.state()
 		                       + ", position: " + screenTap.position()
 		                       + ", direction: " + screenTap.direction());
@@ -135,12 +143,12 @@ public class LeapMotionInput extends Listener implements Input{
 		            pointer.setX(pos.getX());
 		            pointer.setY(pos.getY());
 		            pointer.setSize(pos.getZ());
-		            logger.info(pos);
+		            logger.debug(pos);
 		            gestures.add(new Gesture(GestureType.TOUCH, pointer));
 		            break;
 		         case TYPE_KEY_TAP:
 			            KeyTapGesture keyTap = new KeyTapGesture(g);
-			            logger.info("Screen Tap id: " + keyTap.id()
+			            logger.debug("Screen Tap id: " + keyTap.id()
 			                       + ", " + keyTap.state()
 			                       + ", position: " + keyTap.position()
 			                       + ", direction: " + keyTap.direction());
@@ -149,11 +157,11 @@ public class LeapMotionInput extends Listener implements Input{
 			            pointer.setX(pos.getX());
 			            pointer.setY(pos.getY());
 			            pointer.setSize(pos.getZ());
-			            logger.info(pos);
+			            logger.debug(pos);
 			            gestures.add(new Gesture(GestureType.TOUCH, pointer));
 			            break;
 		            default:
-		            	logger.info("WTF");
+		            	logger.warn("WTF");
 			}
 		}
 		for( Finger finger : frame.fingers()){
@@ -168,6 +176,7 @@ public class LeapMotionInput extends Listener implements Input{
 		//updateGestures(diff);
 
 		if(!gestures.isEmpty()){
+			logger.debug(gestures);
 			dispatchGestureEvent();
 		}
 
@@ -181,10 +190,6 @@ public class LeapMotionInput extends Listener implements Input{
 		timeLast = frame.timestamp();
 	}
 
-	private SwipeGesture SwipeGesture(com.leapmotion.leap.Gesture g) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public Pointer buildPointer(Finger f){
 		for(Pointer p : pointers.values()){
@@ -232,22 +237,22 @@ public class LeapMotionInput extends Listener implements Input{
 
 
 		java.util.Vector<Integer> toRemove = new java.util.Vector<Integer>();
-		//logger.info(touchCandidates);
-		//logger.info(touchCandidates.size());
+		//logger.debug(touchCandidates);
+		//logger.debug(touchCandidates.size());
 		for(Integer id : touchCandidates.keySet()){
 			Pointer p = pointers.get(id);
 			if(p == null){
 				toRemove.add(id);
 			}else{
 				Float last = touchCandidates.get(id);
-				//logger.info(p.getLastUpdate());
+				//logger.debug(p.getLastUpdate());
 				if((p.getDz() < -TOUCH_THRESHOLD) ){
-					//logger.info("recul");
+					//logger.debug("recul");
 					gestures.add(new Gesture(GestureType.TOUCH, new Pointer(p)));
 					gestureUpdate = true;
 					toRemove.add(id);
 				}else if((p.getLastUpdate() > TOUCH_DISAPEAR_TIMEOUT)){
-					//logger.info("disapear");
+					//logger.debug("disapear");
 					gestures.add(new Gesture(GestureType.TOUCH, new Pointer(p)));
 					gestureUpdate = true;
 					toRemove.add(id);
@@ -261,7 +266,7 @@ public class LeapMotionInput extends Listener implements Input{
 			touchCandidates.remove(p);
 		}
 
-		//logger.info(touchCandidates);
+		//logger.debug(touchCandidates);
 		for(Pointer p : pointers.values()){
 			if(p.isVisibleNow() && p.getDz() > PRETOUCH_THRESHOLD){
 				touchCandidates.put(p.getId(), 0.0f);
@@ -272,7 +277,7 @@ public class LeapMotionInput extends Listener implements Input{
 
 
 		if(gestureUpdate){
-			logger.info(gestures);
+			logger.debug(gestures);
 			dispatchGestureEvent();
 		}
 

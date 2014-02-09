@@ -27,4 +27,9 @@ public class Gesture {
 		this.pointer = pointer;
 	}
 
+	@Override
+	public String toString() {
+		return "Gesture [type=" + type + ", pointer=" + pointer + "]";
+	}
+
 }

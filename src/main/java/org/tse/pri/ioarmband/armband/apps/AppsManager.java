@@ -12,6 +12,8 @@ import org.tse.pri.ioarmband.armband.input.InputListener;
 import org.tse.pri.ioarmband.armband.input.InputsManager;
 import org.tse.pri.ioarmband.armband.input.Pointer;
 import org.tse.pri.ioarmband.armband.io.Client;
+import org.tse.pri.ioarmband.io.message.GestureMessage;
+import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
 public class AppsManager implements AppListener, InputListener{
 
@@ -113,8 +115,34 @@ public class AppsManager implements AppListener, InputListener{
 	}
 	@Override
 	public void onGesture(Collection<Gesture> gestures) {
+		logger.info("onGesture : " + gestures);
 		InputsManager in = InputsManager.getInstance();
 		displayEngine.setGestures(in.getGestures());
+		for (Gesture gesture : gestures) {
+			if(gesture.getType().equals(GestureType.SWIPE)){
+				// TODO refactor
+				String direction;
+				Pointer p = gesture.getPointer();
+				if( Math.abs(p.getDx()) > Math.abs(p.getDy()) ){
+					if(p.getDx() > 0)
+						direction = "right";
+					else
+						direction = "left";
+				}else{
+					if(p.getDy() > 0)
+						direction = "up";
+					else
+						direction = "down";
+				}
+				
+				if(currentApp != null){
+					Client client = currentApp.getClient();
+					if(client != null)
+						client.sendCommand(new GestureMessage(GestureType.SWIPE, direction));
+				}
+				
+			}
+		}
 	}
 
 
