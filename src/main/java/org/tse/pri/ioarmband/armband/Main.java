@@ -36,7 +36,9 @@ public class Main
         InputsManager inputsManager = InputsManager.getInstance();
         inputsManager.registerInput(LeapMotionInput.class);
         
-        
+
+        AppsManager appsManager = AppsManager.getInstance();
+        //launchApps();
         //internalConnection.simulateCommandReception(new Command(new KeyboardAppMessage()));
     	//logger.info("Closing connections");
         //connectionsManager.stopAllServices();

@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
+import org.tse.pri.ioarmband.armband.apps.impl.JTime;
 import org.tse.pri.ioarmband.armband.input.Gesture;
 import org.tse.pri.ioarmband.armband.input.Pointer;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
@@ -63,7 +64,7 @@ public class SwingDisplayEngine implements DisplayEngine, GestureListener{
 		gd.setFullScreenWindow(mainFrame);
 		mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		circleFrame.setVisible(true);
-		circleFrame.setPointers(cs);
+		//circleFrame.setPointers(cs);
 		setApp(null);
 	}
 	private static SwingDisplayEngine __instance;
@@ -97,12 +98,13 @@ public class SwingDisplayEngine implements DisplayEngine, GestureListener{
 		else{
 			JPanel panel = new JPanel();
 			panel.setBackground(Color.BLACK);
-			panel.setLayout(new GridLayout(1,1));
+			panel.setLayout(new GridLayout(2,1));
 			JLabel label = new JLabel("ioArmband", JLabel.CENTER);
 			Font font = new Font(label.getFont().getName(), label.getFont().getStyle(), 100);
 			label.setForeground(Color.WHITE);
 			label.setFont(font);
 			panel.add(label);
+			panel.add(JTime.getInstance());
 			panel.setPreferredSize(appPanel.getSize());
 			panel.setVisible(true);
 			appPanel.add(panel);
