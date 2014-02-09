@@ -1,8 +1,5 @@
 package org.tse.pri.ioarmband.armband.input;
 
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.InputEvent;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,7 +7,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.tse.pri.ioarmband.armband.input.Gesture;
 
 public class InputsManager implements InputListener{
 

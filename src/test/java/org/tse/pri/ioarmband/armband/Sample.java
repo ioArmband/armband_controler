@@ -9,9 +9,21 @@ package org.tse.pri.ioarmband.armband;
 \******************************************************************************/
 
 import java.io.IOException;
-import java.lang.Math;
-import com.leapmotion.leap.*;
+
+import com.leapmotion.leap.CircleGesture;
+import com.leapmotion.leap.Controller;
+import com.leapmotion.leap.Finger;
+import com.leapmotion.leap.FingerList;
+import com.leapmotion.leap.Frame;
+import com.leapmotion.leap.Gesture;
 import com.leapmotion.leap.Gesture.State;
+import com.leapmotion.leap.GestureList;
+import com.leapmotion.leap.Hand;
+import com.leapmotion.leap.KeyTapGesture;
+import com.leapmotion.leap.Listener;
+import com.leapmotion.leap.ScreenTapGesture;
+import com.leapmotion.leap.SwipeGesture;
+import com.leapmotion.leap.Vector;
 
 class SampleListener extends Listener {
     public void onInit(Controller controller) {
@@ -49,7 +61,6 @@ class SampleListener extends Listener {
             	System.out.println("Finger position" + finger.tipPosition());
             }
         }
-        if(true){return;}
         if (!frame.hands().isEmpty()) {
             // Get the first hand
             Hand hand = frame.hands().get(0);

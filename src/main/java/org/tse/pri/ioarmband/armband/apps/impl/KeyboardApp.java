@@ -8,22 +8,17 @@ import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.apps.GenericSwingApp;
 import org.tse.pri.ioarmband.armband.io.Client;
-import org.tse.pri.ioarmband.armband.io.ClientsManager;
 import org.tse.pri.ioarmband.io.message.Command;
 import org.tse.pri.ioarmband.io.message.GestureMessage;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
 public class KeyboardApp extends GenericSwingApp implements MouseListener {
-	
-	private static final Logger logger = Logger.getLogger(KeyboardApp.class);
 	
 	boolean isAlpha;
 	boolean isActive;
@@ -33,8 +28,7 @@ public class KeyboardApp extends GenericSwingApp implements MouseListener {
 		super(client);
 		this.isAlpha = isAlpha;
 		isActive = false;
-		buttonsList = new ArrayList<Component>();
-		//init();
+		buttonsList = new ArrayList<Component>(); 
 	}
 	
 	@Override

@@ -76,6 +76,7 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public <T extends IConnectionService> T getConnectionService(Class<T> serviceClass){
 		return (T) services.get(serviceClass);
 	}

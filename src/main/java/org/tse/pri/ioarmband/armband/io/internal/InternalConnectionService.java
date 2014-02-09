@@ -5,11 +5,9 @@ import java.util.Set;
 
 import org.tse.pri.ioarmband.armband.io.Client;
 import org.tse.pri.ioarmband.armband.io.ClientsManager;
-import org.tse.pri.ioarmband.armband.io.ConnectionsManager;
 import org.tse.pri.ioarmband.armband.io.IConnectionService;
 import org.tse.pri.ioarmband.armband.io.IServiceStateChangeListener;
 import org.tse.pri.ioarmband.armband.io.ServiceState;
-import org.tse.pri.ioarmband.io.connection.IConnection;
 
 public class InternalConnectionService implements IConnectionService {
 

@@ -15,8 +15,6 @@ import org.tse.pri.ioarmband.io.message.AppMessage;
 import org.tse.pri.ioarmband.io.message.AppMessage.AppStd;
 import org.tse.pri.ioarmband.io.message.Command;
 import org.tse.pri.ioarmband.io.message.GestureMessage;
-import org.tse.pri.ioarmband.io.message.ImageViewerApp;
-import org.tse.pri.ioarmband.io.message.KeyboardAppMessage;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
 public class LANClientTester implements IConnectionListener{

@@ -2,8 +2,6 @@ package org.tse.pri.ioarmband.armband.input;
 
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
-import com.leapmotion.leap.Gesture.Type;
-
 public class Gesture {
 	private GestureType type;
 	private Pointer pointer;

@@ -3,39 +3,25 @@ package org.tse.pri.ioarmband.armband.apps;
 import java.awt.AWTException;
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Robot;
-import java.awt.Stroke;
 import java.awt.event.InputEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.util.Collection;
-import java.util.List;
 import java.util.Vector;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRootPane;
 
 import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.input.Gesture;
-import org.tse.pri.ioarmband.armband.input.InputsManager;
 import org.tse.pri.ioarmband.armband.input.Pointer;
-import org.tse.pri.ioarmband.armband.io.Client;
-import org.tse.pri.ioarmband.armband.io.ClientsManager;
-import org.tse.pri.ioarmband.io.message.Command;
-import org.tse.pri.ioarmband.io.message.GestureMessage;
-import org.tse.pri.ioarmband.io.message.Message;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
 public class SwingDisplayEngine implements DisplayEngine, GestureListener{
@@ -134,8 +120,6 @@ public class SwingDisplayEngine implements DisplayEngine, GestureListener{
 
 class CirlclesComponents extends JComponent{
 	
-	
-	private static final Logger logger = Logger.getLogger(CirlclesComponents.class);
 	private static final long serialVersionUID = -5151649518767032140L;
 	Collection<Pointer> pointers = new Vector<Pointer>();
 	Collection<Gesture> gestures = new Vector<Gesture>();
@@ -164,7 +148,6 @@ class CirlclesComponents extends JComponent{
 		Graphics2D g2d = (Graphics2D)g;
 		int center_x = getWidth()/2;
 		int center_y = getHeight()/2;
-		//System.out.println(center_x+ "   " +center_y);
 		
 		JLabel aa = new JLabel();
 		g2d.setFont(new Font(aa.getFont().getName(),aa.getFont().getStyle(), 40));
@@ -179,7 +162,6 @@ class CirlclesComponents extends JComponent{
 			String chars = p.getId().toString();
 			g2d.drawChars(chars.toCharArray(), 0, chars.length(), (int)(pos_x+size), (int)(pos_y+p.getDist()));
 			Ellipse2D.Double circle;
-			Double DZ_RATE = 1.0;
 			
 			g2d.setColor(new Color(0xff0000));
 			g2d.setStroke(new BasicStroke(10));
@@ -199,7 +181,6 @@ class CirlclesComponents extends JComponent{
 			String chars = p.getId().toString();
 			g2d.drawChars(chars.toCharArray(), 0, chars.length(), (int)(pos_x+size), (int)(pos_y+p.getDist()));
 			Ellipse2D.Double circle;
-			Double DZ_RATE = 1.0;
 			
 			g2d.setColor(new Color(0x00ff00));
 			circle = new Ellipse2D.Double(pos_x-size/2, pos_y-size/2, size,size);

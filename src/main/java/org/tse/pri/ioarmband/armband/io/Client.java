@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.tse.pri.ioarmband.armband.apps.App;
 import org.tse.pri.ioarmband.armband.protocol.Protocol;
 import org.tse.pri.ioarmband.armband.protocol.ProtocolManager;
 import org.tse.pri.ioarmband.io.connection.IConnection;
@@ -56,7 +55,6 @@ public class Client implements IConnectionListener{
 		Message message = command.getMessage();
 		protocol.exec(this, message.getCommandName(), message.extractParams());
 		
-		// TODO Stop loop-back command
 		logger.info(command);
 		if(loopbackCommand)
 			sendCommand(command);
