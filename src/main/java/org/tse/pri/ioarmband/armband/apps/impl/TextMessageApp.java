@@ -18,13 +18,15 @@ public class TextMessageApp extends GenericSwingApp{
 
 	String author;
 	String message;
+	String source;
 	Image image;
 	
 	
 
-	public TextMessageApp(Client client, String author, String message,
+	public TextMessageApp(Client client, String source, String author, String message,
 			Image image) {
 		super(client);
+		this.source = source;
 		this.author = author;
 		this.message = message;
 		this.image = image;
@@ -41,28 +43,57 @@ public class TextMessageApp extends GenericSwingApp{
 		GridBagConstraints c = new GridBagConstraints(); 
 		JLabel label;
 
-		c.fill = GridBagConstraints.VERTICAL;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		
+
+		JPanel headPanel = new JPanel(new GridBagLayout());
+		headPanel.setBackground(Color.BLACK);
+		GridBagConstraints hc = new GridBagConstraints(); 
+		
+
+		
+		label = new JLabel("<"+ source +">", JLabel.LEFT);
+		label.setFont(new Font(label.getFont().getName(), label.getFont().getStyle(), 50));
+		label.setForeground(Color.WHITE);
+		hc.weighty = 1;
+		hc.gridy = 0;
+		headPanel.add(label, hc);
+		
 		
 		if(image != null){
 			ImageIcon icon = new ImageIcon(image);
-			label = new JLabel("SMS > " + author, icon, JLabel.LEFT);
+			label = new JLabel(author, icon, JLabel.LEFT);
 		}else{
-			label = new JLabel("SMS > " + author, JLabel.LEFT);
+			label = new JLabel(author, JLabel.LEFT);
 		}
+
 		label.setFont(new Font(label.getFont().getName(), label.getFont().getStyle(), 100));
 		label.setForeground(Color.WHITE);
+		label.setAlignmentX(0);
+		hc.weighty = 3;
+		hc.gridy = 1;
+		
+		headPanel.add(label, hc);
+
+
+		c.weightx = 1;
 		c.weighty = 0.3;
 		c.gridx = 0;
 		c.gridy = 0;
-		panel.add(label, c);
-
+		panel.add(headPanel, c);
+		JPanel msgPanel = new JPanel();
+		msgPanel.setBackground(Color.DARK_GRAY);
 		label = new JLabel(message, JLabel.LEFT);
+		label.setBackground(Color.DARK_GRAY);
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font(label.getFont().getName(), label.getFont().getStyle(), 100));
+		msgPanel.add(label);
+		c.weightx = 1;
 		c.weighty = 0.7;
 		c.gridx = 0;
 		c.gridy = 1;
-		panel.add(label, c);
+		c.fill = GridBagConstraints.BOTH;
+		panel.add(msgPanel, c);
 		
 		container.add(panel);
 	}

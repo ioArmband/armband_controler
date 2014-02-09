@@ -20,6 +20,7 @@ import org.tse.pri.ioarmband.armband.apps.impl.KeyboardApp;
 import org.tse.pri.ioarmband.armband.apps.impl.SlideSwiperApp;
 import org.tse.pri.ioarmband.armband.apps.impl.TextMessageApp;
 import org.tse.pri.ioarmband.armband.io.Client;
+import org.tse.pri.ioarmband.armband.tools.ImageEncoder;
 
 public class AnnotatedProtocol implements Protocol {
 
@@ -67,12 +68,18 @@ public class AnnotatedProtocol implements Protocol {
 	}	
 
 	@CommandExecutor("text_message_app")
-	public void onOpenImageApp(Client client, @CommandParam("message") String message, 
-			@CommandParam("author") String author, @CommandParam(value="image", required=false) Image image)
-	{
+	public void onOpenImageApp(Client client,
+			@CommandParam("source") String source, 
+			@CommandParam("message") String message, 
+			@CommandParam("author") String author,
+			@CommandParam(value="encodedImage", required=false) String encodedImage){
+		
 		AppsManager appsManager = AppsManager.getInstance();
-
-		App app = new TextMessageApp(client, author, message, image);
+		Image image = null;
+		if(encodedImage != null){
+			image = ImageEncoder.decodeBase64(encodedImage);
+		}
+		App app = new TextMessageApp(client, source, author, message, image);
 
 		appsManager.addApp(app, true);
 	}	

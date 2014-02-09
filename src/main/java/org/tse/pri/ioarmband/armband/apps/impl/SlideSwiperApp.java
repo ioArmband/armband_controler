@@ -23,9 +23,9 @@ public class SlideSwiperApp extends GenericSwingApp{
 		panel.setLayout(new GridLayout(1,1));
 		panel.setBackground(Color.BLACK);
 		
-		JLabel label = new JLabel("<<    >>", JLabel.CENTER);
+		JLabel label = new JLabel("<<        >>", JLabel.CENTER);
 		label.setVerticalAlignment(JLabel.CENTER);
-		Font font = new Font(label.getFont().getName(), label.getFont().getStyle(), 100);
+		Font font = new Font(label.getFont().getName(), label.getFont().getStyle(), 200);
 		label.setForeground(Color.WHITE);
 		label.setFont(font);
 		label.setSize(panel.getSize());

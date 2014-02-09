@@ -38,7 +38,7 @@ public class Main
         
 
         AppsManager appsManager = AppsManager.getInstance();
-        //launchApps();
+        launchApps();
         //internalConnection.simulateCommandReception(new Command(new KeyboardAppMessage()));
     	//logger.info("Closing connections");
         //connectionsManager.stopAllServices();
@@ -57,7 +57,7 @@ public class Main
         
         conn1.simulateCommandReception(new Command(new KeyboardAppMessage()));
         Thread.sleep(1000);
-        conn2.simulateCommandReception(new Command(new TextMessageAppMessage("John", "Hi! How are you today?")));
+        conn2.simulateCommandReception(new Command(new TextMessageAppMessage("Mail", "John", "Hi! How are you today?")));
         Thread.sleep(3000);
         conn2.simulateCommandReception(new Command(new CloseAppMessage()));
         Thread.sleep(1000);
