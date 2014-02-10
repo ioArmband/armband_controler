@@ -1,6 +1,5 @@
 package org.tse.pri.ioarmband.armband;
 
-import java.awt.Container;
 import java.awt.Image;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,7 +38,7 @@ public class LANClientTester implements IConnectionListener{
 		LANClientTester client = new LANClientTester(host, port); 
 		client.runSocket();
 		GestureMessage msg = new GestureMessage();
-		AppMessage kmsg = new AppMessage(AppStd.KEYBOARD_NUM);
+		//AppMessage kmsg = new AppMessage(AppStd.KEYBOARD_NUM);
 		msg.setType(GestureType.TOUCH);
 		
 		msg.setSourceName("LANClientTester");

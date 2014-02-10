@@ -4,17 +4,14 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.tse.pri.ioarmband.armband.apps.GenericSwingApp;
 import org.tse.pri.ioarmband.armband.apps.comp.BlackButton;
 import org.tse.pri.ioarmband.armband.io.Client;
-import org.tse.pri.ioarmband.io.message.Command;
 import org.tse.pri.ioarmband.io.message.GestureMessage;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 

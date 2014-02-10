@@ -21,7 +21,6 @@ import org.tse.pri.ioarmband.armband.io.Client;
 import org.tse.pri.ioarmband.armband.protocol.ProtocolExecutor.CommandExecutor;
 import org.tse.pri.ioarmband.armband.protocol.ProtocolExecutor.CommandParam;
 import org.tse.pri.ioarmband.armband.tools.ImageTools;
-import org.tse.pri.ioarmband.io.message.MenuAppMessage;
 
 public class ReceptionProtocol implements Protocol {
 

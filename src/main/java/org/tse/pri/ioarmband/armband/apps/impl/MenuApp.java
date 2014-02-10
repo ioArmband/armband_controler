@@ -9,14 +9,12 @@ import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.tse.pri.ioarmband.armband.apps.GenericSwingApp;
 import org.tse.pri.ioarmband.armband.apps.comp.JTime;
 import org.tse.pri.ioarmband.armband.io.Client;
-import org.tse.pri.ioarmband.armband.tools.ImageTools;
 import org.tse.pri.ioarmband.io.message.GestureMessage;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 

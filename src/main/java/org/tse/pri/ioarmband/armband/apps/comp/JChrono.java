@@ -3,13 +3,16 @@ package org.tse.pri.ioarmband.armband.apps.comp;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
 public class JChrono extends JLabel implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8241833376736143867L;
 	Timer timer;
 	JLabel timeLabel;
 	long elapsed;

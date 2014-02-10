@@ -32,7 +32,7 @@ public class Main
         inputsManager.registerInput(LeapMotionInput.class);
         
 
-        AppsManager appsManager = AppsManager.getInstance();
+        AppsManager.getInstance();
         launchApps();
         //internalConnection.simulateCommandReception(new Command(new KeyboardAppMessage()));
     	//logger.info("Closing connections");

@@ -4,9 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.tse.pri.ioarmband.armband.protocol.Protocol;
 import org.tse.pri.ioarmband.armband.protocol.ProtocolExecutor;
-import org.tse.pri.ioarmband.armband.protocol.ProtocolManager;
 import org.tse.pri.ioarmband.armband.protocol.ReceptionProtocol;
 import org.tse.pri.ioarmband.io.connection.IConnection;
 import org.tse.pri.ioarmband.io.connection.IConnectionListener;

@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 
 public class BlackLabel extends JLabel{
 
+	private static final long serialVersionUID = -4470997624594806422L;
+
+
 	public BlackLabel() {
 		super();
 		init();
