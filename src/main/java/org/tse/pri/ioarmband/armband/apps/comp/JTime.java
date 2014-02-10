@@ -1,4 +1,4 @@
-package org.tse.pri.ioarmband.armband.apps.impl;
+package org.tse.pri.ioarmband.armband.apps.comp;
 
 import java.awt.Color;
 import java.awt.Font;

@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.tse.pri.ioarmband.armband.apps.GenericSwingApp;
+import org.tse.pri.ioarmband.armband.apps.comp.BlackButton;
 import org.tse.pri.ioarmband.armband.io.Client;
 import org.tse.pri.ioarmband.io.message.Command;
 import org.tse.pri.ioarmband.io.message.GestureMessage;

@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
-import org.tse.pri.ioarmband.armband.apps.impl.JTime;
+import org.tse.pri.ioarmband.armband.apps.comp.JTime;
 import org.tse.pri.ioarmband.armband.input.Gesture;
 import org.tse.pri.ioarmband.armband.input.Pointer;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;

@@ -15,6 +15,16 @@ public class SimpleAppClientInteligence extends InternalClientInteligence{
 	
 	private String appName = "";
 	
+	
+	public SimpleAppClientInteligence() {
+		super();
+	}
+	
+	public SimpleAppClientInteligence(String appName) {
+		super();
+		this.appName = appName;
+	}
+
 	@Override
 	public void start() {
 		Message msg = new AppMessage(appName);
@@ -31,7 +41,7 @@ public class SimpleAppClientInteligence extends InternalClientInteligence{
 	@CommandExecutor("gesture")
 	public void onAppGesture(Client client, @CommandParam("type") GestureType type, @CommandParam("sourceName") String sourceName)
 	{
-		if(type.equals(GestureType.TOUCH) && sourceName.equals("stop")){
+		if(type.equals(GestureType.TOUCH) && sourceName.equals("quit")){
 			close();
 		}
 	}

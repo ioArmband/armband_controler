@@ -63,11 +63,16 @@ public class MenuClientInteligence extends InternalClientInteligence{
 			return;
 		MenuData data = registredApps.get(currentIndex-1);
 		InternalClientInteligence ia;
-		try {
-			ia = data.getIntelligenceClass().newInstance();
+		if(data.isSimpleApp()){
+			ia = new SimpleAppClientInteligence(data.getAppID());
 			ia.start();
-		} catch (Exception e) {
-			logger.error("Instanciation of intelligence " +  data.getIntelligenceClass().getCanonicalName() + " failled", e);
+		}else{
+			try {
+				ia = data.getIntelligenceClass().newInstance();
+				ia.start();
+			} catch (Exception e) {
+				logger.error("Instanciation of intelligence " +  data.getIntelligenceClass().getCanonicalName() + " failled", e);
+			}
 		}
 	}
 	

@@ -9,6 +9,7 @@ import java.awt.Image;
 import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.apps.App;
 import org.tse.pri.ioarmband.armband.apps.AppsManager;
+import org.tse.pri.ioarmband.armband.apps.impl.ChronoApp;
 import org.tse.pri.ioarmband.armband.apps.impl.ImageApp;
 import org.tse.pri.ioarmband.armband.apps.impl.KeyboardApp;
 import org.tse.pri.ioarmband.armband.apps.impl.MenuApp;
@@ -44,6 +45,8 @@ public class ReceptionProtocol implements Protocol {
 		}
 		else if(appName.equals(SLIDE_SWIPER.getName())){
 			app = new SlideSwiperApp(client);
+		}else if(appName.equals("chrono")){
+			app = new ChronoApp(client);
 		}
 		else{
 			logger.warn("Cannot inititialise application named \"" + appName + "\" with params \"" + params + "\"");

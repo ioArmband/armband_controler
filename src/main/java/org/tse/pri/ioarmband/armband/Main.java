@@ -42,8 +42,8 @@ public class Main
     public static void launchApps(){
     	try{
     	MenuClientInteligence menu = new MenuClientInteligence();
-    	MenuData d = new MenuData("Menu", MenuClientInteligence.class);
-    	menu.registerApp(d);
+    	menu.registerApp(new MenuData("Chronometer", "chrono"));
+    	menu.registerApp(new MenuData("Menu", MenuClientInteligence.class));
     	menu.start();
     	}catch(Exception e){
     		logger.error(e);

@@ -23,5 +23,11 @@ public class MenuData{
 	public Class<? extends InternalClientInteligence> getIntelligenceClass() {
 		return intelligenceClass;
 	}
+	public String getAppID() {
+		return appID;
+	}
+	public boolean isSimpleApp(){
+		return !appID.equals("");
+	}
 	
 }
