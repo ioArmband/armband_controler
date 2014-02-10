@@ -133,17 +133,7 @@ public class AppsManager implements AppListener, InputListener{
 				// TODO refactor
 				String direction;
 				Pointer p = gesture.getPointer();
-				if( Math.abs(p.getDx()) > Math.abs(p.getDy()) ){
-					if(p.getDx() > 0)
-						direction = "right";
-					else
-						direction = "left";
-				}else{
-					if(p.getDy() > 0)
-						direction = "up";
-					else
-						direction = "down";
-				}
+				direction = p.getDirection();
 
 				if(currentApp != null){
 					Client client = currentApp.getClient();

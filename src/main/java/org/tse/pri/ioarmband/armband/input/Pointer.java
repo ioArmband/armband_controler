@@ -10,6 +10,7 @@ public class Pointer {
 	private Float dx;
 	private Float dy;
 	private Float dz;
+	private String direction;
 	private Float lastUpdate;
 	private boolean isVisibleNow;
 	
@@ -31,6 +32,7 @@ public class Pointer {
 		this.dz = dz;
 		this.lastUpdate = lastUpdate;
 		isVisibleNow = true;
+		updateDirection();
 	}
 	public Pointer(Pointer p) {
 		super();
@@ -74,12 +76,14 @@ public class Pointer {
 	}
 	public void setDx(Float dx) {
 		this.dx = dx;
+		updateDirection();
 	}
 	public Float getDy() {
 		return dy;
 	}
 	public void setDy(Float dy) {
 		this.dy = dy;
+		updateDirection();
 	}
 	public Float getDz() {
 		return dz;
@@ -111,8 +115,27 @@ public class Pointer {
 	public void setVisibleNow(boolean isVisibleNow) {
 		this.isVisibleNow = isVisibleNow;
 	}
+	public String getDirection() {
+		return direction;
+	}
 	
-	
+	private void updateDirection(){
+		if(dx == dy){
+			direction = "none";
+			return;
+		}
+		if( Math.abs(dx) > Math.abs(dy) ){
+			if(dx > 0)
+				direction = "right";
+			else
+				direction = "left";
+		}else{
+			if(dy > 0)
+				direction = "up";
+			else
+				direction = "down";
+		}
+	}
 	
 	
 }
