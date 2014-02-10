@@ -13,6 +13,6 @@ public interface App {
 	public void removeGestureEventListener(GestureListener listener);
 	public JPanel getPanel();
 	public Client getClient();
-	public void build(Container panel);
+	public void build(Container container);
 	public void hide();
 }

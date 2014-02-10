@@ -97,14 +97,17 @@ public class SwingDisplayEngine implements DisplayEngine, GestureListener{
 		}
 		else{
 			JPanel panel = new JPanel();
+			panel.setLayout(new GridLayout(1,1));
 			panel.setBackground(Color.BLACK);
-			panel.setLayout(new GridLayout(2,1));
+			
 			JLabel label = new JLabel("ioArmband", JLabel.CENTER);
+			label.setVerticalAlignment(JLabel.CENTER);
 			Font font = new Font(label.getFont().getName(), label.getFont().getStyle(), 100);
 			label.setForeground(Color.WHITE);
 			label.setFont(font);
+			label.setSize(panel.getSize());
 			panel.add(label);
-			panel.add(JTime.getInstance());
+
 			panel.setPreferredSize(appPanel.getSize());
 			panel.setVisible(true);
 			appPanel.add(panel);

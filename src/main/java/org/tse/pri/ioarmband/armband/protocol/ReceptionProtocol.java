@@ -11,12 +11,14 @@ import org.tse.pri.ioarmband.armband.apps.App;
 import org.tse.pri.ioarmband.armband.apps.AppsManager;
 import org.tse.pri.ioarmband.armband.apps.impl.ImageApp;
 import org.tse.pri.ioarmband.armband.apps.impl.KeyboardApp;
+import org.tse.pri.ioarmband.armband.apps.impl.MenuApp;
 import org.tse.pri.ioarmband.armband.apps.impl.SlideSwiperApp;
 import org.tse.pri.ioarmband.armband.apps.impl.TextMessageApp;
 import org.tse.pri.ioarmband.armband.io.Client;
 import org.tse.pri.ioarmband.armband.protocol.ProtocolExecutor.CommandExecutor;
 import org.tse.pri.ioarmband.armband.protocol.ProtocolExecutor.CommandParam;
 import org.tse.pri.ioarmband.armband.tools.ImageTools;
+import org.tse.pri.ioarmband.io.message.MenuAppMessage;
 
 public class ReceptionProtocol implements Protocol {
 
@@ -62,7 +64,21 @@ public class ReceptionProtocol implements Protocol {
 
 		appsManager.addApp(app, true);
 	}	
+	
 
+	@CommandExecutor("menu_app")
+	public void onOpenMenuApp(Client client, 
+			@CommandParam("appIndex") Integer appIndex,
+			@CommandParam("isLast") Boolean isLast,
+			@CommandParam("appName") String appName)
+	{
+		AppsManager appsManager = AppsManager.getInstance();
+
+		App app = new MenuApp(client, appIndex, isLast, appName);
+
+		appsManager.addApp(app, true);
+	}	
+	
 	@CommandExecutor("text_message_app")
 	public void onOpenImageApp(Client client,
 			@CommandParam("source") String source, 

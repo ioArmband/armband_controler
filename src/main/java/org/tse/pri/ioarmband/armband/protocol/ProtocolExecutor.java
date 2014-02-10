@@ -18,14 +18,14 @@ public class ProtocolExecutor {
 	private static final Logger logger = Logger.getLogger(ProtocolExecutor.class);
 	@Target(ElementType.METHOD)
 	@Retention(RetentionPolicy.RUNTIME)
-	protected @interface CommandExecutor
+	public @interface CommandExecutor
 	{
 		String value();
 	}
 	
 	@Target(ElementType.PARAMETER)
 	@Retention(RetentionPolicy.RUNTIME)
-	protected @interface CommandParam
+	public @interface CommandParam
 	{
 		String value();
 		boolean required() default true;
@@ -33,7 +33,7 @@ public class ProtocolExecutor {
 
 	public static void exec( Protocol protocol, Client client, String commandName, Map<String, Object> inputParams) {
 	
-		logger.info("exec() : entered with parameters client: [" + client + "], commandName [" + commandName +
+		logger.info("exec() : entered with protocol ["+ protocol +"]  parameters client: [" + client + "], commandName [" + commandName +
 				"], inputParams[" + inputParams + "]");
 	
 	
@@ -61,11 +61,10 @@ public class ProtocolExecutor {
 								try{
 									Object paramObject = inputParams.get(commandAnnotation.value());
 									paramValue = paramClazz.cast(paramObject);
-									if(commandAnnotation.required() && paramObject == null){
-										logger.error("Cannot cast param " + commandAnnotation.value() + " for command " + method.getName());
-									}
 								}catch(NullPointerException e){
 									logger.error("Requiered param " + commandAnnotation.value() + " not found for command " + method.getName());
+								}catch(ClassCastException e){
+									logger.error("Cannot cast param " + commandAnnotation.value() + " for command " + method.getName(),e);
 								}
 								annotationFound = true;
 								break;

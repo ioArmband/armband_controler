@@ -53,10 +53,10 @@ public class InternalConnection implements IConnection {
 	}
 
 	Set<InternalConnectionListener> internalConnectionListeners = new HashSet<InternalConnectionListener>();
-	public void addConnectionListener(InternalConnectionListener listener) {
+	public void addInternalConnectionListener(InternalConnectionListener listener) {
 		internalConnectionListeners.add(listener);
 	}
-	public void removeConnectionListener(InternalConnectionListener listener) {
+	public void removeInternalConnectionListener(InternalConnectionListener listener) {
 		internalConnectionListeners.remove(listener);
 	}
 	private void dispatchInternalConnectionClose(){
