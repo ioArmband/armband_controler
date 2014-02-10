@@ -16,7 +16,7 @@ import org.tse.pri.ioarmband.armband.apps.impl.TextMessageApp;
 import org.tse.pri.ioarmband.armband.io.Client;
 import org.tse.pri.ioarmband.armband.protocol.ProtocolExecutor.CommandExecutor;
 import org.tse.pri.ioarmband.armband.protocol.ProtocolExecutor.CommandParam;
-import org.tse.pri.ioarmband.armband.tools.ImageEncoder;
+import org.tse.pri.ioarmband.armband.tools.ImageTools;
 
 public class ReceptionProtocol implements Protocol {
 
@@ -73,7 +73,7 @@ public class ReceptionProtocol implements Protocol {
 		AppsManager appsManager = AppsManager.getInstance();
 		Image image = null;
 		if(encodedImage != null){
-			image = ImageEncoder.decodeBase64(encodedImage);
+			image = ImageTools.decodeBase64(encodedImage);
 		}
 		App app = new TextMessageApp(client, source, author, message, image);
 
