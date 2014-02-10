@@ -5,13 +5,19 @@ import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.awt.event.AWTEventListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.NoSuchElementException;
+
+import javax.swing.Timer;
 
 import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.input.Gesture;
@@ -106,6 +112,7 @@ public class AppsManager implements AppListener, InputListener{
 	public void removeClient(Client client){
 		App app = clientsApp.get(client);
 		removeApp(app);
+		CastingManager.removeCaster(client);
 	}
 
 
@@ -182,5 +189,11 @@ public class AppsManager implements AppListener, InputListener{
 		};
 KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(listener);
 	}
+	
+	public BufferedImage getScreenCapture(){
+		return displayEngine.getScreenCapture();
+	}
+	
+
 }
 

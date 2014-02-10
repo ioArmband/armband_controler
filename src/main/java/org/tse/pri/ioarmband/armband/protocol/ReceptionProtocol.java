@@ -9,6 +9,7 @@ import java.awt.Image;
 import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.apps.App;
 import org.tse.pri.ioarmband.armband.apps.AppsManager;
+import org.tse.pri.ioarmband.armband.apps.CastingManager;
 import org.tse.pri.ioarmband.armband.apps.impl.ChronoApp;
 import org.tse.pri.ioarmband.armband.apps.impl.ConnexionsInfoApp;
 import org.tse.pri.ioarmband.armband.apps.impl.ImageApp;
@@ -106,6 +107,20 @@ public class ReceptionProtocol implements Protocol {
 	public void onCloseApp(Client client){
 		AppsManager appsManager = AppsManager.getInstance();
 		appsManager.removeClient(client);
+	}
+	
+	
+	@CommandExecutor("casting_request")
+	public void onCastingRequest(Client client, 
+			@CommandParam("delay") Integer delay,
+			@CommandParam("width") Integer width,
+			@CommandParam("height") Integer height){
+		if(delay>0){
+			CastingManager.registerCaster(client, delay, width, height);
+		}
+		else{
+			CastingManager.removeCaster(client);
+		}
 	}
 }
 

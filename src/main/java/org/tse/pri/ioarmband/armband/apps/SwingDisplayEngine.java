@@ -3,14 +3,17 @@ package org.tse.pri.ioarmband.armband.apps;
 import java.awt.AWTException;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.DisplayMode;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
+import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
 import java.util.Collection;
 import java.util.Vector;
 
@@ -20,7 +23,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
-import org.tse.pri.ioarmband.armband.apps.comp.JTime;
 import org.tse.pri.ioarmband.armband.input.Gesture;
 import org.tse.pri.ioarmband.armband.input.Pointer;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
@@ -120,6 +122,25 @@ public class SwingDisplayEngine implements DisplayEngine, GestureListener{
 	public void onGesture(App app, GestureType gestureType, String source) {
 	}
 
+	@Override
+	public BufferedImage getScreenCapture() {
+		BufferedImage image = null;
+		
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsDevice[] gds = ge.getScreenDevices();
+		GraphicsDevice gd = gds[gds.length-1];
+		DisplayMode dm = gd.getDisplayMode();
+		Robot robot;
+		try {
+			robot = new Robot(gd);
+			image = robot.createScreenCapture(new Rectangle(dm.getWidth(), dm.getHeight()));
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
+		
+		return image;
+	}
+
 }
 
 
@@ -197,7 +218,10 @@ class CirlclesComponents extends JComponent{
 			return;
 		Robot robot;
 		try {
-			robot = new Robot();
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			GraphicsDevice[] gds = ge.getScreenDevices();
+			GraphicsDevice gd = gds[gds.length-1];
+			robot = new Robot(gd);
 			int center_x = getWidth()/2;
 			int center_y = getHeight()/2;
 			int pos_x = (int) (center_x + p.getX() * center_x);

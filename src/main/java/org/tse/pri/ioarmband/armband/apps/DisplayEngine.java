@@ -1,5 +1,6 @@
 package org.tse.pri.ioarmband.armband.apps;
 
+import java.awt.image.BufferedImage;
 import java.util.Collection;
 
 import org.tse.pri.ioarmband.armband.input.Gesture;
@@ -10,4 +11,5 @@ public interface DisplayEngine {
 	public void setPointers(Collection<Pointer> pointers);
 	public void setGestures(Collection<Gesture> gestures);
 	public void setApp(App app);
+	public BufferedImage getScreenCapture();
 }

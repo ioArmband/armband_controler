@@ -49,7 +49,7 @@ public class ImageTools {
 
 	}
 	
-	public static Image resize(Image image, int width, int height) {
+	public static BufferedImage resize(Image image, int width, int height) {
 	    BufferedImage bi = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
 	    Graphics2D g2d = (Graphics2D) bi.createGraphics();
 	    g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY));
