@@ -1,8 +1,5 @@
 package org.tse.pri.ioarmband.armband.protocol;
 
-import static org.tse.pri.ioarmband.io.message.AppMessage.AppStd.*;
-
-import java.awt.Image;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -13,99 +10,38 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.tse.pri.ioarmband.armband.apps.App;
-import org.tse.pri.ioarmband.armband.apps.AppsManager;
-import org.tse.pri.ioarmband.armband.apps.impl.ImageApp;
-import org.tse.pri.ioarmband.armband.apps.impl.KeyboardApp;
-import org.tse.pri.ioarmband.armband.apps.impl.SlideSwiperApp;
-import org.tse.pri.ioarmband.armband.apps.impl.TextMessageApp;
 import org.tse.pri.ioarmband.armband.io.Client;
-import org.tse.pri.ioarmband.armband.tools.ImageEncoder;
 
-public class AnnotatedProtocol implements Protocol {
+public class ProtocolExecutor {
 
-	private static final Logger logger = Logger.getLogger(AnnotatedProtocol.class);
-	public AnnotatedProtocol() {
-
-	}
-
-
-
-
-	@CommandExecutor("open_app")
-	public void onOpenApp(Client client, 
-			@CommandParam("appName") String appName, 
-			@CommandParam("params") String params)
+	
+	private static final Logger logger = Logger.getLogger(ProtocolExecutor.class);
+	@Target(ElementType.METHOD)
+	@Retention(RetentionPolicy.RUNTIME)
+	protected @interface CommandExecutor
 	{
-		AppsManager appsManager = AppsManager.getInstance();
-
-		App app;
-		if(appName.equals(KEYBOARD.getName())){
-			boolean isNum = (params.equals(KEYBOARD_NUM.getParam()));
-			app = new KeyboardApp(client, !isNum);
-		}
-		else if(appName.equals(SLIDE_SWIPER.getName())){
-			app = new SlideSwiperApp(client);
-		}
-		else{
-			logger.warn("Cannot inititialise application named \"" + appName + "\" with params \"" + params + "\"");
-			return;
-		}
-
-		appsManager.addApp(app, true);
+		String value();
 	}
-
-
-	@CommandExecutor("image_viewer_app")
-	public void onOpenImageApp(Client client, 
-			@CommandParam("image") Image image)
+	
+	@Target(ElementType.PARAMETER)
+	@Retention(RetentionPolicy.RUNTIME)
+	protected @interface CommandParam
 	{
-		AppsManager appsManager = AppsManager.getInstance();
-
-		App app = new ImageApp(client, image);
-
-		appsManager.addApp(app, true);
-	}	
-
-	@CommandExecutor("text_message_app")
-	public void onOpenImageApp(Client client,
-			@CommandParam("source") String source, 
-			@CommandParam("message") String message, 
-			@CommandParam("author") String author,
-			@CommandParam(value="encodedImage", required=false) String encodedImage){
-		
-		AppsManager appsManager = AppsManager.getInstance();
-		Image image = null;
-		if(encodedImage != null){
-			image = ImageEncoder.decodeBase64(encodedImage);
-		}
-		App app = new TextMessageApp(client, source, author, message, image);
-
-		appsManager.addApp(app, true);
-	}	
-
-	@CommandExecutor("close_app")
-	public void onCloseApp(Client client){
-		AppsManager appsManager = AppsManager.getInstance();
-		appsManager.removeClient(client);
+		String value();
+		boolean required() default true;
 	}
 
-
-
-
-
-
-
-	public void exec(Client client, String commandName, Map<String, Object> inputParams){
-
+	public static void exec( Protocol protocol, Client client, String commandName, Map<String, Object> inputParams) {
+	
 		logger.info("exec() : entered with parameters client: [" + client + "], commandName [" + commandName +
 				"], inputParams[" + inputParams + "]");
-
-
-		Method[] methods = this.getClass().getDeclaredMethods();
+	
+	
+		Method[] methods = protocol.getClass().getDeclaredMethods();
 		for (Method method : methods) {
 			CommandExecutor commandExecutor = method.getAnnotation(CommandExecutor.class);
 			logger.debug("exec() : found : Method [" + method.getName() + "] with CommandExecutor " + commandExecutor );
+			
 			if(commandExecutor != null && commandName.equals(commandExecutor.value())){
 				logger.debug("exec() : command [" + commandName + "] treated by method [" + method.getName() + "]" );
 				Class<?>[] paramClasses = method.getParameterTypes();
@@ -143,7 +79,7 @@ public class AnnotatedProtocol implements Protocol {
 					}
 				}
 				try {
-					method.invoke(this, parameters.toArray());
+					method.invoke(protocol, parameters.toArray());
 				} catch (IllegalArgumentException e) {
 					logger.error("Method " + method.getName() + " linked to command " + commandExecutor.value() +
 							" does not implement the correct parameters");
@@ -156,24 +92,7 @@ public class AnnotatedProtocol implements Protocol {
 				return;
 			}
 		}
-
+	
 		logger.error("exec() : No method found to treat command :" + commandName);
 	}
-
-
-	@Target(ElementType.METHOD)
-	@Retention(RetentionPolicy.RUNTIME)
-	private @interface CommandExecutor
-	{
-		String value();
-	}
-
-	@Target(ElementType.PARAMETER)
-	@Retention(RetentionPolicy.RUNTIME)
-	private @interface CommandParam
-	{
-		String value();
-		boolean required() default true;
-	}
 }
-

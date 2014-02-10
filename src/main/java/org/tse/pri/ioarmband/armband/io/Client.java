@@ -5,7 +5,9 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.protocol.Protocol;
+import org.tse.pri.ioarmband.armband.protocol.ProtocolExecutor;
 import org.tse.pri.ioarmband.armband.protocol.ProtocolManager;
+import org.tse.pri.ioarmband.armband.protocol.ReceptionProtocol;
 import org.tse.pri.ioarmband.io.connection.IConnection;
 import org.tse.pri.ioarmband.io.connection.IConnectionListener;
 import org.tse.pri.ioarmband.io.message.Command;
@@ -51,9 +53,8 @@ public class Client implements IConnectionListener{
 	
 	@Override
 	public void onCommandReiceved(Command command) {
-		Protocol protocol = ProtocolManager.getProtocol();
 		Message message = command.getMessage();
-		protocol.exec(this, message.getCommandName(), message.extractParams());
+		ProtocolExecutor.exec(new ReceptionProtocol(), this, message.getCommandName(), message.extractParams());
 		
 		logger.info(command);
 		if(loopbackCommand)

@@ -7,7 +7,7 @@ public class ProtocolManager {
 
 	public static Protocol getProtocol() {
 		if (_protocol == null) {
-			_protocol = new AnnotatedProtocol();
+			_protocol = new ReceptionProtocol();
 		}
 		return _protocol;
 	}
