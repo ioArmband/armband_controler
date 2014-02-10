@@ -1,7 +1,9 @@
 package org.tse.pri.ioarmband.armband.io;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -10,10 +12,10 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 	private static final Logger logger = Logger.getLogger(ConnectionsManager.class);
 	private static ConnectionsManager __instance;
 	
-	private HashMap<Class<? extends IConnectionService>, IConnectionService> services;
+	private LinkedHashMap<Class<? extends IConnectionService>, IConnectionService> services;
 
 	private ConnectionsManager() {
-		services = new HashMap<Class<? extends IConnectionService>, IConnectionService>();
+		services = new LinkedHashMap<Class<? extends IConnectionService>, IConnectionService>();
 	}
 
 	public static ConnectionsManager getInstance() {
@@ -79,6 +81,10 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 	@SuppressWarnings("unchecked")
 	public <T extends IConnectionService> T getConnectionService(Class<T> serviceClass){
 		return (T) services.get(serviceClass);
+	}
+	
+	public ArrayList<IConnectionService> getServices(){
+		return new ArrayList<IConnectionService>(services.values());
 	}
 	
 	Set<IServiceStateChangeListener> serviceStateChangeListeners = new HashSet<IServiceStateChangeListener>();

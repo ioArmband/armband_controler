@@ -12,6 +12,7 @@ import org.tse.pri.ioarmband.armband.io.ConnectionsManager;
 import org.tse.pri.ioarmband.armband.io.bluetooth.BluetoothConnectionService;
 import org.tse.pri.ioarmband.armband.io.internal.InternalConnectionService;
 import org.tse.pri.ioarmband.armband.io.lan.LANConnectionService;
+import org.tse.pri.ioarmband.armband.io.remote.RemotedConnectionService;
 
 
 public class Main 
@@ -26,7 +27,7 @@ public class Main
         connectionsManager.registerService(InternalConnectionService.class,true);
         connectionsManager.registerService(BluetoothConnectionService.class,true);
         connectionsManager.registerService(LANConnectionService.class,true);
-        //connectionsManager.registerService(RemotedConnectionService.class,true);
+        connectionsManager.registerService(RemotedConnectionService.class,false);
         InputsManager inputsManager = InputsManager.getInstance();
         inputsManager.registerInput(LeapMotionInput.class);
         
@@ -43,7 +44,7 @@ public class Main
     	try{
     	MenuClientInteligence menu = new MenuClientInteligence();
     	menu.registerApp(new MenuData("Chronometer", "chrono"));
-    	menu.registerApp(new MenuData("Menu", MenuClientInteligence.class));
+    	menu.registerApp(new MenuData("Connections", "cnx"));
     	menu.start();
     	}catch(Exception e){
     		logger.error(e);

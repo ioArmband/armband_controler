@@ -78,5 +78,10 @@ public class InternalConnectionService implements IConnectionService {
 		}
 	}
 
+	@Override
+	public String getName() {
+		return "Interne";
+	}
+
 
 }

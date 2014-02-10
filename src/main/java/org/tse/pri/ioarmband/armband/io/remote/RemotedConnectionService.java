@@ -27,14 +27,14 @@ public class RemotedConnectionService implements IConnectionService, Runnable{
 	
 	public RemotedConnectionService() {
 		running = false;
-		state = ServiceState.UNINITIALIZED;
+		state = ServiceState.UNAVAILABLE;
 		init();
 	}
 	
 	private void init(){
 		
-		hostname = PropertiesManager.getString("connection_service.remote.dest_host");
-		port  = PropertiesManager.getInt("connection_service.remote.dest_address");
+		hostname = PropertiesManager.getString("connection_service.remote.dest_address");
+		port  = PropertiesManager.getInt("connection_service.remote.dest_port");
 
 		logger.info("Initialization of Remoted ConnectionService : <" + this.toString() + ">");
 	}
@@ -107,5 +107,8 @@ public class RemotedConnectionService implements IConnectionService, Runnable{
 			listener.onStateChange(this, this.state);
 		}
 	}
-
+	@Override
+	public String getName() {
+		return "Remoted";
+	}
 }

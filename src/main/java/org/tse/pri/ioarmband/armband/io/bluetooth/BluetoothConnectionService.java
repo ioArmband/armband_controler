@@ -74,8 +74,7 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 			
 			
 		} catch (IOException e) {
-			logger.error("L'execution du service Bluetooth a échoué",e);
-			setState(ServiceState.FAILED);
+			logger.info("Fermeture");
 			
 		} finally {
 			try {
@@ -118,11 +117,16 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 			try {
 				scn.close();
 			} catch (IOException e) {
-				logger.error("stop(): La fermeture du service Bluetooth a échoué",e);
-				setState(ServiceState.FAILED);
+				logger.info("stop(): Fermeture de l'ecoute bluetooth",e);
 				e.printStackTrace();
 			}
 		}
+		try {
+			LocalDevice.getLocalDevice().setDiscoverable(DiscoveryAgent.CACHED);
+		} catch (BluetoothStateException e) {
+			setState(ServiceState.FAILED);
+		}
+		setState(ServiceState.STOPPED);
 	}
 	
 	public ServiceState getState(){
@@ -156,5 +160,8 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 				+ ", serviceUUID=" + serviceUUID + ", connectionURL="
 				+ connectionURL + "]";
 	}
-	
+	@Override
+	public String getName() {
+		return "Bluetooth";
+	}
 }

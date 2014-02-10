@@ -22,6 +22,7 @@ import java.util.Set;
 
 
 
+
 import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.io.ClientsManager;
 import org.tse.pri.ioarmband.armband.io.IConnectionService;
@@ -127,6 +128,7 @@ public class LANConnectionService implements IConnectionService, Runnable {
 				e.printStackTrace();
 			}
 		}
+		setState(ServiceState.STOPPED);
 	}
 	
 	public ServiceState getState(){
@@ -159,6 +161,9 @@ public class LANConnectionService implements IConnectionService, Runnable {
 		return "LANConnectionService [bindAddr=" + bindAddr + ", port=" + port
 				+ ", running=" + running + ", state=" + state + "]";
 	}
-
+	@Override
+	public String getName() {
+		return "LAN";
+	}
 
 }

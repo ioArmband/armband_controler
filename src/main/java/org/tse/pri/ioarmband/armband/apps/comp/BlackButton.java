@@ -18,9 +18,10 @@ public class BlackButton extends JButton{
 		init();
 	}
 	
-	public BlackButton(String string, String name) {
+	public BlackButton(String string, String action) {
 		this(string);
-		setName(name);
+		setName(action);
+		setActionCommand(action);
 	}
 	private void init(){
 		setBackground(Color.BLACK);

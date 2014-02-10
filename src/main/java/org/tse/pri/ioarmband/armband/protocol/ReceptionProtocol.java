@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.tse.pri.ioarmband.armband.apps.App;
 import org.tse.pri.ioarmband.armband.apps.AppsManager;
 import org.tse.pri.ioarmband.armband.apps.impl.ChronoApp;
+import org.tse.pri.ioarmband.armband.apps.impl.ConnexionsInfoApp;
 import org.tse.pri.ioarmband.armband.apps.impl.ImageApp;
 import org.tse.pri.ioarmband.armband.apps.impl.KeyboardApp;
 import org.tse.pri.ioarmband.armband.apps.impl.MenuApp;
@@ -47,6 +48,8 @@ public class ReceptionProtocol implements Protocol {
 			app = new SlideSwiperApp(client);
 		}else if(appName.equals("chrono")){
 			app = new ChronoApp(client);
+		}else if(appName.equals("cnx")){
+			app = new ConnexionsInfoApp(client);
 		}
 		else{
 			logger.warn("Cannot inititialise application named \"" + appName + "\" with params \"" + params + "\"");
