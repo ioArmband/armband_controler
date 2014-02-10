@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -13,6 +14,7 @@ import javax.swing.JPanel;
 
 import org.tse.pri.ioarmband.armband.apps.GenericSwingApp;
 import org.tse.pri.ioarmband.armband.io.Client;
+import org.tse.pri.ioarmband.armband.tools.ImageTools;
 
 public class TextMessageApp extends GenericSwingApp{
 
@@ -61,8 +63,9 @@ public class TextMessageApp extends GenericSwingApp{
 		
 		
 		if(image != null){
-			ImageIcon icon = new ImageIcon(image);
+			ImageIcon icon = new ImageIcon(ImageTools.resize(image, 150, 150));
 			label = new JLabel(author, icon, JLabel.LEFT);
+			label.setIconTextGap(40);
 		}else{
 			label = new JLabel(author, JLabel.LEFT);
 		}
@@ -81,9 +84,9 @@ public class TextMessageApp extends GenericSwingApp{
 		c.gridx = 0;
 		c.gridy = 0;
 		panel.add(headPanel, c);
-		JPanel msgPanel = new JPanel();
+		JPanel msgPanel = new JPanel(new GridLayout(1, 1));
 		msgPanel.setBackground(Color.DARK_GRAY);
-		label = new JLabel(message, JLabel.LEFT);
+		label = new JLabel("<html><center>" + message + "</center></html>", JLabel.LEFT);
 		label.setBackground(Color.DARK_GRAY);
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font(label.getFont().getName(), label.getFont().getStyle(), 100));
