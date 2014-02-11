@@ -7,6 +7,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -15,8 +17,10 @@ import javax.swing.JPanel;
 import org.tse.pri.ioarmband.armband.apps.GenericSwingApp;
 import org.tse.pri.ioarmband.armband.io.Client;
 import org.tse.pri.ioarmband.armband.tools.ImageTools;
+import org.tse.pri.ioarmband.io.message.GestureMessage;
+import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
-public class TextMessageApp extends GenericSwingApp{
+public class TextMessageApp extends GenericSwingApp implements MouseListener{
 
 	String author;
 	String message;
@@ -39,6 +43,7 @@ public class TextMessageApp extends GenericSwingApp{
 	public void build(Container container){
 		
 		JPanel panel = new JPanel();
+		panel.addMouseListener(this);
 		panel.setLayout(new GridBagLayout());
 		panel.setBackground(Color.BLACK);
 		
@@ -104,4 +109,24 @@ public class TextMessageApp extends GenericSwingApp{
 	@Override
 	public void hide() {
 	}
+	
+	@Override
+	public void mousePressed(MouseEvent e){
+		GestureType gestureType = GestureType.TOUCH;
+		
+		dispatchGesture(gestureType, "msg");
+		
+		GestureMessage message = new GestureMessage();
+		message.setSourceName("msg");
+		message.setType(gestureType);
+		client.sendCommand(message);
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {}
+	@Override
+	public void mouseReleased(MouseEvent e) {}
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+	@Override
+	public void mouseExited(MouseEvent e) {}
 }
