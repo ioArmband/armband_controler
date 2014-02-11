@@ -30,20 +30,20 @@ public class ChronoApp extends GenericSwingApp implements ActionListener{
 
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
-		panel.setLayout(new GridLayout(2,1));
+		panel.setLayout(new GridLayout(1,2));
 
 
 		chrono = new JChrono();
 		chrono.setForeground(Color.WHITE);
 		chrono.setHorizontalAlignment(JChrono.CENTER);
-		font = new Font(chrono.getFont().getName(), chrono.getFont().getStyle(), 180);
+		font = new Font(chrono.getFont().getName(), chrono.getFont().getStyle(), 120);
 		chrono.setFont(font);
 		panel.add(chrono);
 
 
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBackground(Color.DARK_GRAY);
-		buttonPanel.setLayout(new GridLayout(1,4));
+		buttonPanel.setLayout(new GridLayout(4,1));
 		BlackButton button;
 		
 		button = new BlackButton("Start");
