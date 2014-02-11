@@ -1,5 +1,5 @@
 package org.ioarmband.controler.net;
 
-public interface IClientConnectionCloseListener {
+public interface ClientConnectionCloseListener {
 	public void onClientClose(Client client);
 }

@@ -16,13 +16,13 @@ import javax.microedition.io.StreamConnectionNotifier;
 
 import org.apache.log4j.Logger;
 import org.ioarmband.controler.net.ClientsManager;
-import org.ioarmband.controler.net.IConnectionService;
-import org.ioarmband.controler.net.IServiceStateChangeListener;
+import org.ioarmband.controler.net.ConnectionService;
+import org.ioarmband.controler.net.ServiceStateChangeListener;
 import org.ioarmband.controler.net.ServiceState;
 import org.ioarmband.controler.tools.PropertiesManager;
 import org.ioarmband.net.connection.StreamedConnection;
 
-public class BluetoothConnectionService implements IConnectionService, Runnable{
+public class BluetoothConnectionService implements ConnectionService, Runnable{
 
 	private static final Logger logger = Logger.getLogger(BluetoothConnectionService.class);
 	
@@ -141,15 +141,15 @@ public class BluetoothConnectionService implements IConnectionService, Runnable{
 		dispatcheStateChangeEnvent();
 	}
 	
-	Set<IServiceStateChangeListener> serviceStateChangeListeners = new HashSet<IServiceStateChangeListener>();
-	public void addStateChangeListener(IServiceStateChangeListener listener) {
+	Set<ServiceStateChangeListener> serviceStateChangeListeners = new HashSet<ServiceStateChangeListener>();
+	public void addStateChangeListener(ServiceStateChangeListener listener) {
 		serviceStateChangeListeners.add(listener);
 	}
-	public void removeStateChangeListener(IServiceStateChangeListener listener) {
+	public void removeStateChangeListener(ServiceStateChangeListener listener) {
 		serviceStateChangeListeners.remove(listener);
 	}
 	private void dispatcheStateChangeEnvent(){
-		for (IServiceStateChangeListener listener : serviceStateChangeListeners) {
+		for (ServiceStateChangeListener listener : serviceStateChangeListeners) {
 			listener.onStateChange(this, this.state);
 		}
 	}

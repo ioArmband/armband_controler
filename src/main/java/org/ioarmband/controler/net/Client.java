@@ -17,10 +17,10 @@ public class Client implements IConnectionListener{
 	private static final Logger logger = Logger.getLogger(Client.class);
 	
 	private IConnection connection;
-	private IConnectionService parentConnectionService; 
+	private ConnectionService parentConnectionService; 
 	private boolean loopbackCommand; 
 	
-	public Client(IConnectionService parentConnectionService, IConnection connection) {
+	public Client(ConnectionService parentConnectionService, IConnection connection) {
 		super();
 		loopbackCommand = false;
 		this.connection = connection;
@@ -37,7 +37,7 @@ public class Client implements IConnectionListener{
 		return connection;
 	}
 
-	public IConnectionService getParentConnectionService() {
+	public ConnectionService getParentConnectionService() {
 		return parentConnectionService;
 	}
 
@@ -64,15 +64,15 @@ public class Client implements IConnectionListener{
 		dispatchConnectionClose();
 	}
 	
-	Set<IClientConnectionCloseListener> clientConnectionCloseListeners = new HashSet<IClientConnectionCloseListener>();
-	public void addConnectionCloseListener(IClientConnectionCloseListener listener) {
+	Set<ClientConnectionCloseListener> clientConnectionCloseListeners = new HashSet<ClientConnectionCloseListener>();
+	public void addConnectionCloseListener(ClientConnectionCloseListener listener) {
 		clientConnectionCloseListeners.add(listener);
 	}
-	public void removeConnectionCloseListener(IClientConnectionCloseListener listener) {
+	public void removeConnectionCloseListener(ClientConnectionCloseListener listener) {
 		clientConnectionCloseListeners.remove(listener);
 	}
 	private void dispatchConnectionClose(){
-		for (IClientConnectionCloseListener listener : clientConnectionCloseListeners) {
+		for (ClientConnectionCloseListener listener : clientConnectionCloseListeners) {
 			listener.onClientClose(this);
 		}
 	}

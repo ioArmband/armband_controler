@@ -7,14 +7,14 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-public class ConnectionsManager implements IServiceStateChangeListener {
+public class ConnectionsManager implements ServiceStateChangeListener {
 	private static final Logger logger = Logger.getLogger(ConnectionsManager.class);
 	private static ConnectionsManager __instance;
 	
-	private LinkedHashMap<Class<? extends IConnectionService>, IConnectionService> services;
+	private LinkedHashMap<Class<? extends ConnectionService>, ConnectionService> services;
 
 	private ConnectionsManager() {
-		services = new LinkedHashMap<Class<? extends IConnectionService>, IConnectionService>();
+		services = new LinkedHashMap<Class<? extends ConnectionService>, ConnectionService>();
 	}
 
 	public static ConnectionsManager getInstance() {
@@ -24,11 +24,11 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 		return __instance;
 	}
 	
-	public void registerService(Class<? extends IConnectionService> serviceClass){
+	public void registerService(Class<? extends ConnectionService> serviceClass){
 		registerService(serviceClass, false);
 	}	
 	
-	public void registerService(Class<? extends IConnectionService> serviceClass, boolean enable){
+	public void registerService(Class<? extends ConnectionService> serviceClass, boolean enable){
 
 		if(services.get(serviceClass) != null){
 			logger.warn("ConnectionsManager.register(): Duplication de l'enregistrement de la classe "+ serviceClass.getCanonicalName() +". La classe n'a pas été ré-enregistré.");
@@ -36,7 +36,7 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 		}
 		
 		try {
-			IConnectionService service =  (IConnectionService) serviceClass.newInstance();
+			ConnectionService service =  (ConnectionService) serviceClass.newInstance();
 			services.put(serviceClass, service);
 			service.addStateChangeListener(this);
 			if(enable){
@@ -52,8 +52,8 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 		
 	}
 
-	public void startService(Class<? extends IConnectionService> serviceClass){
-		IConnectionService service = services.get(serviceClass);
+	public void startService(Class<? extends ConnectionService> serviceClass){
+		ConnectionService service = services.get(serviceClass);
 		if(service == null){
 			logger.error("ConnectionsManager.ennable(): classe "+ serviceClass.getCanonicalName() +" non enregistrée");
 			return;
@@ -61,8 +61,8 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 		service.start();
 	}
 	
-	public void stopService(Class<? extends IConnectionService> serviceClass){
-		IConnectionService service = services.get(serviceClass);
+	public void stopService(Class<? extends ConnectionService> serviceClass){
+		ConnectionService service = services.get(serviceClass);
 		if(service == null){
 			logger.error("ConnectionsManager.ennable(): classe "+ serviceClass.getCanonicalName() +" non enregistrée");
 			return;
@@ -72,29 +72,29 @@ public class ConnectionsManager implements IServiceStateChangeListener {
 	
 	public void stopAllServices(){
 		for(Class<?> key : services.keySet()){
-			IConnectionService service = services.get(key);
+			ConnectionService service = services.get(key);
 			service.stop();
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
-	public <T extends IConnectionService> T getConnectionService(Class<T> serviceClass){
+	public <T extends ConnectionService> T getConnectionService(Class<T> serviceClass){
 		return (T) services.get(serviceClass);
 	}
 	
-	public ArrayList<IConnectionService> getServices(){
-		return new ArrayList<IConnectionService>(services.values());
+	public ArrayList<ConnectionService> getServices(){
+		return new ArrayList<ConnectionService>(services.values());
 	}
 	
-	Set<IServiceStateChangeListener> serviceStateChangeListeners = new HashSet<IServiceStateChangeListener>();
-	public void addStateChangeListener(IServiceStateChangeListener listener) {
+	Set<ServiceStateChangeListener> serviceStateChangeListeners = new HashSet<ServiceStateChangeListener>();
+	public void addStateChangeListener(ServiceStateChangeListener listener) {
 		serviceStateChangeListeners.add(listener);
 	}
-	public void removeStateChangeListener(IServiceStateChangeListener listener) {
+	public void removeStateChangeListener(ServiceStateChangeListener listener) {
 		serviceStateChangeListeners.remove(listener);
 	}
-	public void onStateChange(IConnectionService element, ServiceState state) {
-		for (IServiceStateChangeListener listener : serviceStateChangeListeners) {
+	public void onStateChange(ConnectionService element, ServiceState state) {
+		for (ServiceStateChangeListener listener : serviceStateChangeListeners) {
 			listener.onStateChange(element, element.getState());
 		}
 	}

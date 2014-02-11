@@ -6,11 +6,11 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.ioarmband.controler.net.Client;
 import org.ioarmband.controler.net.ClientsManager;
-import org.ioarmband.controler.net.IConnectionService;
-import org.ioarmband.controler.net.IServiceStateChangeListener;
+import org.ioarmband.controler.net.ConnectionService;
+import org.ioarmband.controler.net.ServiceStateChangeListener;
 import org.ioarmband.controler.net.ServiceState;
 
-public class InternalConnectionService implements IConnectionService {
+public class InternalConnectionService implements ConnectionService {
 
 	
 	private static final Logger logger = Logger.getLogger(InternalConnectionService.class);
@@ -65,15 +65,15 @@ public class InternalConnectionService implements IConnectionService {
 		clientsManager.removeClient(client);
 	}
 	
-	Set<IServiceStateChangeListener> serviceStateChangeListeners = new HashSet<IServiceStateChangeListener>();
-	public void addStateChangeListener(IServiceStateChangeListener listener) {
+	Set<ServiceStateChangeListener> serviceStateChangeListeners = new HashSet<ServiceStateChangeListener>();
+	public void addStateChangeListener(ServiceStateChangeListener listener) {
 		serviceStateChangeListeners.add(listener);
 	}
-	public void removeStateChangeListener(IServiceStateChangeListener listener) {
+	public void removeStateChangeListener(ServiceStateChangeListener listener) {
 		serviceStateChangeListeners.remove(listener);
 	}
 	private void dispatcheStateChangeEnvent(){
-		for (IServiceStateChangeListener listener : serviceStateChangeListeners) {
+		for (ServiceStateChangeListener listener : serviceStateChangeListeners) {
 			listener.onStateChange(this, this.state);
 		}
 	}

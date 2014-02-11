@@ -16,23 +16,23 @@ import org.ioarmband.controler.apps.comp.BlackButton;
 import org.ioarmband.controler.apps.comp.BlackLabel;
 import org.ioarmband.controler.net.Client;
 import org.ioarmband.controler.net.ConnectionsManager;
-import org.ioarmband.controler.net.IConnectionService;
-import org.ioarmband.controler.net.IServiceStateChangeListener;
+import org.ioarmband.controler.net.ConnectionService;
+import org.ioarmband.controler.net.ServiceStateChangeListener;
 import org.ioarmband.controler.net.ServiceState;
 import org.ioarmband.net.message.Message;
 import org.ioarmband.net.message.enums.GestureType;
 import org.ioarmband.net.message.impl.GestureMessage;
 
-public class ConnexionsInfoApp extends GenericSwingApp implements ActionListener, IServiceStateChangeListener{
+public class ConnexionsInfoApp extends GenericSwingApp implements ActionListener, ServiceStateChangeListener{
 
 	JPanel mainPanel;
-	LinkedHashMap<IConnectionService, JButton> buttons;
+	LinkedHashMap<ConnectionService, JButton> buttons;
 	public ConnexionsInfoApp(Client client) {
 		super(client);
 
-		buttons = new LinkedHashMap<IConnectionService, JButton>();
-		Collection<IConnectionService> services = ConnectionsManager.getInstance().getServices();
-		for (IConnectionService service : services) {
+		buttons = new LinkedHashMap<ConnectionService, JButton>();
+		Collection<ConnectionService> services = ConnectionsManager.getInstance().getServices();
+		for (ConnectionService service : services) {
 			BlackButton btn = new BlackButton("Start", service.getName());
 			btn.addActionListener(this);
 			service.addStateChangeListener(this);
@@ -47,7 +47,7 @@ public class ConnexionsInfoApp extends GenericSwingApp implements ActionListener
 		container.add(mainPanel);
 	}
 
-	private JPanel getServiceControlPanel(IConnectionService service) {
+	private JPanel getServiceControlPanel(ConnectionService service) {
 		JPanel panel = new JPanel(new GridLayout(1,3));
 		JButton btn = buttons.get(service);
 		switch (service.getState()) {
@@ -74,7 +74,7 @@ public class ConnexionsInfoApp extends GenericSwingApp implements ActionListener
 	private void mountPanel(){
 		mainPanel.removeAll();
 		mainPanel.setBackground(Color.BLACK);
-		Collection<IConnectionService> services = ConnectionsManager.getInstance().getServices();
+		Collection<ConnectionService> services = ConnectionsManager.getInstance().getServices();
 		mainPanel.setLayout(new GridLayout(services.size()+1,1));
 
 		BlackButton button = new BlackButton("Quitter");
@@ -83,7 +83,7 @@ public class ConnexionsInfoApp extends GenericSwingApp implements ActionListener
 		button.addActionListener(this);
 		mainPanel.add(button);
 
-		for (IConnectionService iConnectionService : services) {
+		for (ConnectionService iConnectionService : services) {
 			mainPanel.add(getServiceControlPanel(iConnectionService));
 		}
 
@@ -100,8 +100,8 @@ public class ConnexionsInfoApp extends GenericSwingApp implements ActionListener
 			return;
 		}
 
-		Collection<IConnectionService> services = ConnectionsManager.getInstance().getServices();
-		for (IConnectionService s : services) {
+		Collection<ConnectionService> services = ConnectionsManager.getInstance().getServices();
+		for (ConnectionService s : services) {
 			if(s.getName().equals(c)){
 				switch (s.getState()) {
 				case STARTED:
@@ -118,7 +118,7 @@ public class ConnexionsInfoApp extends GenericSwingApp implements ActionListener
 	}
 
 	@Override
-	public void onStateChange(IConnectionService element, ServiceState state) {
+	public void onStateChange(ConnectionService element, ServiceState state) {
 		mountPanel();
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 import org.ioarmband.controler.apps.AppsManager;
 import org.ioarmband.net.connection.IConnection;
 
-public class ClientsManager implements IClientConnectionCloseListener{
+public class ClientsManager implements ClientConnectionCloseListener{
 	private Client mainClient;
 	private List<Client> clients;
 	
@@ -30,7 +30,7 @@ public class ClientsManager implements IClientConnectionCloseListener{
 	public List<Client> getClients(){
 		return clients;
 	}
-	public Client addClient(IConnectionService service, IConnection connection){
+	public Client addClient(ConnectionService service, IConnection connection){
 		Client client = new Client(service, connection);
 		client.addConnectionCloseListener(this);
 		if( mainClient == null ){
@@ -47,7 +47,7 @@ public class ClientsManager implements IClientConnectionCloseListener{
 		AppsManager.getInstance().removeClient(client);
 	}
 	
-	public void removeClients(IConnectionService connection){
+	public void removeClients(ConnectionService connection){
 		for (Client client : clients) {
 			if(client.getParentConnectionService() == connection){
 				removeClient(client);
