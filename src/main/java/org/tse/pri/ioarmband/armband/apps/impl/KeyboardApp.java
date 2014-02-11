@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import org.tse.pri.ioarmband.io.message.Command;
 import org.tse.pri.ioarmband.io.message.GestureMessage;
 import org.tse.pri.ioarmband.io.message.enums.GestureType;
 
-public class KeyboardApp extends GenericSwingApp implements MouseListener {
+public class KeyboardApp extends GenericSwingApp implements ActionListener{
 	
 	boolean isAlpha;
 	boolean isActive;
@@ -31,83 +33,44 @@ public class KeyboardApp extends GenericSwingApp implements MouseListener {
 		isActive = false;
 		buttonsList = new ArrayList<Component>(); 
 	}
-	
+
 	@Override
 	public void build(Container container){
-		isActive = true;
+		String[][] lettres = getLetterTemplate();
+		container.setLayout(new GridLayout(lettres.length, lettres[0].length));
 		
-		JPanel panel = new JPanel();
-		
-		String[][] lettres;
+		for(int j = 0; j < lettres.length; j++){
+			for(int i = 0; i < lettres[j].length; i++){
+				JButton button = new BlackButton(lettres[j][i], lettres[j][i], this);
+				container.add(button);
+				buttonsList.add(button);
+			}
+		}
+	}
+	
+	private String[][] getLetterTemplate(){
 		
 		if(isAlpha){
 			String[][] tmpLettres = {{"a","z","e","r","t","y","u","i","o","p"},
 					{"q","s","d","f","g","h","j","k","l","m"},
 					{"w","x","c","v","b","n"," "," ","<",">"}};
-			lettres = tmpLettres;
+			return tmpLettres;
 		}else{
 			String[][] tmpLettres = {{" ","1","2","3"},
 							{" ","4","5","6"},
 							{"0","7","8","9"}};
-			lettres = tmpLettres;
+			return tmpLettres;
 		}
-		
-		
-		GridLayout gridLayout = new GridLayout(lettres.length, lettres[0].length);
-		panel.setLayout(gridLayout);
-		panel.setBackground(Color.BLACK);
-		
-		for(int j = 0; j < lettres.length; j++){
-			for(int i = 0; i < lettres[j].length; i++){
-				JButton button = new BlackButton(lettres[j][i]);
-				Font font = new Font(button.getFont().getName(), button.getFont().getStyle(), 100);
-				button.setFont(font);
-				button.setName(lettres[j][i]);
-				panel.add(button);
-				button.addMouseListener(this);
-				buttonsList.add(button);
-			}
-		}
-		
-
-		container.add(panel);
-		panel.repaint();
-		System.out.println(panel.getComponentCount());
 	}
 	
-	@Override
-	public void hide() {
-		isActive = false;
-		for (Component btn : buttonsList) {
-			btn.removeMouseListener(this);
-		}
-		buttonsList.clear();
-	}
 	
-	@Override
-	public void mousePressed(MouseEvent e) {
-		if(!isActive)
-			return;
-		
+	public void actionPerformed(ActionEvent e) {		
 		GestureType gestureType = GestureType.TOUCH;
-		String source = e.getComponent().getName();
+		String source = e.getActionCommand();
 		
 		dispatchGesture(gestureType, source);		 
 		
-		GestureMessage message = new GestureMessage();
-		message.setSourceName(source);
-		message.setType(gestureType);
-		Command command = new Command(message);
-		//System.out.println(e+"----"+clients.toString());
-		client.sendCommand(command);
-		
+		GestureMessage message = new GestureMessage(gestureType, source);
+		client.sendCommand(message);
 	}
-	@Override
-	public void mouseClicked(MouseEvent e) {}
-	@Override
-	public void mouseReleased(MouseEvent e) {}
-	@Override
-	public void mouseEntered(MouseEvent e) {}
-	@Override
-	public void mouseExited(MouseEvent e) {}
 }

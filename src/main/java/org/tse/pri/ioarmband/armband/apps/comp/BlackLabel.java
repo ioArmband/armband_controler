@@ -43,10 +43,13 @@ public class BlackLabel extends JLabel{
 		init();
 	}
 
+	public void setFontSize(int size){
+		Font font = new Font(getFont().getName(), getFont().getStyle(), size);
+		setFont(font);
+	}
 
 	void init(){
 		setForeground(Color.WHITE);
-		Font font = new Font(getFont().getName(), getFont().getStyle(), 100);
-		setFont(font);
+		setFontSize(100);
 	}
 }

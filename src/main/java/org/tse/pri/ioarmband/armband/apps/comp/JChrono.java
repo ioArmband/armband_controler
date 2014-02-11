@@ -8,7 +8,7 @@ import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-public class JChrono extends JLabel implements ActionListener{
+public class JChrono extends BlackLabel implements ActionListener{
 	/**
 	 * 
 	 */

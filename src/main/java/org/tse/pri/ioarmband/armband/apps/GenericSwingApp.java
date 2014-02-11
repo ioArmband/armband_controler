@@ -1,5 +1,8 @@
 package org.tse.pri.ioarmband.armband.apps;
 
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,10 +15,8 @@ public abstract class GenericSwingApp implements App {
 
 	protected JPanel panel;
 	protected Client client;
-	protected boolean initialized;
 
 	public GenericSwingApp(Client client){
-		this.initialized = false;
 		this.client = client;
 	}
 	
@@ -23,25 +24,20 @@ public abstract class GenericSwingApp implements App {
 		return client;
 	}
 
-	public JPanel getPanel(){
-		return panel;
+	public Container getPanel(){
+		if(panel == null){
+			panel = new JPanel();
+			panel.setBackground(Color.BLACK);
+			panel.setLayout(new GridLayout(1,1));
+			build(panel);
+		}
+		return (Container) panel;
 	}
 
-	public void build(){
-		init();
+	@Override
+	public void hide() {	
 	}
-
-	protected void init(){
-		if(initialized)
-			return;
-
-		initialized = true;
-	}
-
-	public void clear(){
-
-	}
-
+	
 	Set<AppListener> appListeners = new HashSet<AppListener>();
 	public void addAppEventsListener(AppListener appListener){
 		appListeners.add(appListener);
@@ -72,4 +68,5 @@ public abstract class GenericSwingApp implements App {
 			listener.onGesture(this, gestureType, source);
 		}
 	}
+	
 }

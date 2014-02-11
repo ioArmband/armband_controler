@@ -23,26 +23,15 @@ public class ImageApp extends GenericSwingApp {
 
 	@Override
 	public void build(Container container) {
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(1,1));
-		panel.setBackground(Color.BLACK);
-		System.out.println(image);
 		if(image != null){
 			ImageIcon icon = new ImageIcon(image);
 			JLabel label = new JLabel(icon);
-			panel.add(label);
+			container.add(label);
 		}
 		else{
 			JLabel label = new JLabel("No-Image :(");
-			panel.add(label);
+			container.add(label);
 		}
-		container.add(panel);
-	}
-
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

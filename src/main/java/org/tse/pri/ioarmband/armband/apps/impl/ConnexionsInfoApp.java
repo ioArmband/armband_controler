@@ -92,11 +92,6 @@ public class ConnexionsInfoApp extends GenericSwingApp implements ActionListener
 	}
 
 	@Override
-	public void hide() {
-
-	}
-
-	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		String c = e.getActionCommand();

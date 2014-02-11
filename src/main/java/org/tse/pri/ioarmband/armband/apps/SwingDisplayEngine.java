@@ -3,6 +3,7 @@ package org.tse.pri.ioarmband.armband.apps;
 import java.awt.AWTException;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.DisplayMode;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -91,33 +92,38 @@ public class SwingDisplayEngine implements DisplayEngine, GestureListener{
 	public void setApp(App app) {
 		logger.info("dispaly app: " + app);
 		appPanel.removeAll();
+		appPanel.setLayout(new GridLayout(1,1));
 		if(currenApp != null){
 			currenApp.hide();
 		}
 		if(app != null){
-			app.build(appPanel);
+			Container panel = app.getPanel();
+			appPanel.add(panel);
 		}
 		else{
-			JPanel panel = new JPanel();
-			panel.setLayout(new GridLayout(1,1));
-			panel.setBackground(Color.BLACK);
-			
-			JLabel label = new JLabel("ioArmband", JLabel.CENTER);
-			label.setVerticalAlignment(JLabel.CENTER);
-			Font font = new Font(label.getFont().getName(), label.getFont().getStyle(), 100);
-			label.setForeground(Color.WHITE);
-			label.setFont(font);
-			label.setSize(panel.getSize());
-			panel.add(label);
-
-			panel.setPreferredSize(appPanel.getSize());
-			panel.setVisible(true);
-			appPanel.add(panel);
+			buildGenericFrame();
 		}
 		currenApp = app;
 		appPanel.updateUI();
 	}
 	
+	private void buildGenericFrame(){
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(1,1));
+		panel.setBackground(Color.BLACK);
+		
+		JLabel label = new JLabel("ioArmband", JLabel.CENTER);
+		label.setVerticalAlignment(JLabel.CENTER);
+		Font font = new Font(label.getFont().getName(), label.getFont().getStyle(), 100);
+		label.setForeground(Color.WHITE);
+		label.setFont(font);
+		label.setSize(panel.getSize());
+		panel.add(label);
+
+		panel.setPreferredSize(appPanel.getSize());
+		panel.setVisible(true);
+		appPanel.add(panel);
+	}
 	@Override
 	public void onGesture(App app, GestureType gestureType, String source) {
 	}
@@ -140,6 +146,8 @@ public class SwingDisplayEngine implements DisplayEngine, GestureListener{
 		
 		return image;
 	}
+	
+	
 
 }
 

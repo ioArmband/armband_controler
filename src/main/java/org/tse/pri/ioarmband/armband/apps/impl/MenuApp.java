@@ -32,26 +32,15 @@ public class MenuApp extends GenericSwingApp implements MouseListener{
 	}
 	
 	@Override
-	public void build(Container container){
-		
-		JPanel panel;
+	public void build(Container panel){
 		if(index == 0){
-			panel = getHome();
+			buildHome(panel);
 		}else{
-			panel = getMenu();
+			buildMenu(panel);
 		}
-			
-		/*
-		panel.setPreferredSize(appPanel.getSize());
-		panel.setVisible(true);
-		container.add(panel);
-		*/
-		container.add(panel);
 	}
 	
-	private JPanel getHome(){
-		
-		JPanel panel = new JPanel();
+	private void buildHome(Container panel){
 		panel.setBackground(Color.BLACK);
 		panel.setLayout(new GridLayout(2,1));
 		JLabel label = new JLabel("ioArmband", JLabel.CENTER);
@@ -61,13 +50,9 @@ public class MenuApp extends GenericSwingApp implements MouseListener{
 		panel.add(label);
 		panel.add(JTime.getInstance());
 		
-		return panel;
-		
 	}
 	
-	private JPanel getMenu(){
-		
-		JPanel panel = new JPanel();
+	private void buildMenu(Container panel){
 		panel.addMouseListener(this);
 		panel.setLayout(new GridBagLayout());
 		panel.setBackground(Color.BLACK);
@@ -83,14 +68,8 @@ public class MenuApp extends GenericSwingApp implements MouseListener{
 		c.weighty = 1;
 		c.gridy = 0;
 		panel.add(label, c);
-		
-		return panel;
 	}
 
-	@Override
-	public void hide() {
-		
-	}
 	@Override
 	public void mousePressed(MouseEvent e){
 		GestureType gestureType = GestureType.TOUCH;
