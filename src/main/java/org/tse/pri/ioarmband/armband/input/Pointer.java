@@ -133,7 +133,7 @@ public class Pointer {
 			if(dy > 0)
 				direction = "up";
 			else
-				direction = "down";
+				direction = "bottom";
 		}
 	}
 	
