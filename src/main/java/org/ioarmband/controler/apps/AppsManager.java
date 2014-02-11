@@ -128,17 +128,15 @@ public class AppsManager implements AppListener, InputListener{
 		displayEngine.setGestures(in.getGestures());
 		for (Gesture gesture : gestures) {
 			if(gesture.getType().equals(GestureType.SWIPE)){
-				// TODO refactor
 				String direction;
 				Pointer p = gesture.getPointer();
 				direction = p.getDirection();
-
 				if(currentApp != null){
 					Client client = currentApp.getClient();
 					if(client != null)
 						client.sendCommand(new GestureMessage(GestureType.SWIPE, direction));
 				}
-
+				
 			}
 		}
 	}
