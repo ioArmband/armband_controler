@@ -88,8 +88,8 @@ public class LeapMotionInput extends Listener implements Input{
 		controller.enableGesture(com.leapmotion.leap.Gesture.Type.TYPE_SWIPE);
 		//controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
        controller.enableGesture(com.leapmotion.leap.Gesture.Type.TYPE_SCREEN_TAP);
-        controller.enableGesture(com.leapmotion.leap.Gesture.Type.TYPE_KEY_TAP);
-		
+        //controller.enableGesture(com.leapmotion.leap.Gesture.Type.TYPE_KEY_TAP);
+       
 	}
 
 	public void onDisconnect(Controller controller) {
@@ -100,9 +100,21 @@ public class LeapMotionInput extends Listener implements Input{
 		logger.debug("Exited");
 	}
 
+	boolean framedone = true;
 	public void onFrame(Controller controller) {
+		if(!framedone)
+			return;
+		framedone = false;
 		Frame frame = controller.frame();
-		//logger.debug("Frame" + frame.id());
+		for( Finger finger : frame.fingers()){
+			pointerUpdate = true;
+			Pointer p = buildPointer(finger);
+			pointers.put(p.getId(), p);
+		}
+		if(pointerUpdate){
+			dispatchPointersChangeEvent();
+			//pointerUpdate = false;
+		}
 		gestures.clear();
 		for(com.leapmotion.leap.Gesture g : frame.gestures()){
 			logger.debug(g.type() +" - " + g.state());
@@ -164,30 +176,21 @@ public class LeapMotionInput extends Listener implements Input{
 		            	logger.warn("WTF");
 			}
 		}
-		for( Finger finger : frame.fingers()){
-			pointerUpdate = true;
-			Pointer p = buildPointer(finger);
-			pointers.put(p.getId(), p);
-		}
 
 
 		long diff = frame.timestamp() - timeLast;
 
-		//updateGestures(diff);
 
 		if(!gestures.isEmpty()){
 			logger.debug(gestures);
 			dispatchGestureEvent();
 		}
 
-		if(pointerUpdate){
-			dispatchPointersChangeEvent();
-			pointerUpdate = false;
-		}
 
 		updatePointers(diff);
-
 		timeLast = frame.timestamp();
+		
+		framedone = true;
 	}
 
 
