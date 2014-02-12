@@ -12,11 +12,13 @@ import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 
 import org.ioarmband.controler.apps.GenericSwingApp;
+import org.ioarmband.controler.apps.AppAnnotations.AppDeclaration;
 import org.ioarmband.controler.apps.comp.JTime;
 import org.ioarmband.controler.net.Client;
 import org.ioarmband.net.message.enums.GestureType;
 import org.ioarmband.net.message.impl.GestureMessage;
 
+@AppDeclaration("menu")
 public class MenuApp extends GenericSwingApp implements MouseListener{
 	Integer index;
 	Boolean isLast;

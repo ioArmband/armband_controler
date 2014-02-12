@@ -7,8 +7,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import org.ioarmband.controler.apps.GenericSwingApp;
+import org.ioarmband.controler.apps.AppAnnotations.AppDeclaration;
 import org.ioarmband.controler.net.Client;
 
+@AppDeclaration("image")
 public class ImageApp extends GenericSwingApp {
 
 	Image image;

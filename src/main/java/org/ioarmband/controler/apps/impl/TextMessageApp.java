@@ -14,12 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.ioarmband.controler.apps.GenericSwingApp;
+import org.ioarmband.controler.apps.AppAnnotations.AppDeclaration;
 import org.ioarmband.controler.apps.comp.BlackLabel;
 import org.ioarmband.controler.net.Client;
 import org.ioarmband.controler.tools.ImageTools;
 import org.ioarmband.net.message.enums.GestureType;
 import org.ioarmband.net.message.impl.GestureMessage;
 
+@AppDeclaration("text_mesage")
 public class TextMessageApp extends GenericSwingApp implements MouseListener{
 
 	String author;

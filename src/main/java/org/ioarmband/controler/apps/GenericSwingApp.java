@@ -15,6 +15,7 @@ public abstract class GenericSwingApp implements App {
 
 	protected JPanel panel;
 	protected Client client;
+	protected String params;
 
 	public GenericSwingApp(Client client){
 		this.client = client;
@@ -34,6 +35,11 @@ public abstract class GenericSwingApp implements App {
 		return (Container) panel;
 	}
 
+	@Override
+	public void setParams(String params) {
+		this.params = params;
+	}
+	
 	@Override
 	public void hide() {	
 	}

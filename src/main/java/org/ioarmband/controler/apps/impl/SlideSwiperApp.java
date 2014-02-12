@@ -8,11 +8,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import org.ioarmband.controler.apps.GenericSwingApp;
+import org.ioarmband.controler.apps.AppAnnotations.AppDeclaration;
 import org.ioarmband.controler.apps.comp.BlackButton;
 import org.ioarmband.controler.net.Client;
 import org.ioarmband.net.message.enums.GestureType;
 import org.ioarmband.net.message.impl.GestureMessage;
 
+@AppDeclaration("slider")
 public class SlideSwiperApp extends GenericSwingApp implements ActionListener{
 
 	public SlideSwiperApp(Client client) {

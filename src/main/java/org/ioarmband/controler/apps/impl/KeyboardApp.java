@@ -10,21 +10,20 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 
 import org.ioarmband.controler.apps.GenericSwingApp;
+import org.ioarmband.controler.apps.AppAnnotations.AppDeclaration;
 import org.ioarmband.controler.apps.comp.BlackButton;
 import org.ioarmband.controler.net.Client;
 import org.ioarmband.net.message.enums.GestureType;
+import org.ioarmband.net.message.enums.KeyboardType;
 import org.ioarmband.net.message.impl.GestureMessage;
 
+@AppDeclaration("keyboard")
 public class KeyboardApp extends GenericSwingApp implements ActionListener{
 	
-	boolean isAlpha;
-	boolean isActive;
 	ArrayList<Component> buttonsList;
 	
-	public KeyboardApp(Client client, boolean isAlpha) {
+	public KeyboardApp(Client client) {
 		super(client);
-		this.isAlpha = isAlpha;
-		isActive = false;
 		buttonsList = new ArrayList<Component>(); 
 	}
 
@@ -44,7 +43,7 @@ public class KeyboardApp extends GenericSwingApp implements ActionListener{
 	
 	private String[][] getLetterTemplate(){
 		
-		if(isAlpha){
+		if(params.equals("alpha")){
 			String[][] tmpLettres = {{"a","z","e","r","t","y","u","i","o","p"},
 					{"q","s","d","f","g","h","j","k","l","m"},
 					{"w","x","c","v","b","n"," "," ","<",">"}};

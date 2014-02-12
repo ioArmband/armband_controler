@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import org.ioarmband.controler.apps.GenericSwingApp;
+import org.ioarmband.controler.apps.AppAnnotations.AppDeclaration;
 import org.ioarmband.controler.apps.comp.BlackButton;
 import org.ioarmband.controler.apps.comp.BlackLabel;
 import org.ioarmband.controler.net.Client;
@@ -23,6 +24,7 @@ import org.ioarmband.net.message.Message;
 import org.ioarmband.net.message.enums.GestureType;
 import org.ioarmband.net.message.impl.GestureMessage;
 
+@AppDeclaration("cnx")
 public class ConnexionsInfoApp extends GenericSwingApp implements ActionListener, ServiceStateChangeListener{
 
 	JPanel mainPanel;

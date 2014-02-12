@@ -1,29 +1,26 @@
 package org.ioarmband.controler.protocol;
 
-import static org.ioarmband.net.message.impl.AppMessage.AppStd.KEYBOARD;
-import static org.ioarmband.net.message.impl.AppMessage.AppStd.KEYBOARD_NUM;
-import static org.ioarmband.net.message.impl.AppMessage.AppStd.SLIDE_SWIPER;
-
 import java.awt.Image;
+import java.lang.reflect.Constructor;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.ioarmband.controler.apps.App;
+import org.ioarmband.controler.apps.AppAnnotations.AppDeclaration;
 import org.ioarmband.controler.apps.AppsManager;
 import org.ioarmband.controler.apps.CastingManager;
-import org.ioarmband.controler.apps.impl.ChronoApp;
-import org.ioarmband.controler.apps.impl.ConnexionsInfoApp;
 import org.ioarmband.controler.apps.impl.ImageApp;
-import org.ioarmband.controler.apps.impl.KeyboardApp;
 import org.ioarmband.controler.apps.impl.MenuApp;
-import org.ioarmband.controler.apps.impl.SlideSwiperApp;
 import org.ioarmband.controler.apps.impl.TextMessageApp;
 import org.ioarmband.controler.net.Client;
 import org.ioarmband.controler.protocol.ProtocolExecutor.CommandExecutor;
 import org.ioarmband.controler.protocol.ProtocolExecutor.CommandParam;
 import org.ioarmband.controler.tools.ImageTools;
+import org.reflections.Reflections;
 
 public class ReceptionProtocol implements Protocol {
 
+	static final String APP_PACKAGE = "org.ioarmband.controler.apps.impl";
 	static final Logger logger = Logger.getLogger(ReceptionProtocol.class);
 	public ReceptionProtocol() {
 
@@ -40,23 +37,22 @@ public class ReceptionProtocol implements Protocol {
 		AppsManager appsManager = AppsManager.getInstance();
 
 		App app;
-		if(appName.equals(KEYBOARD.getName())){
-			boolean isNum = (params.equals(KEYBOARD_NUM.getParam()));
-			app = new KeyboardApp(client, !isNum);
-		}
-		else if(appName.equals(SLIDE_SWIPER.getName())){
-			app = new SlideSwiperApp(client);
-		}else if(appName.equals("chrono")){
-			app = new ChronoApp(client);
-		}else if(appName.equals("cnx")){
-			app = new ConnexionsInfoApp(client);
+		Class<?> clazz = getAppClass(appName,APP_PACKAGE);
+		if(clazz != null){
+			try {
+				Constructor<?> constructor = clazz.getConstructor(new Class[]{Client.class});
+				app = (App) constructor.newInstance(client);
+				app.setParams(params);
+				appsManager.addApp(app, true);
+			} catch (Exception e) {
+				logger.error("Cannot find constructor " + clazz.getName()+"(Client client)" );
+			}
 		}
 		else{
 			logger.warn("Cannot inititialise application named \"" + appName + "\" with params \"" + params + "\"");
 			return;
 		}
 
-		appsManager.addApp(app, true);
 	}
 
 
@@ -120,6 +116,26 @@ public class ReceptionProtocol implements Protocol {
 		else{
 			CastingManager.removeCaster(client);
 		}
+	}
+	
+	private Set<Class<?>> getAllApps(String packageName){
+		 Reflections reflections = new Reflections(packageName);
+		 return reflections.getTypesAnnotatedWith(AppDeclaration.class);
+	}
+	
+	private Class<?> getAppClass(String appName, String packageName){
+		
+		getAllApps(packageName);
+		Set<Class<?>> classes = getAllApps(packageName);
+		System.out.println(classes);
+		for (Class<?> clazz : classes) {
+			AppDeclaration declaration = clazz.getAnnotation(AppDeclaration.class);
+			if(declaration.value().equals(appName)){
+				return clazz;
+			}
+		}
+		logger.error("Cannot find annotation AppDeclaration(\"" + appName + "\") in package " +packageName  );
+		return null;
 	}
 }
 

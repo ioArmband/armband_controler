@@ -11,6 +11,7 @@ public interface App {
 	public void removeGestureEventListener(GestureListener listener);
 	public Container getPanel();
 	public Client getClient();
+	public void setParams(String params);
 	public void build(Container container);
 	public void hide();
 }
