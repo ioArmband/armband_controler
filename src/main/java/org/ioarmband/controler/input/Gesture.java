@@ -24,7 +24,9 @@ public class Gesture {
 	public void setPointer(Pointer pointer) {
 		this.pointer = pointer;
 	}
-
+	public String getDirection(){
+		return pointer.getDirection();
+	}
 	@Override
 	public String toString() {
 		return "Gesture [type=" + type + ", pointer=" + pointer + "]";

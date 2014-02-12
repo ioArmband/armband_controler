@@ -19,6 +19,7 @@ public class SlideSwiperApp extends GenericSwingApp implements ActionListener{
 
 	public SlideSwiperApp(Client client) {
 		super(client);
+		setSwipeEnabled(true);
 	}
 
 	public void build(Container container){

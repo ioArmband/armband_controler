@@ -30,6 +30,7 @@ public class MenuApp extends GenericSwingApp implements MouseListener{
 		this.index = index;
 		this.isLast = isLast;
 		this.appName = appName;
+		setSwipeEnabled(true);
 	}
 	
 	@Override

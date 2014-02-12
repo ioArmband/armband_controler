@@ -38,6 +38,7 @@ public class TextMessageApp extends GenericSwingApp implements MouseListener{
 		this.author = author;
 		this.message = message;
 		this.image = image;
+		setSwipeEnabled(true);
 	}
 
 

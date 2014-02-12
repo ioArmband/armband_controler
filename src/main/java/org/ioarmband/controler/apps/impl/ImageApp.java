@@ -15,9 +15,14 @@ public class ImageApp extends GenericSwingApp {
 
 	Image image;
 
+	
 	public ImageApp(Client client, Image image) {
 		super(client);
 		this.image = image;
+		setSwipeEnabled(true);
+	}
+	public ImageApp(Client client) {
+		this(client, null);
 	}
 
 	@Override
