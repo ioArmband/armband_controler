@@ -1,8 +1,5 @@
 package org.ioarmband.controler.apps;
 
-import java.awt.KeyEventDispatcher;
-import java.awt.KeyboardFocusManager;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Collection;
 import java.util.HashMap;
@@ -52,7 +49,6 @@ public class AppsManager implements AppListener, InputListener{
 		clientsApp = new HashMap<Client, App>();
 		currentApp = null;
 
-		listenKeyboard();
 	}
 
 	public void addApp(App app){
@@ -141,43 +137,6 @@ public class AppsManager implements AppListener, InputListener{
 		}
 	}
 
-	public void listenKeyboard(){
-		KeyEventDispatcher listener = new KeyEventDispatcher() {
-
-			@Override
-			public boolean dispatchKeyEvent(KeyEvent evt) {
-				if(evt.getID() == KeyEvent.KEY_PRESSED) {
-					
-					String direction = null;
-					switch(evt.getKeyCode()){
-					case KeyEvent.VK_K:
-						direction = "bottom";
-						break;
-					case KeyEvent.VK_J:
-						direction = "left";
-						break;
-					case KeyEvent.VK_L:
-						direction = "right";
-						break;
-					case KeyEvent.VK_I:
-						direction = "top";
-						break;
-					}
-					
-					if(direction != null){
-						GestureMessage gm = new GestureMessage(GestureType.SWIPE, direction);
-						if(currentApp != null)
-							currentApp.getClient().sendCommand(gm);
-					}
-					
-					
-				}
-				return false;
-			}
-
-		};
-KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(listener);
-	}
 	
 	public BufferedImage getScreenCapture(){
 		return displayEngine.getScreenCapture();

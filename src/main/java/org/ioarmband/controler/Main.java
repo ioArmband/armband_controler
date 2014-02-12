@@ -1,28 +1,19 @@
 package org.ioarmband.controler;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import org.apache.log4j.Logger;
 import org.ioarmband.controler.apps.AppsManager;
 import org.ioarmband.controler.ia.MenuClientInteligence;
 import org.ioarmband.controler.ia.MenuData;
 import org.ioarmband.controler.input.InputsManager;
+import org.ioarmband.controler.input.KeyboardSwipeEmulatorInput;
 import org.ioarmband.controler.input.LeapMotionInput;
-import org.ioarmband.controler.net.Client;
 import org.ioarmband.controler.net.ConnectionsManager;
 import org.ioarmband.controler.net.service.BluetoothConnectionService;
-import org.ioarmband.controler.net.service.InternalConnection;
 import org.ioarmband.controler.net.service.InternalConnectionService;
 import org.ioarmband.controler.net.service.LANConnectionService;
 import org.ioarmband.controler.net.service.RemotedConnectionService;
-import org.ioarmband.controler.tools.ImageTools;
-import org.ioarmband.net.message.Command;
-import org.ioarmband.net.message.impl.KeyboardAppMessage;
-import org.ioarmband.net.message.impl.TextMessageAppMessage;
 
 
 public class Main 
@@ -40,6 +31,7 @@ public class Main
         connectionsManager.registerService(RemotedConnectionService.class,false);
         InputsManager inputsManager = InputsManager.getInstance();
         inputsManager.registerInput(LeapMotionInput.class);
+        inputsManager.registerInput(KeyboardSwipeEmulatorInput.class);
         
 
         AppsManager.getInstance();

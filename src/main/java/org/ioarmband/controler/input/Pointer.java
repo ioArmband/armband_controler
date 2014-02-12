@@ -13,7 +13,7 @@ public class Pointer {
 	private String direction;
 	private Float lastUpdate;
 	private boolean isVisibleNow;
-	
+	private boolean autoUpdateDirection;
 	public Pointer(){
 		this(0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
 	}
@@ -32,6 +32,7 @@ public class Pointer {
 		this.dz = dz;
 		this.lastUpdate = lastUpdate;
 		isVisibleNow = true;
+		autoUpdateDirection = true;
 		updateDirection();
 	}
 	public Pointer(Pointer p) {
@@ -118,8 +119,14 @@ public class Pointer {
 	public String getDirection() {
 		return direction;
 	}
-	
+	public void setDirection(String direction) {
+		this.direction = direction;
+		this.autoUpdateDirection = false;
+	}
 	private void updateDirection(){
+		if(!autoUpdateDirection)
+			return;
+		
 		if(dx == dy){
 			direction = "none";
 			return;
