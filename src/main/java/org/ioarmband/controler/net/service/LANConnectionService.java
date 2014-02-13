@@ -107,6 +107,8 @@ public class LANConnectionService implements ConnectionService, Runnable {
 		setState(ServiceState.STARTING);
 		try {
 			serverSocket = new ServerSocket(port, 128, Inet4Address.getByName(bindAddr));
+			processThread = new Thread(this);
+			processThread.start();
 		} catch (UnknownHostException e) {
 			logger.error("LAN service unnable to connect to host "+bindAddr, e);
 			setState(ServiceState.FAILED);
@@ -114,8 +116,6 @@ public class LANConnectionService implements ConnectionService, Runnable {
 			logger.error("LAN service unnable launch", e);
 			setState(ServiceState.FAILED);
 		}
-		processThread = new Thread(this);
-		processThread.start();
 	}
 	
 	public void stop(){
